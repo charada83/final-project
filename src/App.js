@@ -1,29 +1,22 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
+import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <AppBar>
-          <ToolBar>
-            <MenuIcon />
-            <Button variant="contained" color="primary">
-              Hello world
-            </Button>
-          </ToolBar>
-        </AppBar>
-      </div>
-    );
-  }
-}
-
 const App = () => (
   <div>
+    <AppBar>
+      <ToolBar>
+        <MenuIcon />
+        <Button variant="contained" color="primary">
+          Hello world
+        </Button>
+      </ToolBar>
+    </AppBar>
+
     <h1>Baby Record</h1>
     <nav>
       <Link to="/">Home</Link> <Link to="login">Login</Link>{" "}
@@ -79,23 +72,23 @@ const Family = props => (
       </li>
     </ul>
     {/* <form
-      onSubmit={event => {
-        event.preventDefault();
-        const id = event.target.elements[0].value;
-        event.target.reset();
-
-        // pretend like we saved a record to the DB here
-        // and then we navigate imperatively
-        props.navigate(id);
-      }}
-    >
-      <p>
-        <label>
-          New Invoice ID: <input type="text" />
-        </label>
-        <button type="submit">create</button>
-      </p>
-    </form> */}
+        onSubmit={event => {
+          event.preventDefault();
+          const id = event.target.elements[0].value;
+          event.target.reset();
+  
+          // pretend like we saved a record to the DB here
+          // and then we navigate imperatively
+          props.navigate(id);
+        }}
+      >
+        <p>
+          <label>
+            New Invoice ID: <input type="text" />
+          </label>
+          <button type="submit">create</button>
+        </p>
+      </form> */}
 
     {/* {props.children} */}
   </div>
@@ -109,4 +102,4 @@ const FamilyIndex = () => (
 
 const NotFound = () => <p>Sorry, nothing here</p>;
 
-render(<App />, document.getElementById("root"));
+export default App;

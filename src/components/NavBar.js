@@ -1,18 +1,25 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import MenuIcon from "@material-ui/icons/Menu";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton
+} from "@material-ui/core";
+import { MenuIcon } from "@material-ui/icons";
 
 const NavBar = () => {
   return (
     <div>
       <AppBar>
         <Toolbar>
-          <MenuIcon />
+          <IconButton color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
           <Typography variant="title" color="inherit">
             Baby Book
           </Typography>
+          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>

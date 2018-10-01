@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
 import NavBar from "./components/NavBar";
-import TemporaryDrawer from "./components/SideDrawer";
 
 class App extends Component {
   render() {

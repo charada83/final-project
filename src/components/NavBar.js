@@ -14,7 +14,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 class NavBar extends React.Component {
   state = {
-    open: true
+    open: false
   };
 
   handleDrawerOpen = () => {
@@ -26,8 +26,6 @@ class NavBar extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div>
         <AppBar>

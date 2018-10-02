@@ -26,6 +26,11 @@ class NavBar extends React.Component {
   };
 
   render() {
+    const drawerStyle = {
+      width: "240px",
+      margin: "10px"
+    };
+
     return (
       <div>
         <AppBar>
@@ -43,7 +48,7 @@ class NavBar extends React.Component {
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
-        <Drawer variant="temporary" open={this.state.open}>
+        <Drawer style={drawerStyle} variant="temporary" open={this.state.open}>
           <div>
             <IconButton onClick={this.handleDrawerClose}>
               <ChevronLeftIcon />

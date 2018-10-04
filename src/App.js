@@ -10,15 +10,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
-        {/* <Drawer /> */}
+        {/* <NavBar /> */}
+
+        <Drawer />
+
         <nav>
-          <Link to="/">Home</Link> <Link to="login">Login</Link>{" "}
+          <Link to="home">Home</Link> <Link to="login">Login</Link>{" "}
           <Link to="dashboard">Dashboard</Link> <Link to="family">Family</Link>
         </nav>
 
         <Router>
-          <Home path={"/"} component={Home} />
+          <Home path="home" component={Home} />
           <Login path="login" />
           <Dashboard path="/dashboard" component={Dashboard} />
           <Family path="family">

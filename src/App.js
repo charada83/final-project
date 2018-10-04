@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
 import NavBar from "./components/NavBar";
 import Drawer from "./components/Drawer";
+import Home from "./views/Home";
+import Dashboard from "./views/Dashboard";
 
 class App extends Component {
   render() {
@@ -16,7 +18,7 @@ class App extends Component {
         </nav>
 
         <Router>
-          <Home path="/" />
+          <Home path={"/"} />
           <Login path="login" />
           <Dashboard path="/dashboard" />
           <Family path="family">
@@ -30,11 +32,9 @@ class App extends Component {
   }
 }
 
-const Home = () => (
-  <div>
-    <h2>Welcome</h2>
-  </div>
-);
+{
+  Home;
+}
 
 const Login = () => (
   <div>
@@ -42,12 +42,9 @@ const Login = () => (
   </div>
 );
 
-const Dashboard = () => (
-  <div>
-    <h2>Dashboard</h2>
-  </div>
-);
-
+{
+  Dashboard;
+}
 // const Family = props => (
 //   <div>
 //     <h2>Family {props.invoiceId}</h2>

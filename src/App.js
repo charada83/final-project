@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
 import NavBar from "./components/NavBar";
+import Drawer from "./components/Drawer";
 
 class App extends Component {
   render() {
     return (
       <div>
         <NavBar />
-        <h1>Baby Record</h1>
+        {/* <Drawer /> */}
         <nav>
           <Link to="/">Home</Link> <Link to="login">Login</Link>{" "}
           <Link to="dashboard">Dashboard</Link> <Link to="family">Family</Link>

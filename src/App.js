@@ -18,9 +18,9 @@ class App extends Component {
         </nav>
 
         <Router>
-          <Home path={"/"} />
+          <Home path={"/"} component={Home} />
           <Login path="login" />
-          <Dashboard path="/dashboard" />
+          <Dashboard path="/dashboard" component={Dashboard} />
           <Family path="family">
             <FamilyIndex path="/" />
             <Family path="/" />
@@ -32,19 +32,12 @@ class App extends Component {
   }
 }
 
-{
-  Home;
-}
-
 const Login = () => (
   <div>
     <h2>Login Page</h2>
   </div>
 );
 
-{
-  Dashboard;
-}
 // const Family = props => (
 //   <div>
 //     <h2>Family {props.invoiceId}</h2>

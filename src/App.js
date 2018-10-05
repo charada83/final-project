@@ -1,19 +1,16 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
-import NavBar from "./components/NavBar";
-import Drawer from "./components/Drawer";
+// import NavBar from "./components/NavBar";
+// import Drawer from "./components/Drawer";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
+import Layout from "./components/Layout/index";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        {/* <NavBar /> */}
-
-        <Drawer />
-
+      <Layout>
         <nav>
           <Link to="home">Home</Link> <Link to="login">Login</Link>{" "}
           <Link to="dashboard">Dashboard</Link> <Link to="family">Family</Link>
@@ -29,7 +26,7 @@ class App extends Component {
           </Family>
           <NotFound default />
         </Router>
-      </div>
+      </Layout>
     );
   }
 }

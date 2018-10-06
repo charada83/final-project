@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 // import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
-// import NavBar from "./components/NavBar";
-// import Drawer from "./components/Drawer";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import Layout from "./components/Layout/index";

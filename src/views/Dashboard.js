@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BirthDetails from "../components/BirthDetails";
 
 class Dashboard extends Component {
   //state = {  }
@@ -7,6 +8,7 @@ class Dashboard extends Component {
       <div>
         <h1>Dashboard</h1>
         <p>This is the Dashboard</p>
+        <BirthDetails />
       </div>
     );
   }

@@ -10,23 +10,26 @@ import Layout from "./components/Layout/index";
 class App extends Component {
   render() {
     return (
-      <Layout>
-        <nav>
-          <Link to="home">Home</Link> <Link to="login">Login</Link>{" "}
-          <Link to="dashboard">Dashboard</Link> <Link to="family">Family</Link>
-        </nav>
+      <div className="App">
+        <Layout>
+          <nav>
+            <Link to="home">Home</Link> <Link to="login">Login</Link>{" "}
+            <Link to="dashboard">Dashboard</Link>{" "}
+            <Link to="family">Family</Link>
+          </nav>
 
-        <Router>
-          <Home path="home" component={Home} />
-          <Login path="login" />
-          <Dashboard path="/dashboard" component={Dashboard} />
-          <Family path="family">
-            <FamilyIndex path="/" />
-            <Family path="/" />
-          </Family>
-          <NotFound default />
-        </Router>
-      </Layout>
+          <Router>
+            <Home path="home" component={Home} />
+            <Login path="login" />
+            <Dashboard path="/dashboard" component={Dashboard} />
+            <Family path="family">
+              <FamilyIndex path="/" />
+              <Family path="/" />
+            </Family>
+            <NotFound default />
+          </Router>
+        </Layout>
+      </div>
     );
   }
 }

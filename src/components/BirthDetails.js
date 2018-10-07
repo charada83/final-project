@@ -10,15 +10,31 @@ import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
 import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
+import { withStyles } from "@material-ui/core";
+
+const styles = {
+  card: {
+    maxWidth: 600,
+    marginBottom: 20,
+    marginLeft: "auto",
+    marginRight: "auto"
+  },
+  cardContent: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  media: {
+    height: 140
+  }
+};
 
 class BirthDetails extends Component {
-  //   state = {
-  //     name,
-  //     gender,
-  //     placeOfBirth,
-  //     timeOfBirth,
-  //     weight
-  //   };
+  //   state = {   };
+
+  // editBirthDetails = () =>
+  // {
+
+  // }
   render() {
     const {
       name,
@@ -30,16 +46,16 @@ class BirthDetails extends Component {
     } = this.props.babiesBirthDetails;
     return (
       <div>
-        <Card>
-          {/* <CardMedia "Input Image" /> */}
+        <Card style={styles.card}>
+          {/* <CardMedia className={classes.media} "Input Image" /> */}
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
               <h2>
                 {name}
-                <EditIcon />
+                <EditIcon /*onClick={this.editBirthDetails()}*/ />
               </h2>
             </Typography>
-            <Typography component="p">
+            <Typography style={styles.cardContent} component="p">
               <ul>
                 <li>{gender}</li>
                 <li>{dateOfBirth}</li>
@@ -67,4 +83,4 @@ BirthDetails.PropTypes = {
   babiesBirthDetails: PropTypes.object.isRequired
 };
 
-export default BirthDetails;
+export default withStyles(styles)(BirthDetails);

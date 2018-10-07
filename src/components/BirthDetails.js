@@ -7,14 +7,14 @@ import CardContent from "@material-ui/core/CardContent";
 // import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Icon from "@material-ui/core/Icon";
+//import Icon from "@material-ui/core/Icon";
 import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from "@material-ui/core";
 
 const styles = {
   card: {
-    maxWidth: 600,
+    maxWidth: 800,
     marginBottom: 20,
     marginLeft: "auto",
     marginRight: "auto"
@@ -47,7 +47,6 @@ class BirthDetails extends Component {
     return (
       <div>
         <Card style={styles.card}>
-          {/* <CardMedia className={classes.media} "Input Image" /> */}
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
               <h2>
@@ -55,6 +54,7 @@ class BirthDetails extends Component {
                 <EditIcon /*onClick={this.editBirthDetails()}*/ />
               </h2>
             </Typography>
+            {/* <CardMedia className={classes.media} "Input Image" /> */}
             <Typography style={styles.cardContent} component="p">
               <ul>
                 <li>{gender}</li>
@@ -69,8 +69,11 @@ class BirthDetails extends Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button sixe="small" color="primary">
-              <AddIcon /> Add Detail?
+            <Button size="small" color="primary">
+              {/* <AddIcon />*/} My Milestones
+            </Button>
+            <Button size="small" color="primary">
+              My Big Moments
             </Button>
           </CardActions>
         </Card>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class BirthDetails extends Component {
   //   state = {
@@ -9,15 +10,23 @@ class BirthDetails extends Component {
   //     weight
   //   };
   render() {
+    const {
+      name,
+      gender,
+      dateOfBirth,
+      placeOfBirth,
+      timeOfBirth,
+      weight
+    } = this.props;
     return (
       <div>
-        <h2>{this.props.name}</h2>
+        <h2>{name}</h2>
         <ul>
-          <li>{this.props.gender}</li>
-          <li>{this.props.dateOfBirth}</li>
-          <li>{this.props.placeOfBirth}</li>
-          <li>{this.props.timeOfBirth}</li>
-          <li>{this.props.weight}</li>
+          <li>{gender}</li>
+          <li>{dateOfBirth}</li>
+          <li>{placeOfBirth}</li>
+          <li>{timeOfBirth}</li>
+          <li>{weight}</li>
           <li>?</li>
           <li>?</li>
           <li>?</li>
@@ -26,5 +35,9 @@ class BirthDetails extends Component {
     );
   }
 }
+
+BirthDetails.PropTypes = {
+  name: PropTypes.string.isRequired
+};
 
 export default BirthDetails;

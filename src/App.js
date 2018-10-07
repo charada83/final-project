@@ -4,9 +4,26 @@ import { Router, Link } from "@reach/router";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import Layout from "./components/Layout/index";
+import SignIn from "./components/SignIn";
+import { auth } from "./firebase";
+import CurrentUser from "./components/CurrentUser";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: null
+    };
+  }
+
+  componentDidMount() {
+    auth.onAuthStateChanged(currentUser => {
+      this.setState({ currentUser });
+    });
+  }
+
   render() {
+    const { currentUser } = this.state;
     return (
       <div className="App">
         <Layout>
@@ -15,7 +32,14 @@ class App extends Component {
             <Link to="dashboard">Dashboard</Link>{" "}
             <Link to="family">Family</Link>
           </nav>
-
+          <div>
+            {!currentUser && <SignIn />}
+            {currentUser && (
+              <div>
+                <CurrentUser user={currentUser} />
+              </div>
+            )}
+          </div>
           <Router>
             <Home path="home" component={Home} />
             <Login path="login" />

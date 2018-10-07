@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import {
   AppBar,
   Toolbar,
+  Button,
   IconButton,
   Typography,
   Hidden,
@@ -83,6 +84,7 @@ class Layout extends Component {
               <Typography variant="title" color="inherit" noWrap>
                 Baby Book
               </Typography>
+              <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
           <Hidden mdUp>

@@ -16,8 +16,7 @@ class App extends Component {
           </nav>
 
           <Router>
-            <Home path="home" component={Home} />
-
+            <Home path="/home" component={Home} />
             <Dashboard path="/dashboard" component={Dashboard} />
             <Family path="family">
               <Family path="/" />

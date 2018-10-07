@@ -4,45 +4,45 @@ import { Router, Link } from "@reach/router";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import Layout from "./components/Layout/index";
-import SignIn from "./components/SignIn";
-import { auth } from "./firebase";
-import CurrentUser from "./components/CurrentUser";
+// import SignIn from "./components/SignIn";
+// import { auth } from "./firebase";
+// import CurrentUser from "./components/CurrentUser";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentUser: null
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     currentUser: null
+  //   };
+  // }
 
-  componentDidMount() {
-    auth.onAuthStateChanged(currentUser => {
-      this.setState({ currentUser });
-    });
-  }
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(currentUser => {
+  //     this.setState({ currentUser });
+  //   });
+  // }
 
   render() {
-    const { currentUser } = this.state;
+    // const { currentUser } = this.state;
     return (
       <div className="App">
         <Layout>
           <nav>
-            <Link to="home">Home</Link> <Link to="login">Login</Link>{" "}
+            <Link to="home">Home</Link> {/*<Link to="login">Login</Link> */}{" "}
             <Link to="dashboard">Dashboard</Link>{" "}
             <Link to="family">Family</Link>
           </nav>
-          <div>
+          {/* <div>
             {!currentUser && <SignIn />}
             {currentUser && (
               <div>
                 <CurrentUser user={currentUser} />
               </div>
             )}
-          </div>
+          </div> */}
           <Router>
             <Home path="home" component={Home} />
-            <Login path="login" />
+            {/* <Login path="login" /> */}
             <Dashboard path="/dashboard" component={Dashboard} />
             <Family path="family">
               <FamilyIndex path="/" />
@@ -56,11 +56,11 @@ class App extends Component {
   }
 }
 
-const Login = () => (
-  <div>
-    <h2>Login Page</h2>
-  </div>
-);
+// const Login = () => (
+//   <div>
+//     <h2>Login Page</h2>
+//   </div>
+// );
 
 // const Family = props => (
 //   <div>

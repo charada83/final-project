@@ -8,7 +8,14 @@ class Dashboard extends Component {
       <div>
         <h1>Dashboard</h1>
         <p>This is the Dashboard</p>
-        <BirthDetails />
+        <BirthDetails
+          name="Lorcan"
+          gender="Male"
+          dateOfBirth="8/11/2018"
+          placeOfBirth="Rotunda"
+          timeOfBirth="9:58"
+          weight="3.5kg"
+        />
       </div>
     );
   }

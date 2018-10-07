@@ -11,12 +11,13 @@ class BirthDetails extends Component {
   render() {
     return (
       <div>
-        <h2>My Name</h2>
+        <h2>{this.props.name}</h2>
         <ul>
-          <li>Gender</li>
-          <li>Place of Birth</li>
-          <li>Time of Birth</li>
-          <li>Weight</li>
+          <li>{this.props.gender}</li>
+          <li>{this.props.dateOfBirth}</li>
+          <li>{this.props.placeOfBirth}</li>
+          <li>{this.props.timeOfBirth}</li>
+          <li>{this.props.weight}</li>
           <li>?</li>
           <li>?</li>
           <li>?</li>

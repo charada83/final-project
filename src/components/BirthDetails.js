@@ -7,6 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 // import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Icon from "@material-ui/core/Icon";
+import EditIcon from "@material-ui/icons/Edit";
+import AddIcon from "@material-ui/icons/Add";
 
 class BirthDetails extends Component {
   //   state = {
@@ -31,7 +34,10 @@ class BirthDetails extends Component {
           {/* <CardMedia "Input Image" /> */}
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
-              <h2>{name}</h2>
+              <h2>
+                {name}
+                <EditIcon />
+              </h2>
             </Typography>
             <Typography component="p">
               <ul>
@@ -48,7 +54,7 @@ class BirthDetails extends Component {
           </CardContent>
           <CardActions>
             <Button sixe="small" color="primary">
-              Edit?
+              <AddIcon /> Add Detail?
             </Button>
           </CardActions>
         </Card>

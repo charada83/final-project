@@ -24,7 +24,7 @@ class BirthDetails extends Component {
       placeOfBirth,
       timeOfBirth,
       weight
-    } = this.props;
+    } = this.props.babiesBirthDetails;
     return (
       <div>
         <Card>
@@ -48,7 +48,7 @@ class BirthDetails extends Component {
           </CardContent>
           <CardActions>
             <Button sixe="small" color="primary">
-              Add another baby
+              Edit?
             </Button>
           </CardActions>
         </Card>
@@ -58,7 +58,7 @@ class BirthDetails extends Component {
 }
 
 BirthDetails.PropTypes = {
-  name: PropTypes.string.isRequired
+  babiesBirthDetails: PropTypes.object.isRequired
 };
 
 export default BirthDetails;

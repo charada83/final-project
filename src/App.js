@@ -4,29 +4,32 @@ import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import FamilyTree from "./views/FamilyTree";
 import Layout from "./components/Layout/index";
+import { Provider } from "./context";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Layout>
-          <nav>
-            <Link to="/">Home</Link> {/*<Link to="login">Login</Link> */}{" "}
-            <Link to="dashboard">Dashboard</Link>{" "}
-            <Link to="family">Family</Link>
-          </nav>
+      <Provider>
+        <div className="App">
+          <Layout>
+            <nav>
+              <Link to="/">Home</Link> {/*<Link to="login">Login</Link> */}{" "}
+              <Link to="dashboard">Dashboard</Link>{" "}
+              <Link to="family">Family</Link>
+            </nav>
 
-          <Router>
-            <Home path="/" />
-            <Dashboard path="dashboard" />
-            <Family path="family">
-              <FamilyTree path="family-tree" />
-              <Family path="/" />
-            </Family>
-            <NotFound default />
-          </Router>
-        </Layout>
-      </div>
+            <Router>
+              <Home path="/" />
+              <Dashboard path="dashboard" />
+              <Family path="family">
+                <FamilyTree path="family-tree" />
+                <Family path="/" />
+              </Family>
+              <NotFound default />
+            </Router>
+          </Layout>
+        </div>
+      </Provider>
     );
   }
 }

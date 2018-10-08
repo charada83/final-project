@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
+import { relative } from "path";
 
 const drawerWidth = 240;
 
@@ -25,7 +26,12 @@ const styles = theme => ({
     display: "flex",
     width: "100%"
   },
+  grow: {
+    flexGrow: 1
+  },
+
   appBar: {
+    backgroundColor: "#d2a1e3",
     zIndex: theme.zIndex.drawer + 1
   },
   navIconHide: {
@@ -44,7 +50,8 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3
-  }
+  },
+  button: {}
 });
 
 class Layout extends Component {
@@ -81,7 +88,12 @@ class Layout extends Component {
               >
                 <Menu />
               </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
+              <Typography
+                className={classes.grow}
+                variant="title"
+                color="inherit"
+                noWrap
+              >
                 Baby Book
               </Typography>
               <Button color="inherit">Login</Button>

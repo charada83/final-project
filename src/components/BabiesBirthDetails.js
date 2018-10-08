@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import BirthDetails from "./BirthDetails";
 
 class BabiesBirthDetails extends Component {
@@ -29,14 +29,14 @@ class BabiesBirthDetails extends Component {
     const { babiesBirthDetails } = this.state;
 
     return (
-      <div>
+      <Fragment>
         {babiesBirthDetails.map(babiesBirthDetails => (
           <BirthDetails
             key={babiesBirthDetails.id}
             babiesBirthDetails={babiesBirthDetails}
           />
         ))}
-      </div>
+      </Fragment>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
+import FamilyTree from "./views/FamilyTree";
 import Layout from "./components/Layout/index";
 
 class App extends Component {
@@ -10,16 +11,16 @@ class App extends Component {
       <div className="App">
         <Layout>
           <nav>
-            <Link to="home">Home</Link> {/*<Link to="login">Login</Link> */}{" "}
+            <Link to="/">Home</Link> {/*<Link to="login">Login</Link> */}{" "}
             <Link to="dashboard">Dashboard</Link>{" "}
             <Link to="family">Family</Link>
           </nav>
 
           <Router>
-            <Home path="/home" component={Home} />
-            <Dashboard path="/dashboard" component={Dashboard} />
+            <Home path="/" />
+            <Dashboard path="dashboard" />
             <Family path="family">
-              <Family path="/" />
+              <FamilyTree path="family-tree" />
               <Family path="/" />
             </Family>
             <NotFound default />

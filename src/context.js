@@ -2,6 +2,20 @@ import React, { Component } from "react";
 
 const Context = React.createContext();
 
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "EDIT_BABY":
+//       return {
+//         ...state,
+//         babiesBirthDetails: state.babiesBirthDetails.filter(
+//           BirthDetails => BirthDetails.id !== action.payload
+//         )
+//       };
+//     default:
+//       return state;
+//   }
+// };
+
 export class Provider extends Component {
   state = {
     babiesBirthDetails: [
@@ -24,6 +38,8 @@ export class Provider extends Component {
         weight: "3.04kg"
       }
     ]
+
+    // dispatch: action => this.setState(state => reducer(state, action))
   };
 
   render() {

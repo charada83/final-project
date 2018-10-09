@@ -48,6 +48,7 @@ class AddBaby extends Component {
 
   //* To Clear Form after submit
   // this.setState(
+  // open: false,
   //   {
   //     babyDetails: {
   //       name: '',
@@ -94,6 +95,7 @@ class AddBaby extends Component {
             <DialogContentText>Please fill out form below</DialogContentText>
             <form>
               <TextField
+                name="name"
                 label="Name"
                 value={name}
                 onChange={this.handleChange("name")}
@@ -104,6 +106,7 @@ class AddBaby extends Component {
               {/* Radio Buttons for Gender */}
               {/* DatePicker for Date of Birth */}
               <TextField
+                name="placeOfBirth"
                 label="Place of Birth"
                 value={placeOfBirth}
                 onChange={this.handleChange("placeOfBirth")}

@@ -74,7 +74,7 @@ class BirthDetails extends Component {
               {/* <AddIcon />*/} My Milestones
             </Button>
             <Button size="small" color="primary">
-              My Big Moments
+              My Memories
             </Button>
           </CardActions>
         </Card>

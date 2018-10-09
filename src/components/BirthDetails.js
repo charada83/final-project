@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 // import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from "@material-ui/core";
-import { Consumer } from "../context";
+// import { Consumer } from "../context";
 
 const styles = {
   card: {

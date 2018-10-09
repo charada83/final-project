@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
-import { relative } from "path";
 
 const drawerWidth = 240;
 

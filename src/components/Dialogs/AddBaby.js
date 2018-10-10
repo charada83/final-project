@@ -7,10 +7,12 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import FormLabel from "@material-ui/core/FormLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 class AddBaby extends Component {
   state = {
@@ -104,7 +106,38 @@ class AddBaby extends Component {
               <br />
 
               {/* Radio Buttons for Gender */}
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Gender</FormLabel>
+                <RadioGroup
+                  aria-label="Gender"
+                  name="gender"
+                  value={gender}
+                  onChange={this.handleChange("gender")}
+                >
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                </RadioGroup>
+              </FormControl>
+              <br />
               {/* DatePicker for Date of Birth */}
+              <TextField
+                id="date"
+                label="Date of Birth"
+                type="date"
+                defaultValue="dd/mm/yyyy"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+              <br />
               <TextField
                 name="placeOfBirth"
                 label="Place of Birth"
@@ -114,7 +147,33 @@ class AddBaby extends Component {
               />
               <br />
               {/* TimePicker for Time of Birth */}
+              <TextField
+                id="time"
+                label="Time of Birth"
+                type="time"
+                defaultValue="00:00"
+                InputLabelProps={{
+                  shrink: true
+                }}
+                inputProps={{
+                  step: 60 // 1 min
+                }}
+              />
+              <br />
               {/* Number textfield for weight */}
+              <TextField
+                id="weight"
+                label="Weight"
+                value={weight}
+                onChange={this.handleChange("weight")}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment variant="filled" position="end">
+                      Kg
+                    </InputAdornment>
+                  )
+                }}
+              />
             </form>
           </DialogContent>
           <DialogActions>

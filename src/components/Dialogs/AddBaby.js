@@ -44,7 +44,7 @@ class AddBaby extends Component {
   //   // Need to add validation
 
   //   const { babyDetails } = this.state;
-  //   this.props.onAdd(babyDetails);
+  //   this.props.onSubmit(babyDetails);
 
   //* To Clear Form after submit
   // this.setState(

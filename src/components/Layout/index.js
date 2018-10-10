@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
+import book from "../../book.svg";
 
 const drawerWidth = 240;
 
@@ -30,7 +31,7 @@ const styles = theme => ({
   },
 
   appBar: {
-    backgroundColor: "#d2a1e3",
+    backgroundColor: "#a1b2e3",
     zIndex: theme.zIndex.drawer + 1
   },
   navIconHide: {
@@ -93,7 +94,7 @@ class Layout extends Component {
                 color="inherit"
                 noWrap
               >
-                Baby Book
+                <img src={book} height="50" alt="Baby Book logo" /> BABY Book
               </Typography>
               <Button color="inherit">Login</Button>
             </Toolbar>

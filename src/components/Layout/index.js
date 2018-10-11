@@ -31,7 +31,7 @@ const styles = theme => ({
   },
 
   appBar: {
-    backgroundColor: "#a1b2e3",
+    backgroundColor: "primary",
     zIndex: theme.zIndex.drawer + 1
   },
   navIconHide: {

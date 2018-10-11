@@ -79,6 +79,7 @@ class AddBaby extends Component {
     return (
       <Fragment>
         <Button
+          style={{ marginBottom: 20 }}
           variant="contained"
           onClick={this.handleToggle}
           color="primary"
@@ -132,6 +133,7 @@ class AddBaby extends Component {
                 id="date"
                 label="Date of Birth"
                 type="date"
+                value={dateOfBirth}
                 defaultValue="dd/mm/yyyy"
                 InputLabelProps={{
                   shrink: true
@@ -151,6 +153,7 @@ class AddBaby extends Component {
                 id="time"
                 label="Time of Birth"
                 type="time"
+                value={timeOfBirth}
                 defaultValue="00:00"
                 InputLabelProps={{
                   shrink: true

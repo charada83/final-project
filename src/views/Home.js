@@ -22,7 +22,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Home</h1>
-        <p>This is the HomePage</p>
+        <p>Welcome to Baby book.........</p>
         {!currentUser && <SignIn />}
         {currentUser && (
           <div>

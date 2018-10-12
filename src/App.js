@@ -4,6 +4,7 @@ import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import FamilyTree from "./views/FamilyTree";
 import Layout from "./components/Layout/index";
+import Memories from "./views/Memories";
 import { Provider } from "./context";
 
 class App extends Component {
@@ -12,18 +13,14 @@ class App extends Component {
       <Provider>
         <div className="App">
           <Layout>
-            <nav>
-              <Link to="/">Home</Link> {/*<Link to="login">Login</Link> */}{" "}
-              <Link to="dashboard">Dashboard</Link>{" "}
-              <Link to="family">Family</Link>
-            </nav>
-
             <Router>
               <Home path="/" />
-              <Dashboard path="dashboard" />
+              <Dashboard path="dashboard">
+                <Memories path="/dashboard/memories" />
+              </Dashboard>
               <Family path="family">
                 <FamilyTree path="family-tree" />
-                <Family path="/" />
+                <Family path="invite" />
               </Family>
               <NotFound default />
             </Router>

@@ -3,8 +3,10 @@ import { Router, Link } from "@reach/router";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import FamilyTree from "./views/FamilyTree";
+import FamilyInvite from "./components/Dialogs/FamilyInvite";
 import Layout from "./components/Layout/index";
 import Memories from "./views/Memories";
+import Milestones from "./views/Milestones";
 import { Provider } from "./context";
 
 class App extends Component {
@@ -15,13 +17,13 @@ class App extends Component {
           <Layout>
             <Router>
               <Home path="/" />
-              <Dashboard path="dashboard">
-                <Memories path="/dashboard/memories" />
-              </Dashboard>
-              <Family path="family">
-                <FamilyTree path="family-tree" />
-                <Family path="invite" />
-              </Family>
+              <Dashboard path="dashboard" />
+              <Memories path="/dashboard/memories" />
+              <Milestones path="/dashboard/milestones" />
+              <Family path="family" />
+              <FamilyTree path="/family/family-tree" />
+              <FamilyInvite path="/family/invite" />
+
               <NotFound default />
             </Router>
           </Layout>

@@ -63,9 +63,6 @@ class BirthDetails extends Component {
                 <li>{placeOfBirth}</li>
                 <li>{timeOfBirth}</li>
                 <li>{weight}</li>
-                <li>?</li>
-                <li>?</li>
-                <li>?</li>
               </ul>
             </Typography>
           </CardContent>

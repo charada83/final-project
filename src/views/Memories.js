@@ -5,7 +5,7 @@ class Memories extends Component {
   render() {
     return (
       <div>
-        <h1>Milestones</h1>
+        <h1>Memories</h1>
       </div>
     );
   }

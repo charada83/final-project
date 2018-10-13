@@ -24,7 +24,8 @@ const styles = theme => ({
     overflow: "hidden",
     position: "relative",
     display: "flex",
-    width: "100%"
+    width: "100%",
+    flexDirection: "column"
   },
   grow: {
     flexGrow: 1
@@ -77,7 +78,7 @@ class Layout extends Component {
       <Fragment>
         <CssBaseline />
         <div className={classes.root}>
-          <AppBar position="absolute" className={classes.appBar}>
+          <AppBar position="relative" className={classes.appBar}>
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -98,36 +99,38 @@ class Layout extends Component {
               <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
-          <Hidden mdUp>
-            <Drawer
-              variant="temporary"
-              open={mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper
-              }}
-              ModalProps={{
-                keepMounted: true // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden smDown implementation="css">
-            <Drawer
-              variant="permanent"
-              open
-              classes={{
-                paper: classes.drawerPaper
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <main className={classes.content}>
-            <div className={classes.toolbar} />
-            {children}
-          </main>
+          <div style={{ display: "flex" }}>
+            <Hidden mdUp>
+              <Drawer
+                variant="temporary"
+                open={mobileOpen}
+                onClose={this.handleDrawerToggle}
+                classes={{
+                  paper: classes.drawerPaper
+                }}
+                ModalProps={{
+                  keepMounted: true // Better open performance on mobile.
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <Hidden smDown implementation="css">
+              <Drawer
+                variant="permanent"
+                open
+                classes={{
+                  paper: classes.drawerPaper
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <main className={classes.content}>
+              <div className={classes.toolbar} />
+              {children}
+            </main>
+          </div>
         </div>
       </Fragment>
     );

@@ -12,7 +12,7 @@ import {
 import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
 import book from "../../book.svg";
-import { Link } from "@reach/router";
+import NavBar from "./NavBar";
 
 const drawerWidth = 240;
 
@@ -70,36 +70,7 @@ class Layout extends Component {
     const drawer = (
       <div>
         <div className={classes.toolbar} />
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            {/*<Link to="login">Login</Link> */}
-            <li>
-              <Link to="dashboard">Dashboard</Link>
-              <ul>
-                <li>
-                  <Link to="/dashboard/milestones">Milestones</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/memories">Memories</Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link to="family">Family</Link>
-              <ul>
-                <li>
-                  <Link to="/family/invite">Invite</Link>
-                </li>
-                <li>
-                  <Link to="/family/family-tree">Family Tree</Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+        <NavBar />
       </div>
     );
     return (

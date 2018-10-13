@@ -1,14 +1,90 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
 
-class Memories extends Component {
-  //state = {  }
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    width: "100%",
+    backgroundColor: theme.palette.background.paper
+  }
+});
+
+class ScrollableTabsButtonForce extends React.Component {
+  state = {
+    value: 0
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   render() {
+    const { classes } = this.props;
+    const { value } = this.state;
+
     return (
       <div>
-        <h1>Memories</h1>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={this.handleChange}
+            scrollable
+            scrollButtons="on"
+            indicatorColor="primary"
+            textColor="primary"
+            fullWidth={false}
+            centered={false}
+          >
+            <Tab label="1 Month" />
+            <Tab label="2 Months" />
+            <Tab label="3 Months" />
+            <Tab label="4 Months" />
+            <Tab label="5 Months" />
+            <Tab label="6 Months" />
+            <Tab label="7 Months" />
+            <Tab label="8 Months" />
+            <Tab label="9 Months" />
+            <Tab label="10 Months" />
+            <Tab label="11 Months" />
+            <Tab label="12 Months" />
+          </Tabs>
+        </AppBar>
+        {value === 0 && <TabContainer>Item One</TabContainer>}
+        {value === 1 && <TabContainer>Item Two</TabContainer>}
+        {value === 2 && <TabContainer>Item Three</TabContainer>}
+        {value === 3 && <TabContainer>Item Four</TabContainer>}
+        {value === 4 && <TabContainer>Item Five</TabContainer>}
+        {value === 5 && <TabContainer>Item Six</TabContainer>}
+        {value === 6 && <TabContainer>Item Seven</TabContainer>}
+        {value === 7 && <TabContainer>Item 8</TabContainer>}
+        {value === 8 && <TabContainer>Item 9</TabContainer>}
+        {value === 9 && <TabContainer>Item 10</TabContainer>}
+        {value === 10 && <TabContainer>Item 11</TabContainer>}
+        {value === 11 && <TabContainer>Item 12</TabContainer>}
       </div>
     );
   }
 }
 
-export default Memories;
+ScrollableTabsButtonForce.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(ScrollableTabsButtonForce);

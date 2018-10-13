@@ -13,21 +13,18 @@ class App extends Component {
   render() {
     return (
       <Provider>
-        <div className="App">
-          <Layout>
-            <Router>
-              <Home path="/" />
-              <Dashboard path="dashboard" />
-              <Memories path="/dashboard/memories" />
-              <Milestones path="/dashboard/milestones" />
-              <Family path="family" />
-              <FamilyTree path="/family/family-tree" />
-              <FamilyInvite path="/family/invite" />
-
-              <NotFound default />
-            </Router>
-          </Layout>
-        </div>
+        <Layout>
+          <Router>
+            <Home path="/" />
+            <Dashboard path="dashboard" />
+            <Memories path="/dashboard/memories" />
+            <Milestones path="/dashboard/milestones" />
+            <Family path="family" />
+            <FamilyTree path="/family/family-tree" />
+            <FamilyInvite path="/family/invite" />
+            <NotFound default />
+          </Router>
+        </Layout>
       </Provider>
     );
   }

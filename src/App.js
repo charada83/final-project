@@ -20,7 +20,7 @@ class App extends Component {
             <Dashboard path="dashboard" />
             <Memories path="/dashboard/memories" />
             <Milestones path="/dashboard/milestones" />
-            <Family path="family" />
+            {/* <Family path="family" /> */}
             <FamilyTree path="/family/family-tree" />
             <FamilyInvite path="/family/invite" />
             <Notifications path="/notifications" />
@@ -31,20 +31,6 @@ class App extends Component {
     );
   }
 }
-
-const Family = props => (
-  <div>
-    <h2>Family</h2>
-    <ul>
-      <li>
-        <Link to="/family/invite">Invite</Link>
-      </li>
-      <li>
-        <Link to="/family/family-tree">Family Tree</Link>
-      </li>
-    </ul>
-  </div>
-);
 
 const NotFound = () => <p>Sorry, nothing here</p>;
 

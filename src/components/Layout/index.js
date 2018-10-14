@@ -13,6 +13,7 @@ import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
 import book from "../../book.svg";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 const drawerWidth = 240;
 
@@ -70,7 +71,6 @@ class Layout extends Component {
 
     const drawer = (
       <div>
-        <div className={classes.toolbar} />
         <NavBar />
       </div>
     );
@@ -126,12 +126,10 @@ class Layout extends Component {
                 {drawer}
               </Drawer>
             </Hidden>
-            <main className={classes.content}>
-              <div className={classes.toolbar} />
-              {children}
-            </main>
+            <main className={classes.content}>{children}</main>
           </div>
         </div>
+        <Footer />
       </Fragment>
     );
   }

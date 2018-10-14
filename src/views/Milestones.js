@@ -6,6 +6,7 @@ class Milestones extends Component {
     return (
       <div>
         <h1>Milestones</h1>
+        <p>TextFields with dropdown, image, multiline textfield goes here?</p>
       </div>
     );
   }

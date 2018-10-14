@@ -6,6 +6,7 @@ class FamilyTree extends Component {
     return (
       <div>
         <h1>Family Tree</h1>
+        <p>Image and Textfield in tree structure goes here</p>
       </div>
     );
   }

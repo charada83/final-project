@@ -7,6 +7,7 @@ import FamilyInvite from "./components/Dialogs/FamilyInvite";
 import Layout from "./components/Layout/index";
 import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
+import Notifications from "./components/Dialogs/Notifications";
 import { Provider } from "./context";
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             <Family path="family" />
             <FamilyTree path="/family/family-tree" />
             <FamilyInvite path="/family/invite" />
+            <Notifications path="/notifications" />
             <NotFound default />
           </Router>
         </Layout>

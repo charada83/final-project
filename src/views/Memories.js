@@ -41,6 +41,7 @@ class ScrollableTabsButtonForce extends React.Component {
 
     return (
       <div>
+        <h1>Memories</h1>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
@@ -49,8 +50,6 @@ class ScrollableTabsButtonForce extends React.Component {
             scrollButtons="on"
             indicatorColor="primary"
             textColor="primary"
-            fullWidth={false}
-            centered={false}
           >
             <Tab label="1 Month" />
             <Tab label="2 Months" />

@@ -31,6 +31,9 @@ class NavBar extends Component {
                 <Link to="/family/family-tree">Family Tree</Link>
               </li>
             </ul>
+            <li>
+              <Link to="/notifications">Notifications</Link>
+            </li>
           </li>
         </ul>
       </nav>

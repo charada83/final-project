@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import { withStyles } from "@material-ui/core";
 // import { Consumer } from "../context";
+import IconButton from "@material-ui/core/Icon";
 
 const styles = {
   card: {
@@ -31,10 +32,12 @@ const styles = {
 class BirthDetails extends Component {
   //   state = {   };
 
-  // editBirthDetails = () =>
-  // {
+  // onSelectEdit = id => {
+  //   this.setState({
+  //     editMode: true
+  //   });
+  // };
 
-  // }
   render() {
     const {
       name,
@@ -51,7 +54,9 @@ class BirthDetails extends Component {
             <Typography gutterBottom variant="headline" component="h2">
               <h2>
                 {name}
-                <EditIcon /*onClick={this.editBirthDetails()}*/ />
+                <IconButton /*onClick={() => onSelectEdit()}*/>
+                  <EditIcon />
+                </IconButton>
               </h2>
             </Typography>
             {/* <CardMedia className={classes.media} "Input Image" /> */}

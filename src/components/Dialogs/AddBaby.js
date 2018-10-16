@@ -13,6 +13,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  FormControl: {
+    width: 300
+  }
+});
 
 class AddBaby extends Component {
   state = {
@@ -42,40 +49,38 @@ class AddBaby extends Component {
     });
   };
 
-  // handleAdd = () => {
+  // handleSubmit = () => {
   //   // Need to add validation
 
   //   const { babyDetails } = this.state;
   //   this.props.onSubmit(babyDetails);
 
-  //* To Clear Form after submit
-  // this.setState(
-  // open: false,
-  //   {
+  //   //  To Clear Form after submit
+  //   this.setState((open: false), {
   //     babyDetails: {
-  //       name: '',
-  //   gende:'',
-  //   dateOfBirth: '',
-  //   placeOfBirth: '',
-  //   timeOfBirth: '',
-  //   weight: ''
+  //       name: "",
+  //       gende: "",
+  //       dateOfBirth: "",
+  //       placeOfBirth: "",
+  //       timeOfBirth: "",
+  //       weight: ""
   //     }
-  //   }
-  // )
+  //   });
   // };
 
   render() {
     const {
-      open,
-      babyDetails: {
-        name,
-        gender,
-        dateOfBirth,
-        placeOfBirth,
-        timeOfBirth,
-        weight
-      }
-    } = this.state;
+        open,
+        babyDetails: {
+          name,
+          gender,
+          dateOfBirth,
+          placeOfBirth,
+          timeOfBirth,
+          weight
+        }
+      } = this.state,
+      { classes } = this.props;
     return (
       <Fragment>
         <Button
@@ -103,6 +108,7 @@ class AddBaby extends Component {
                 value={name}
                 onChange={this.handleChange("name")}
                 margin="normal"
+                className={classes.FormControl}
               />
               <br />
 
@@ -135,6 +141,7 @@ class AddBaby extends Component {
                 type="date"
                 value={dateOfBirth}
                 defaultValue="dd/mm/yyyy"
+                className={classes.FormControl}
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -146,6 +153,7 @@ class AddBaby extends Component {
                 value={placeOfBirth}
                 onChange={this.handleChange("placeOfBirth")}
                 margin="normal"
+                className={classes.FormControl}
               />
               <br />
               {/* TimePicker for Time of Birth */}
@@ -155,6 +163,7 @@ class AddBaby extends Component {
                 type="time"
                 value={timeOfBirth}
                 defaultValue="00:00"
+                className={classes.FormControl}
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -168,6 +177,7 @@ class AddBaby extends Component {
                 id="weight"
                 label="Weight"
                 value={weight}
+                className={classes.FormControl}
                 onChange={this.handleChange("weight")}
                 InputProps={{
                   endAdornment: (
@@ -184,7 +194,8 @@ class AddBaby extends Component {
               Cancel
             </Button>
             <Button
-              /*onClick={this.handleAdd}*/ color="primary"
+              /*onClick={this.handleSubmit}*/
+              color="primary"
               variant="raised"
             >
               Add
@@ -196,4 +207,4 @@ class AddBaby extends Component {
   }
 }
 
-export default AddBaby;
+export default withStyles(styles)(AddBaby);

@@ -52,6 +52,10 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3
+    // marginRight: drawerWidth,
+    // [theme.breakpoints.up("md")]: {
+    //   width: `calc(100% - ${drawerWidth}px)`
+    // }
   },
   button: {}
 });

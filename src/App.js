@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Provider>
-        <Layout styles={{ height: "100%" }}>
+        <Layout>
           <Router>
             <Home path="/" />
             <Dashboard path="dashboard" />

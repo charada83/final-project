@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
-import Paper from "@material-ui/core/Paper";
+import AppBar from "@material-ui/core/AppBar";
 
 class Footer extends Component {
   //state = {  }
   render() {
     return (
-      <Paper>
+      <AppBar position="static">
         <h1>Footer</h1>
-      </Paper>
+      </AppBar>
     );
   }
 }

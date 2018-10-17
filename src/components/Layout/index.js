@@ -34,7 +34,8 @@ const styles = theme => ({
 
   appBar: {
     backgroundColor: "primary",
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
+    paddingTop: 10
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
@@ -44,6 +45,7 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+
     [theme.breakpoints.up("md")]: {
       position: "relative"
     }
@@ -57,7 +59,13 @@ const styles = theme => ({
     //   width: `calc(100% - ${drawerWidth}px)`
     // }
   },
-  button: {}
+  button: {},
+
+  "@global": {
+    "html, body, #root": {
+      height: "100%"
+    }
+  }
 });
 
 class Layout extends Component {
@@ -73,13 +81,9 @@ class Layout extends Component {
     const { classes, children } = this.props;
     const { mobileOpen } = this.state;
 
-    const drawer = (
-      <div>
-        <NavBar />
-      </div>
-    );
+    const drawer = <NavBar />;
     return (
-      <Fragment>
+      <Fragment className={classes.container}>
         <CssBaseline />
         <div className={classes.root}>
           <AppBar position="relative" className={classes.appBar}>

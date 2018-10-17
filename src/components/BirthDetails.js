@@ -12,8 +12,10 @@ import EditIcon from "@material-ui/icons/Edit";
 import { withStyles } from "@material-ui/core";
 // import { Consumer } from "../context";
 import IconButton from "@material-ui/core/Icon";
+import { Router, Redirect, navigate, Link } from "@reach/router";
+import Memories from "../views/Memories";
 
-const styles = {
+const styles = theme => ({
   card: {
     maxWidth: 800,
     marginBottom: 20,
@@ -26,8 +28,16 @@ const styles = {
   },
   media: {
     height: 140
+  },
+  link: {
+    textDecoration: "none",
+
+    "&:hover": { color: "#a1b2e3" },
+    "&:visited": { color: "#a1b2e3" },
+    "&:link": { color: "#a1b2e3" },
+    "&:active": { color: "#a1b2e3" }
   }
-};
+});
 
 class BirthDetails extends Component {
   //   state = {   };
@@ -39,6 +49,7 @@ class BirthDetails extends Component {
   // };
 
   render() {
+    const { classes } = this.props;
     const {
       name,
       gender,
@@ -49,7 +60,7 @@ class BirthDetails extends Component {
     } = this.props.babiesBirthDetails;
     return (
       <div>
-        <Card style={styles.card}>
+        <Card className={classes.card}>
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
               <h2>
@@ -60,7 +71,7 @@ class BirthDetails extends Component {
               </h2>
             </Typography>
             {/* <CardMedia className={classes.media} "Input Image" /> */}
-            <Typography style={styles.cardContent} component="p">
+            <Typography className={classes.cardContent} component="p">
               <ul>
                 <li>{gender}</li>
                 <li>{dateOfBirth}</li>
@@ -71,17 +82,15 @@ class BirthDetails extends Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button
-              /*onClick='Open Milestones page'*/ size="small"
-              color="primary"
-            >
-              My Milestones
+            <Button size="small">
+              <Link to="/dashboard/milestones" className={classes.link}>
+                My Milestones
+              </Link>
             </Button>
-            <Button
-              /*onClick='Open Memories page'*/ size="small"
-              color="primary"
-            >
-              My Memories
+            <Button size="small">
+              <Link to="/dashboard/memories" className={classes.link}>
+                My Memories
+              </Link>
             </Button>
           </CardActions>
         </Card>

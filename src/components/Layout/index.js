@@ -94,8 +94,9 @@ class Layout extends Component {
               </IconButton>
               <Typography
                 className={classes.grow}
-                variant="title"
-                color="inherit"
+                component="h2"
+                variant="h1"
+                color="secondary"
                 noWrap
               >
                 <img src={book} height="50" alt="Baby Book logo" /> BABY Book

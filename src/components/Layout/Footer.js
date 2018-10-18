@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 
 class Footer extends Component {

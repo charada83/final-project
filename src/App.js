@@ -3,11 +3,11 @@ import { Router } from "@reach/router";
 import Home from "./views/Home";
 import Dashboard from "./views/Dashboard";
 import FamilyTree from "./views/FamilyTree";
-import FamilyInvite from "./components/Dialogs/FamilyInvite";
-import Layout from "./components/Layout/index";
+import FamilyInvite from "./components/dialogs/FamilyInvite";
+import Layout from "./components/layout/index";
 import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
-import Notifications from "./components/Dialogs/Notifications";
+import Notifications from "./components/dialogs/Notifications";
 import { Provider } from "./context";
 
 class App extends Component {

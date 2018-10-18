@@ -12,8 +12,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import { withStyles } from "@material-ui/core";
 // import { Consumer } from "../context";
 import IconButton from "@material-ui/core/Icon";
-import { Router, Redirect, navigate, Link } from "@reach/router";
-import Memories from "../views/Memories";
+import { Link } from "@reach/router";
 
 const styles = theme => ({
   card: {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BabiesBirthDetails from "../components/BabiesBirthDetails";
-import AddBaby from "../components/Dialogs/AddBaby";
+import AddBaby from "../components/dialogs/AddBaby";
 
 class Dashboard extends Component {
   //state = {  }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SignIn from "../components/Auth/SignIn";
+import SignIn from "../components/auth/SignIn";
 import { auth } from "../firebase";
-import CurrentUser from "../components/Auth/CurrentUser";
+import CurrentUser from "../components/auth/CurrentUser";
 
 class Home extends Component {
   //state = {  }

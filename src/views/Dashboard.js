@@ -10,6 +10,7 @@ class Dashboard extends Component {
         <h1>Dashboard</h1>
         <AddBaby />
         <BabiesBirthDetails />
+        <ul id="baby" />
       </div>
     );
   }

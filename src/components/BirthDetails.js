@@ -14,6 +14,16 @@ import { withStyles } from "@material-ui/core";
 import IconButton from "@material-ui/core/Icon";
 import { Link } from "@reach/router";
 
+import firebase, { db } from "../firebase";
+
+// db.collection("babyBirthDetails")
+//   .get()
+//   .then(snapshot => {
+//     snapshot.docs.forEach(doc => {
+//       console.log(doc.data());
+//     });
+//   });
+
 const styles = theme => ({
   card: {
     maxWidth: 800,

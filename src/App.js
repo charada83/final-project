@@ -9,6 +9,15 @@ import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
 import Notifications from "./components/dialogs/Notifications";
 import { Provider } from "./context";
+import firebase, { db } from "./firebase";
+
+// db.collection("babyBirthDetails")
+//   .get()
+//   .then(snapshot => {
+//     snapshot.docs.forEach(doc => {
+//       console.log(doc.data());
+//     });
+//   });
 
 class App extends Component {
   render() {

@@ -9,6 +9,12 @@ const config = {
   messagingSenderId: "1000149253081"
 };
 
+//Use Firestore?
+// const rrfConfig = {
+//   userProfile: "users",
+//   userFirestoreForProfile: true
+// };
+
 firebase.initializeApp(config);
 
 export default firebase;

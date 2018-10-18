@@ -16,14 +16,14 @@ class App extends Component {
       <Provider>
         <Layout>
           <Router>
-            <Home path="/" />
-            <Dashboard path="dashboard" />
-            <Memories path="/dashboard/memories" />
-            <Milestones path="/dashboard/milestones" />
+            <Home path="/" component={Home} />
+            <Dashboard path="dashboard" component={Dashboard} />
+            <Memories path="/dashboard/memories" component={Memories} />
+            <Milestones path="/dashboard/milestones" component={Milestones} />
             {/* <Family path="family" /> */}
-            <FamilyTree path="/family/family-tree" />
-            <FamilyInvite path="/family/invite" />
-            <Notifications path="/notifications" />
+            <FamilyTree path="/family/family-tree" component={FamilyTree} />
+            <FamilyInvite path="/family/invite" component={FamilyInvite} />
+            <Notifications path="/notifications" component={Notifications} />
             <NotFound default />
           </Router>
         </Layout>

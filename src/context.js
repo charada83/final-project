@@ -26,7 +26,7 @@ export class Provider extends Component {
         dateOfBirth: "8/11/2018",
         placeOfBirth: "Rotunda",
         timeOfBirth: "9:58 am",
-        weight: "3.5kg"
+        weight: "3.50"
       },
       {
         id: 2,
@@ -35,7 +35,7 @@ export class Provider extends Component {
         dateOfBirth: "28/10/2014",
         placeOfBirth: "Drogheda",
         timeOfBirth: "9:58 am",
-        weight: "3.04kg"
+        weight: "3.04"
       }
     ]
 

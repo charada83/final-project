@@ -59,12 +59,15 @@ const styles = theme => ({
     //   width: `calc(100% - ${drawerWidth}px)`
     // }
   },
-  button: {},
 
-  "@global": {
-    "html, body, #root": {
-      height: "100%"
-    }
+  icon: {
+    height: 60,
+    paddingBottom: 10
+  },
+
+  title: {
+    flexGrow: 1,
+    paddingLeft: 10
   }
 });
 
@@ -96,14 +99,17 @@ class Layout extends Component {
               >
                 <Menu />
               </IconButton>
+              <Fragment>
+                <img src={book} className={classes.icon} alt="Baby Book logo" />
+              </Fragment>
               <Typography
-                className={classes.grow}
-                component="h2"
+                className={classes.title}
+                component="h1"
                 variant="h1"
                 color="secondary"
                 noWrap
               >
-                <img src={book} height="50" alt="Baby Book logo" /> BABY Book
+                BABY Book
               </Typography>
               <Button color="inherit">Login</Button>
             </Toolbar>

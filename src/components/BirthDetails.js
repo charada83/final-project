@@ -57,6 +57,7 @@ class BirthDetails extends Component {
       timeOfBirth,
       weight
     } = this.props.babiesBirthDetails;
+
     return (
       <div>
         <Card className={classes.card}>
@@ -76,7 +77,7 @@ class BirthDetails extends Component {
                 <li>{dateOfBirth}</li>
                 <li>{placeOfBirth}</li>
                 <li>{timeOfBirth}</li>
-                <li>{weight}</li>
+                <li>{parseFloat(weight).toFixed(2)} kg</li>
               </ul>
             </Typography>
           </CardContent>
@@ -87,6 +88,8 @@ class BirthDetails extends Component {
               </Link>
             </Button>
             <Button size="small">
+              {/* Link to go to specific baby details */}
+              {/* <Link to={`dashboard/memories/${babiesBirthDetails.id}`}> */}
               <Link to="/dashboard/memories" className={classes.link}>
                 My Memories
               </Link>

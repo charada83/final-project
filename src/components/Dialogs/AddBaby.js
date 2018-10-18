@@ -14,6 +14,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   FormControl: {
@@ -83,15 +84,17 @@ class AddBaby extends Component {
       { classes } = this.props;
     return (
       <Fragment>
-        <Button
-          style={{ marginBottom: 20 }}
-          variant="contained"
-          onClick={this.handleToggle}
-          color="primary"
-          mini
-        >
-          <AddIcon /> Add Baby
-        </Button>
+        <Grid container justify="center">
+          <Button
+            style={{ marginBottom: 20 }}
+            variant="contained"
+            onClick={this.handleToggle}
+            color="primary"
+            mini
+          >
+            <AddIcon /> Add Baby
+          </Button>
+        </Grid>
 
         <Dialog
           open={open}

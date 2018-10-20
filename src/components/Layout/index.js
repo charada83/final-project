@@ -11,10 +11,10 @@ import {
 } from "@material-ui/core";
 import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
-import book from "../../book.svg";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import SignIn from "../auth/SignIn";
+import TitleLogo from "./TitleLogo";
 
 const drawerWidth = 240;
 
@@ -59,17 +59,6 @@ const styles = theme => ({
     // [theme.breakpoints.up("md")]: {
     //   width: `calc(100% - ${drawerWidth}px)`
     // }
-  },
-
-  icon: {
-    height: 60,
-    paddingBottom: 10
-  },
-
-  title: {
-    flexGrow: 1,
-    paddingLeft: 10,
-    fontFamily: "Mali, cursive"
   }
 });
 
@@ -101,19 +90,7 @@ class Layout extends Component {
               >
                 <Menu />
               </IconButton>
-              <Fragment>
-                <img src={book} className={classes.icon} alt="Baby Book logo" />
-              </Fragment>
-              <Typography
-                className={classes.title}
-                component="h1"
-                variant="h1"
-                color="secondary"
-                noWrap
-              >
-                BABY Book
-              </Typography>
-
+              <TitleLogo />
               <Button color="secondary">Login</Button>
             </Toolbar>
           </AppBar>

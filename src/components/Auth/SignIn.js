@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import { Typography } from "@material-ui/core";
 
 class SignIn extends Component {
   render() {
@@ -17,7 +18,7 @@ class SignIn extends Component {
             color="primary"
             mini
           >
-            Get Started
+            <Typography color="secondary"> Get Started</Typography>
           </Button>
         </Grid>
       </div>

@@ -113,7 +113,8 @@ class Layout extends Component {
               >
                 BABY Book
               </Typography>
-              <Button color="inherit">Login</Button>
+
+              <Button color="secondary">Login</Button>
             </Toolbar>
           </AppBar>
           <div style={{ display: "flex" }}>

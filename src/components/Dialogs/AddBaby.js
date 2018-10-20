@@ -15,6 +15,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { Typography } from "@material-ui/core";
 
 const styles = theme => ({
   FormControl: {
@@ -92,7 +93,8 @@ class AddBaby extends Component {
             color="primary"
             mini
           >
-            <AddIcon /> Add Baby
+            <AddIcon color="secondary" />{" "}
+            <Typography color="secondary">Add Baby</Typography>
           </Button>
         </Grid>
 

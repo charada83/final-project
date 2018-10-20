@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { firestoreConnect } from "firebase";
 
 const Context = React.createContext();
 

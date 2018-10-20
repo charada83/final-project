@@ -14,6 +14,7 @@ import { withStyles } from "@material-ui/core/styles";
 import book from "../../book.svg";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import SignIn from "../auth/SignIn";
 
 const drawerWidth = 240;
 

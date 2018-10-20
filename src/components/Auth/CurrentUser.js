@@ -1,5 +1,6 @@
 import React from "react";
 import { auth } from "../../firebase";
+import Button from "@material-ui/core/Button";
 
 const CurrentUser = ({ user }) => {
   return (
@@ -8,7 +9,14 @@ const CurrentUser = ({ user }) => {
       <div>
         <h3>Welcome {user.displayName}</h3>
         {/* <p>{user.email}</p> */}
-        <button onClick={() => auth.signOut()}>Sign Out</button>
+        <Button
+          variant="contained"
+          color="primary"
+          mini
+          onClick={() => auth.signOut()}
+        >
+          Sign Out
+        </Button>
       </div>
     </div>
   );

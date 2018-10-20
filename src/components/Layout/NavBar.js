@@ -7,6 +7,11 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
+const style = {
+  link: {
+    textDecoration: "none"
+  }
+};
 class NavBar extends Component {
   state = {
     open: true
@@ -21,34 +26,50 @@ class NavBar extends Component {
     return (
       <List component="nav">
         <ListItem>
-          <Link to="/">Home</Link>
+          <Link to="/" style={style.link}>
+            Home
+          </Link>
         </ListItem>
         <ListItem>
-          <Link to="dashboard">Dashboard</Link>
+          <Link to="dashboard" style={style.link}>
+            Dashboard
+          </Link>
         </ListItem>
         <ListItem>
-          <Link to="/dashboard/milestones">Milestones</Link>
+          <Link to="/dashboard/milestones" style={style.link}>
+            Milestones
+          </Link>
         </ListItem>
         <ListItem>
-          <Link to="/dashboard/memories">Memories</Link>
+          <Link to="/dashboard/memories" style={style.link}>
+            Memories
+          </Link>
         </ListItem>
         <ListItem onClick={this.handleClick}>
-          <Link to="family">Family</Link>
+          <Link to="family" style={style.link}>
+            Family
+          </Link>
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItem>
-              <Link to="/family/invite">Invite</Link>
+              <Link to="/family/invite" style={style.link}>
+                Invite
+              </Link>
             </ListItem>
             <ListItem>
-              <Link to="/family/family-tree">Family Tree</Link>
+              <Link to="/family/family-tree" style={style.link}>
+                Family Tree
+              </Link>
             </ListItem>
           </List>
         </Collapse>
         <Divider />
         <ListItem>
-          <Link to="/notifications">Notifications</Link>
+          <Link to="/notifications" style={style.link}>
+            Notifications
+          </Link>
         </ListItem>
       </List>
     );

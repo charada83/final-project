@@ -13,6 +13,8 @@ import { withStyles } from "@material-ui/core";
 // import { Consumer } from "../context";
 import IconButton from "@material-ui/core/Icon";
 import { Link } from "@reach/router";
+import ListItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
 
 import firebase, { db } from "../firebase";
 
@@ -29,11 +31,13 @@ const styles = theme => ({
     maxWidth: 800,
     marginBottom: 20,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    backgroundColor: "#000"
   },
   cardContent: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    color: "#d16682"
   },
   media: {
     height: 140
@@ -41,10 +45,18 @@ const styles = theme => ({
   link: {
     textDecoration: "none",
 
-    "&:hover": { color: "#a1b2e3" },
-    "&:visited": { color: "#a1b2e3" },
-    "&:link": { color: "#a1b2e3" },
-    "&:active": { color: "#a1b2e3" }
+    "&:visited": { color: "#6670d1" },
+    "&:link": { color: "#d16682" },
+    "&:active": { color: "#d16682" }
+  },
+  name: {
+    color: "#d1c766"
+  },
+  details: {
+    textDecoration: "none"
+  },
+  listItem: {
+    padding: 5
   }
 });
 
@@ -72,7 +84,12 @@ class BirthDetails extends Component {
       <div>
         <Card className={classes.card}>
           <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
+            <Typography
+              className={classes.name}
+              gutterBottom
+              variant="headline"
+              component="h2"
+            >
               <h2>
                 {name}
                 <IconButton /*onClick={() => onSelectEdit()}*/>
@@ -81,14 +98,16 @@ class BirthDetails extends Component {
               </h2>
             </Typography>
             {/* <CardMedia className={classes.media} "Input Image" /> */}
-            <Typography className={classes.cardContent} component="p">
-              <ul>
-                <li>{gender}</li>
-                <li>{dateOfBirth}</li>
-                <li>{placeOfBirth}</li>
-                <li>{timeOfBirth}</li>
-                <li>{parseFloat(weight).toFixed(2)} kg</li>
-              </ul>
+            <Typography className={classes.cardContent}>
+              <List>
+                <ListItem className={classes.listItem}>{gender}</ListItem>
+                <ListItem className={classes.listItem}>{dateOfBirth}</ListItem>
+                <ListItem className={classes.listItem}>{placeOfBirth}</ListItem>
+                <ListItem className={classes.listItem}>{timeOfBirth}</ListItem>
+                <ListItem className={classes.listItem}>
+                  {parseFloat(weight).toFixed(2)} kg
+                </ListItem>
+              </List>
             </Typography>
           </CardContent>
           <CardActions>

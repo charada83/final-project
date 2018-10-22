@@ -4,7 +4,6 @@ import {
   Toolbar,
   Button,
   IconButton,
-  Typography,
   Hidden,
   Drawer,
   CssBaseline

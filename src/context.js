@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import * as firebase from "firebase";
 
-const Context = React.createContext();
+// const initialState = {
+//   babiesBirthDetails: {}
+// };
+
+export const Context = React.createContext();
 
 // const reducer = (state, action) => {
 //   switch (action.type) {
@@ -17,6 +22,10 @@ const Context = React.createContext();
 // };
 
 export class Provider extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.setState = initialState;
+  // }
   state = {
     babiesBirthDetails: [
       {
@@ -39,12 +48,34 @@ export class Provider extends Component {
       }
     ]
 
-    // dispatch: action => this.setState(state => reducer(state, action))
+    //   // dispatch: action => this.setState(state => reducer(state, action))
+
+    // setBabiesBirthDetails = babiesBirthDetails => {
+    //   this.setState({ babiesBirthDetails: babiesBirthDetails });
+    // };
+
+    // watchBabiesData = () => {
+    //   firebase
+    //     .database()
+    //     .ref("babyBirthDetails")
+    //     .on(
+    //       "value",
+    //       function(snapshot) {
+    //         let babiesBirthDetails = snapshot.val();
+    //         this.setBabiesBirthDetails(babiesBirthDetails);
+    //       }.bind(this),
+    //       function(error) {}
+    //     );
   };
 
   render() {
     return (
-      <Context.Provider value={this.state}>
+      <Context.Provider
+        value={this.state}
+        //   babiesBirthDetails: this.state.babiesBirthDetails,
+        //   watchBabiesData: this.watchBabiesData
+        // }}
+      >
         {this.props.children}
       </Context.Provider>
     );

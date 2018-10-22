@@ -13,6 +13,10 @@ const styles = theme => ({
     flexGrow: 1,
     paddingLeft: 10,
     fontFamily: "Mali, cursive"
+  },
+
+  span: {
+    color: "#d16682"
   }
 });
 
@@ -30,7 +34,7 @@ class TitleLogo extends Component {
           color="secondary"
           noWrap
         >
-          BABY <span style={{ color: "#d16682" }}>Book</span>
+          BABY <span className={classes.span}>Book</span>
         </Typography>
       </Fragment>
     );

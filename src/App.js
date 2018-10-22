@@ -9,17 +9,21 @@ import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
 import Notifications from "./components/dialogs/Notifications";
 import { Provider } from "./context";
-import firebase, { db } from "./firebase";
-
-// db.collection("babyBirthDetails")
-//   .get()
-//   .then(snapshot => {
-//     snapshot.docs.forEach(doc => {
-//       console.log(doc.data());
-//     });
-//   });
+import firebase from "./firebase";
 
 class App extends Component {
+  authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      //console.log(user);
+      if (user) {
+        this.setState({ user });
+        // localStorage.setItem("user", user.uid);
+      } else {
+        this.setState({ user: null });
+        // localStorage.removeItem("user");
+      }
+    });
+  }
   render() {
     return (
       <Provider>

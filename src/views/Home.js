@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SignIn from "../components/auth/SignIn";
 import { auth } from "../firebase";
 import CurrentUser from "../components/auth/CurrentUser";
+import Dashboard from "./Dashboard";
+import Login from "../components/auth/Login";
 
 class Home extends Component {
   //state = {  }
@@ -23,12 +25,13 @@ class Home extends Component {
       <div>
         <h1>Home</h1>
         <p>Welcome to Baby book.........</p>
-        {!currentUser && <SignIn />}
-        {currentUser && (
+
+        {!currentUser && <Login />}
+        {/* {currentUser && (
           <div>
             <CurrentUser user={currentUser} />
           </div>
-        )}
+        )} */}
       </div>
     );
   }

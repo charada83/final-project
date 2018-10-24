@@ -10,7 +10,6 @@ class SignIn extends Component {
   render() {
     return (
       <div className="SignIn">
-        {/* {this.state.user ? <Dashboard /> : <Home />} */}
         <Grid container justify="center">
           <Button
             onClick={() => auth.signInWithPopup(googleAuthProvider)}

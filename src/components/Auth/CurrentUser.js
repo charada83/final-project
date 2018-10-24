@@ -1,23 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { auth } from "../../firebase";
 import Button from "@material-ui/core/Button";
+import Dashboard from "../../views/Dashboard";
+import Home from "../../views/Home";
+import { Typography } from "@material-ui/core";
 
 const CurrentUser = ({ user }) => {
   return (
     <div>
-      {/* <img src={user.photoURL} alt={user.displayName} /> */}
-      <div>
-        <h3>Welcome {user.displayName}</h3>
-        {/* <p>{user.email}</p> */}
-        <Button
-          variant="contained"
-          color="primary"
-          mini
-          onClick={() => auth.signOut()}
-        >
-          Sign Out
-        </Button>
-      </div>
+      {/* <h4>Welcome {user.displayName}</h4> */}
+
+      <Button
+        variant="contained"
+        color="primary"
+        mini
+        onClick={() => auth.signOut()}
+      >
+        <Typography color="secondary"> Sign Out </Typography>
+      </Button>
     </div>
   );
 };

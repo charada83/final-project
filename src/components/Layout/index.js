@@ -13,7 +13,9 @@ import { withStyles } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import SignIn from "../auth/SignIn";
+import CurrentUser from "../auth/CurrentUser";
 import TitleLogo from "./TitleLogo";
+import { auth } from "../../firebase";
 
 const drawerWidth = 240;
 
@@ -63,8 +65,15 @@ const styles = theme => ({
 
 class Layout extends Component {
   state = {
-    mobileOpen: false
+    mobileOpen: false,
+    currentUser: null
   };
+
+  componentDidMount() {
+    auth.onAuthStateChanged(currentUser => {
+      this.setState({ currentUser });
+    });
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -72,7 +81,7 @@ class Layout extends Component {
 
   render() {
     const { classes, children } = this.props;
-    const { mobileOpen } = this.state;
+    const { mobileOpen, currentUser } = this.state;
 
     const drawer = <NavBar />;
     return (
@@ -90,7 +99,12 @@ class Layout extends Component {
                 <Menu />
               </IconButton>
               <TitleLogo />
-              <Button color="secondary">Login</Button>
+              {/* <Button color="secondary">Login</Button> */}
+              {currentUser && (
+                <div>
+                  <CurrentUser user={currentUser} />
+                </div>
+              )}
             </Toolbar>
           </AppBar>
           <div style={{ display: "flex" }}>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import firebase from "../../firebase";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,7 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import {
   auth,
@@ -15,6 +13,7 @@ import {
   signInWithEmailAndPassword
 } from "../../firebase";
 import { Typography } from "@material-ui/core";
+import Icon from "@material-ui/icons";
 
 class Login extends Component {
   constructor(props) {
@@ -67,92 +66,64 @@ class Login extends Component {
     const { open } = this.state;
     return (
       <div>
-        <form>
-          <TextField
-            value={this.state.email}
-            onChange={this.handleChange}
-            type="email"
-            name="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-          <br />
-          <TextField
-            value={this.state.password}
-            onChange={this.handleChange}
-            type="password"
-            name="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-
-          <Button type="submit" onClick={this.login}>
-            Login
-          </Button>
-          <Button onClick={this.signup} style={{ marginLeft: "25px" }}>
-            Signup
-          </Button>
-          <Button
-            onClick={() => auth.signInWithPopup(googleAuthProvider)}
-            style={{
-              padding: 50
-            }}
-            variant="contained"
-            color="primary"
-            mini
-          >
-            <Typography color="secondary"> Login with Google</Typography>
-          </Button>
-        </form>
+        <Button
+          style={{ padding: 50 }}
+          variant="contained"
+          onClick={this.handleToggle}
+          color="primary"
+          mini
+        >
+          <Typography color="secondary">Get Started</Typography>
+        </Button>
+        <Dialog
+          open={open}
+          onClose={this.handleToggle}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Login</DialogTitle>
+          <DialogContent>
+            <DialogContentText>Please fill out form below</DialogContentText>
+            <form>
+              <TextField
+                value={this.state.email}
+                onChange={this.handleChange}
+                type="email"
+                name="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+              <br />
+              <TextField
+                value={this.state.password}
+                onChange={this.handleChange}
+                type="password"
+                name="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+              <DialogActions>
+                <Button type="submit" onClick={this.login}>
+                  Login
+                </Button>
+                <Button onClick={this.signup} style={{ marginLeft: "25px" }}>
+                  Signup
+                </Button>
+                <Button
+                  onClick={() => auth.signInWithPopup(googleAuthProvider)}
+                  variant="contained"
+                  color="primary"
+                  mini
+                >
+                  <Typography color="secondary"> Login with Google</Typography>
+                </Button>
+              </DialogActions>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
-      //   <Dialog
-      //     open={open}
-      //     onClose={this.handleToggle}
-      //     aria-labelledby="form-dialog-title"
-      //   >
-      //     <DialogTitle id="form-dialog-title">Login</DialogTitle>
-      //     <DialogContent>
-      //       <DialogContentText>Please fill out form below</DialogContentText>
-      //       <form>
-      //         <TextField
-      //           name="email"
-      //           label="Email"
-      //           value={name}
-      //           onChange={this.handleChange("email")}
-      //           margin="normal"
-      //           //   className={classes.FormControl}
-      //         />
-      //         <br />
-      //         <TextField
-      //           name="password"
-      //           label="Password"
-      //           //   value={password}
-      //           onChange={this.handleChange("password")}
-      //           margin="normal"
-      //           //   className={classes.FormControl}
-      //         />
-      //       </form>
-      //     </DialogContent>
-      //     <DialogActions>
-      //       <Button onClick={this.handleToggle} color="primary">
-      //         Cancel
-      //       </Button>
-      //       <Button
-      //         type="submit"
-      //         onClick={this.login}
-      //         color="primary"
-      //         variant="raised"
-      //       >
-      //         Login
-      //       </Button>
-      //       <Button onClick={this.signup} style={{ marginLeft: "25px" }}>
-      //         Signup
-      //       </Button>
-      //     </DialogActions>
-      //   </Dialog>
     );
   }
 }

@@ -3,6 +3,9 @@ import BabiesBirthDetails from "../components/BabiesBirthDetails";
 import AddBaby from "../components/dialogs/AddBaby";
 
 class Dashboard extends Component {
+  // fileSelectedHandler = event => {
+  //   console.log(event);
+  // };
   //state = {  }
   render() {
     return (
@@ -10,6 +13,7 @@ class Dashboard extends Component {
         <h1>Dashboard</h1>
         <AddBaby />
         <BabiesBirthDetails />
+        {/* <input type="file" onChange={this.fileSelectedHandler} /> */}
       </div>
     );
   }

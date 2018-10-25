@@ -98,6 +98,7 @@ class BirthDetails extends Component {
               </h2>
             </Typography>
             {/* <CardMedia className={classes.media} "Input Image" /> */}
+
             <Typography className={classes.cardContent}>
               <List>
                 <ListItem className={classes.listItem}>{gender}</ListItem>

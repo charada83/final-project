@@ -16,6 +16,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
+import axios from "axios";
 
 const styles = theme => ({
   FormControl: {
@@ -25,6 +26,7 @@ const styles = theme => ({
 
 class AddBaby extends Component {
   state = {
+    selectedFile: null,
     open: false,
     babyDetails: {
       name: "",
@@ -35,6 +37,21 @@ class AddBaby extends Component {
       weight: ""
     }
   };
+
+  fileSelectedHandler = event => {
+    this.setState({
+      selectedFile: event.target.files[0]
+    });
+  };
+
+  // fileUploadHandler = () => {
+  //   const fd = new FormData();
+  //   fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
+  //   axios.post("add firebase url from cloud storage", fd).then(res => {
+  //     console.log(res);
+  //   });
+  //   //add catch block
+  // };
 
   handleToggle = () => {
     this.setState({
@@ -107,6 +124,15 @@ class AddBaby extends Component {
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form>
+              <input
+                type="file"
+                style={{ display: "none" }}
+                onChange={this.fileSelectedHandler}
+                ref={fileInput => (this.fileInput = fileInput)}
+              />
+              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
+              <Button onClick={this.fileUploadHandler}>Upload</Button>
+              <br />
               <TextField
                 name="name"
                 label="Name"

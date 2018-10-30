@@ -17,6 +17,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import axios from "axios";
+import { storage } from "firebase";
 
 const styles = theme => ({
   FormControl: {
@@ -34,7 +35,9 @@ class AddBaby extends Component {
       dateOfBirth: "",
       placeOfBirth: "",
       timeOfBirth: "",
-      weight: ""
+      weight: "",
+      image: null,
+      url: ""
     }
   };
 
@@ -43,6 +46,28 @@ class AddBaby extends Component {
       selectedFile: event.target.files[0]
     });
   };
+
+  // handleUpload = () => {
+  //   const { image } = this.state;
+  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
+  //   uploadTask.on(
+  //     "state_changed",
+  //     snapshot => {},
+  //     error => {
+  //       console.log(error);
+  //     },
+  //     () => {
+  //       storage
+  //         .ref("images")
+  //         .child(image.name)
+  //         .getDownloadURL()
+  //         .then(url => {
+  //           console.log(url);
+  //           this.setState({ url });
+  //         });
+  //     }
+  //   );
+  // };
 
   // fileUploadHandler = () => {
   //   const fd = new FormData();
@@ -130,8 +155,16 @@ class AddBaby extends Component {
                 onChange={this.fileSelectedHandler}
                 ref={fileInput => (this.fileInput = fileInput)}
               />
+
               <Button onClick={() => this.fileInput.click()}>Add Image</Button>
-              <Button onClick={this.fileUploadHandler}>Upload</Button>
+              <Button onClick={this.handleUpload}>Upload</Button>
+              <br />
+              <img
+                src={this.state.url || "https://via.placeholder.com/300x300"}
+                alt="Uploaded images"
+                height="300"
+                width="300"
+              />
               <br />
               <TextField
                 name="name"

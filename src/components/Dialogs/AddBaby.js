@@ -47,27 +47,27 @@ class AddBaby extends Component {
     });
   };
 
-  // handleUpload = () => {
-  //   const { image } = this.state;
-  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
-  //   uploadTask.on(
-  //     "state_changed",
-  //     snapshot => {},
-  //     error => {
-  //       console.log(error);
-  //     },
-  //     () => {
-  //       storage
-  //         .ref("images")
-  //         .child(image.name)
-  //         .getDownloadURL()
-  //         .then(url => {
-  //           console.log(url);
-  //           this.setState({ url });
-  //         });
-  //     }
-  //   );
-  // };
+  handleUpload = () => {
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {},
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            console.log(url);
+            this.setState({ url });
+          });
+      }
+    );
+  };
 
   // fileUploadHandler = () => {
   //   const fd = new FormData();
@@ -125,6 +125,7 @@ class AddBaby extends Component {
         }
       } = this.state,
       { classes } = this.props;
+
     return (
       <Fragment>
         <Grid container justify="center">

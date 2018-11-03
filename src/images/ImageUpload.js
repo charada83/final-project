@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import { storage } from "../firebase";
+import { storage } from "firebase";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -22,7 +22,27 @@ class ImageUpload extends Component {
     }
   };
 
-  handleUpload = () => {};
+  handleUpload = () => {
+    const { image } = this.state;
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {},
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            console.log(url);
+            this.setState({ url });
+          });
+      }
+    );
+  };
   render() {
     const style = {
       height: 100,
@@ -38,6 +58,13 @@ class ImageUpload extends Component {
         {style}
         <input type="file" onChange={this.handleChange} />
         <Button onClick={this.handleUpload}>Upload</Button>
+        <br />
+        <img
+          src={this.state.url}
+          alt="Uploaded images"
+          height="300"
+          width="300"
+        />
       </div>
     );
   }

@@ -2,16 +2,24 @@ import React, { Component } from "react";
 import BabiesBirthDetails from "../components/BabiesBirthDetails";
 import AddBaby from "../components/dialogs/AddBaby";
 import { database } from "../firebase";
+import map from "lodash/map";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: "",
+      babyBirthDetails: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.babiesRef = database.ref("/babies");
+    this.babiesRef = database.ref("/babyBirthDetails");
+  }
+
+  componentDidMount() {
+    this.babiesRef.on("value", snapshot => {
+      this.setState({ babyBirthDetails: snapshot.val() });
+    });
   }
 
   handleSubmit(event) {
@@ -31,7 +39,7 @@ class Dashboard extends Component {
   // };
   //state = {  }
   render() {
-    const { name } = this.state;
+    const { name, babyBirthDetails } = this.state;
     return (
       <div>
         <h1>Dashboard</h1>
@@ -47,7 +55,10 @@ class Dashboard extends Component {
           </button>
         </form>
         <AddBaby />
-        <BabiesBirthDetails />
+        <BabiesBirthDetails babyBirthDetails={babyBirthDetails} />
+        {/* {map(babyBirthDetails, (babyBirthDetail, key) => (
+          <p key={key}>{babyBirthDetail.name}</p>
+        ))} */}
         {/* <input type="file" onChange={this.fileSelectedHandler} /> */}
         {/* <pre>{JSON.stringify(this.state.data, null, 2)}</pre> */}
       </div>

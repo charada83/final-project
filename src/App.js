@@ -14,15 +14,15 @@ import Login from "./components/auth/Login";
 import { database } from "./firebase";
 
 class App extends Component {
-  authListener() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user });
-      } else {
-        this.setState({ user: null });
-      }
-    });
-  }
+  // authListener() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     if (user) {
+  //       this.setState({ user });
+  //     } else {
+  //       this.setState({ user: null });
+  //     }
+  //   });
+  // }
   render() {
     return (
       <Provider>

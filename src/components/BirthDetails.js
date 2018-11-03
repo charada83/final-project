@@ -61,8 +61,6 @@ const styles = theme => ({
 });
 
 class BirthDetails extends Component {
-  //   state = {   };
-
   // onSelectEdit = id => {
   //   this.setState({
   //     editMode: true
@@ -70,63 +68,77 @@ class BirthDetails extends Component {
   // };
 
   render() {
-    const { classes } = this.props;
-    const {
-      name,
-      gender,
-      dateOfBirth,
-      placeOfBirth,
-      timeOfBirth,
-      weight
-    } = this.props.babiesBirthDetails;
+    // const { classes } = this.props;
+    // const {
+    //   name,
+    //   gender,
+    //   dateOfBirth,
+    //   placeOfBirth,
+    //   timeOfBirth,
+    //   weight
+    // } = this.props.babiesBirthDetails;
+
+    const { name } = this.props;
 
     return (
-      <div>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography
-              className={classes.name}
-              gutterBottom
-              variant="headline"
-              component="h2"
-            >
-              <h2>
-                {name}
-                <IconButton /*onClick={() => onSelectEdit()}*/>
-                  <EditIcon />
-                </IconButton>
-              </h2>
-            </Typography>
-            {/* <CardMedia className={classes.media} "Input Image" /> */}
+      <Card>
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            <h2>
+              {name}
+              <IconButton /*onClick={() => onSelectEdit()}*/>
+                <EditIcon />
+              </IconButton>
+            </h2>
+          </Typography>
+        </CardContent>
+      </Card>
+      // <div>
+      //   <Card className={classes.card}>
+      //     <CardContent>
+      //       <Typography
+      //         className={classes.name}
+      //         gutterBottom
+      //         variant="headline"
+      //         component="h2"
+      //       >
+      //         <h2>
+      //           {name}
+      //           <IconButton /*onClick={() => onSelectEdit()}*/>
+      //             <EditIcon />
+      //           </IconButton>
+      //         </h2>
+      //       </Typography>
+      //       {/* <CardMedia className={classes.media} "Input Image" /> */}
 
-            <Typography className={classes.cardContent}>
-              <List>
-                <ListItem className={classes.listItem}>{gender}</ListItem>
-                <ListItem className={classes.listItem}>{dateOfBirth}</ListItem>
-                <ListItem className={classes.listItem}>{placeOfBirth}</ListItem>
-                <ListItem className={classes.listItem}>{timeOfBirth}</ListItem>
-                <ListItem className={classes.listItem}>
-                  {parseFloat(weight).toFixed(2)} kg
-                </ListItem>
-              </List>
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">
-              <Link to="/dashboard/milestones" className={classes.link}>
-                My Milestones
-              </Link>
-            </Button>
-            <Button size="small">
-              {/* Link to go to specific baby details */}
-              {/* <Link to={`dashboard/memories/${babiesBirthDetails.id}`}> */}
-              <Link to="/dashboard/memories" className={classes.link}>
-                My Memories
-              </Link>
-            </Button>
-          </CardActions>
-        </Card>
-      </div>
+      //       <Typography className={classes.cardContent}>
+      //         <List>
+      //           <ListItem className={classes.listItem}>{gender}</ListItem>
+      //           <ListItem className={classes.listItem}>{dateOfBirth}</ListItem>
+      //           <ListItem className={classes.listItem}>{placeOfBirth}</ListItem>
+      //           <ListItem className={classes.listItem}>{timeOfBirth}</ListItem>
+      //           <ListItem className={classes.listItem}>
+      //             {parseFloat(weight).toFixed(2)} kg
+      //           </ListItem>
+      //         </List>
+      //       </Typography>
+      //     </CardContent>
+      //     <CardActions>
+      //       <Button size="small">
+      //         <Link to="/dashboard/milestones" className={classes.link}>
+      //           My Milestones
+      //         </Link>
+      //       </Button>
+      //       <Button size="small">
+      //         {/* Link to go to specific baby details */}
+      //         {/* <Link to={`dashboard/memories/${babiesBirthDetails.id}`}> */}
+      //         <Link to="/dashboard/memories" className={classes.link}>
+      //           My Memories
+      //         </Link>
+      //       </Button>
+      //     </CardActions>
+      //   </Card>
+      // </div>
     );
   }
 }

@@ -17,7 +17,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import axios from "axios";
-import { storage } from "firebase";
+import { storage } from "../../firebase";
+import { database } from "../../firebase";
 
 const styles = theme => ({
   FormControl: {
@@ -27,6 +28,8 @@ const styles = theme => ({
 
 class AddBaby extends Component {
   state = {
+    data: null,
+    newData: "",
     selectedFile: null,
     open: false,
     babyDetails: {
@@ -84,6 +87,13 @@ class AddBaby extends Component {
     });
   };
 
+  // handleChange(event) {
+  //   const newData = event.target.value;
+  //   this.setState({
+  //     newData
+  //   });
+  // }
+
   handleChange = name => ({ target: { value } }) => {
     this.setState({
       babyDetails: {
@@ -92,6 +102,15 @@ class AddBaby extends Component {
       }
     });
   };
+
+  handleSubmit(event) {
+    //Don't do what browser wants to do...do following code instead
+    event.preventDefault();
+    database
+      .ref("/babyBirthDetails")
+
+      .push(this.state.babyDetails);
+  }
 
   // handleSubmit = () => {
   //   // Need to add validation
@@ -149,7 +168,7 @@ class AddBaby extends Component {
           <DialogTitle id="form-dialog-title">Add Baby</DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <input
                 type="file"
                 style={{ display: "none" }}
@@ -170,6 +189,7 @@ class AddBaby extends Component {
               <TextField
                 name="name"
                 label="Name"
+                // value={this.state.newData}
                 value={name}
                 onChange={this.handleChange("name")}
                 margin="normal"
@@ -259,7 +279,7 @@ class AddBaby extends Component {
               Cancel
             </Button>
             <Button
-              /*onClick={this.handleSubmit}*/
+              // onClick={this.handleSubmit}
               color="primary"
               variant="raised"
             >

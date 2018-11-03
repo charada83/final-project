@@ -11,6 +11,7 @@ import Notifications from "./components/dialogs/Notifications";
 import { Provider } from "./context";
 import firebase from "./firebase";
 import Login from "./components/auth/Login";
+import { database } from "./firebase";
 
 class App extends Component {
   authListener() {

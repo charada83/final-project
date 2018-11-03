@@ -21,11 +21,12 @@ firebase.initializeApp(config);
 
 // db.settings({ timestampsInSnapshots: true });
 
-// export const database = firebase.database();
+export const database = firebase.database();
 
 export const auth = firebase.auth();
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export const emailAuthProvider = new firebase.auth.EmailAuthProvider();
 
-const storage = firebase.storage();
+export const storage = firebase.storage();
 
-export { firebase, storage as default };
+export default firebase;

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, PropTypes } from "react";
 import { auth } from "../../firebase";
 import Button from "@material-ui/core/Button";
 import Dashboard from "../../views/Dashboard";
@@ -7,8 +7,9 @@ import { Typography } from "@material-ui/core";
 
 const CurrentUser = ({ user }) => {
   return (
-    <div>
-      {/* <h4>Welcome {user.displayName}</h4> */}
+    <div style={{ display: "flex" }}>
+      <h4>Welcome {user.displayName}</h4>
+      {/* <img src={user.photoURL} alt={user.displayName} /> */}
 
       <Button
         variant="contained"

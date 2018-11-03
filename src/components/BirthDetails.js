@@ -16,9 +16,9 @@ import { Link } from "@reach/router";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 
-import firebase, { db } from "../firebase";
+import firebase, { database } from "../firebase";
 
-// db.collection("babyBirthDetails")
+// database.collection("babyBirthDetails")
 //   .get()
 //   .then(snapshot => {
 //     snapshot.docs.forEach(doc => {

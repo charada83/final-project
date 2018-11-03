@@ -7,11 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-import {
-  auth,
-  googleAuthProvider,
-  signInWithEmailAndPassword
-} from "../../firebase";
+import { auth, googleAuthProvider, emailAuthProvider } from "../../firebase";
 import { Typography } from "@material-ui/core";
 import Icon from "@material-ui/icons";
 
@@ -111,6 +107,7 @@ class Login extends Component {
                 <Button onClick={this.signup} style={{ marginLeft: "25px" }}>
                   Signup
                 </Button>
+
                 <Button
                   onClick={() => auth.signInWithPopup(googleAuthProvider)}
                   variant="contained"

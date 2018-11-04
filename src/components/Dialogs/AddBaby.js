@@ -51,7 +51,6 @@ class AddBaby extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.babiesRef.push({ babyBirthDetails: this.state.babyBirthDetails });
-    this.handleToggle;
   }
 
   //To Select Image from Gallery

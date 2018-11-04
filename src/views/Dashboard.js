@@ -12,7 +12,6 @@ class Dashboard extends Component {
       babyBirthDetails: null
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.babiesRef = database.ref("/babyBirthDetails");
   }
 
@@ -21,15 +20,6 @@ class Dashboard extends Component {
       this.setState({ babyBirthDetails: snapshot.val() });
     });
   }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.babiesRef.push({ name: this.state.name });
-  }
-
-  // fileSelectedHandler = event => {
-  //   console.log(event);
-  // };
 
   render() {
     const { name, babyBirthDetails } = this.state;
@@ -48,10 +38,12 @@ class Dashboard extends Component {
           </button>
         </form> */}
         <AddBaby />
-        <BabiesBirthDetails babyBirthDetails={babyBirthDetails} />
-        {/* {map(babyBirthDetails, (babyBirthDetail, key) => (
-          <p key={key}>{babyBirthDetail.name}</p>
-          <p key={key}>{babyBirthDetail.gender}</p>
+        <BabiesBirthDetails
+          babyBirthDetails={babyBirthDetails}
+          // user={currentUser}
+        />
+        {/* {map(babyBirthDetails, (babyBirthDetails, key) => (
+          <p key={key}>{babyBirthDetails.name}</p>
         ))} */}
       </div>
     );

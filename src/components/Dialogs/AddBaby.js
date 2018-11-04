@@ -27,50 +27,80 @@ const styles = theme => ({
 });
 
 class AddBaby extends Component {
-  state = {
-    data: null,
-    newData: "",
-    selectedFile: null,
-    open: false,
-    babyDetails: {
-      name: "",
-      gender: "",
-      dateOfBirth: "",
-      placeOfBirth: "",
-      timeOfBirth: "",
-      weight: "",
-      image: null,
-      url: ""
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
 
-  fileSelectedHandler = event => {
-    this.setState({
-      selectedFile: event.target.files[0]
-    });
-  };
-
-  handleUpload = () => {
-    const { image } = this.state;
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    uploadTask.on(
-      "state_changed",
-      snapshot => {},
-      error => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image.name)
-          .getDownloadURL()
-          .then(url => {
-            console.log(url);
-            this.setState({ url });
-          });
+      babyBirthDetails: {
+        name: "",
+        gender: ""
       }
-    );
-  };
+
+      // babyBirthDetails: null
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.babiesRef = database.ref("/babyBirthDetails");
+  }
+
+  componentDidMount() {
+    this.babiesRef.on("value", snapshot => {
+      this.setState({ babyDetails: snapshot.val() });
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.babiesRef.push({ babyBirthDetails: this.state.babyBirthDetails });
+    // this.babiesRef.push({ gender: this.state.gender });
+  }
+  // state = {
+  //   data: null,
+  //   newData: "",
+  //   selectedFile: null,
+  //   open: false,
+  //   babyDetails: {
+  //     name: "",
+  //     gender: "",
+  //     dateOfBirth: "",
+  //     placeOfBirth: "",
+  //     timeOfBirth: "",
+  //     weight: "",
+  //     image: null,
+  //     url: ""
+  //   }
+  // };
+
+  //To Select Image from Gallery
+  // fileSelectedHandler = event => {
+  //   this.setState({
+  //     selectedFile: event.target.files[0]
+  //   });
+  // };
+
+  //Handle upload of images
+  // handleUpload = () => {
+  //   const { image } = this.state;
+  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
+  //   uploadTask.on(
+  //     "state_changed",
+  //     snapshot => {},
+  //     error => {
+  //       console.log(error);
+  //     },
+  //     () => {
+  //       storage
+  //         .ref("images")
+  //         .child(image.name)
+  //         .getDownloadURL()
+  //         .then(url => {
+  //           console.log(url);
+  //           this.setState({ url });
+  //         });
+  //     }
+  //   );
+  // };
 
   // fileUploadHandler = () => {
   //   const fd = new FormData();
@@ -96,21 +126,21 @@ class AddBaby extends Component {
 
   handleChange = name => ({ target: { value } }) => {
     this.setState({
-      babyDetails: {
-        ...this.state.babyDetails,
+      babyBirthDetails: {
+        ...this.state.babyBirthDetails,
         [name]: value
       }
     });
   };
 
-  handleSubmit(event) {
-    //Don't do what browser wants to do...do following code instead
-    event.preventDefault();
-    database
-      .ref("/babyBirthDetails")
+  // handleSubmit(event) {
+  //   //Don't do what browser wants to do...do following code instead
+  //   event.preventDefault();
+  //   database
+  //     .ref("/babyBirthDetails")
 
-      .push(this.state.babyDetails);
-  }
+  //     .push(this.state.babyDetails);
+  // }
 
   // handleSubmit = () => {
   //   // Need to add validation
@@ -133,15 +163,17 @@ class AddBaby extends Component {
 
   render() {
     const {
-        open,
-        babyDetails: {
-          name,
-          gender,
-          dateOfBirth,
-          placeOfBirth,
-          timeOfBirth,
-          weight
-        }
+        babyBirthDetails: { name, gender },
+
+        open
+        // babyDetails: {
+        //   name,
+        //   gender,
+        // dateOfBirth,
+        // placeOfBirth,
+        // timeOfBirth,
+        // weight
+        // }
       } = this.state,
       { classes } = this.props;
 
@@ -169,14 +201,14 @@ class AddBaby extends Component {
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
-              <input
+              {/* <input
                 type="file"
                 style={{ display: "none" }}
                 onChange={this.fileSelectedHandler}
                 ref={fileInput => (this.fileInput = fileInput)}
-              />
-
-              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
+              /> */}
+              {/* Images */}
+              {/* <Button onClick={() => this.fileInput.click()}>Add Image</Button>
               <Button onClick={this.handleUpload}>Upload</Button>
               <br />
               <img
@@ -185,18 +217,18 @@ class AddBaby extends Component {
                 height="300"
                 width="300"
               />
-              <br />
+              <br /> */}
               <TextField
                 name="name"
                 label="Name"
                 // value={this.state.newData}
                 value={name}
                 onChange={this.handleChange("name")}
+                // onChange={event => this.setState({ name: event.target.value })}
                 margin="normal"
                 className={classes.FormControl}
               />
               <br />
-
               {/* Radio Buttons for Gender */}
               <FormControl component="fieldset">
                 <FormLabel component="legend">Gender</FormLabel>
@@ -204,6 +236,11 @@ class AddBaby extends Component {
                   aria-label="Gender"
                   name="gender"
                   value={gender}
+                  // onChange={event =>
+                  //   this.setState({
+                  //     gender: event.target.gender
+                  //   })
+                  // }
                   onChange={this.handleChange("gender")}
                 >
                   <FormControlLabel
@@ -220,7 +257,7 @@ class AddBaby extends Component {
               </FormControl>
               <br />
               {/* DatePicker for Date of Birth */}
-              <TextField
+              {/* <TextField
                 id="date"
                 label="Date of Birth"
                 type="date"
@@ -240,9 +277,9 @@ class AddBaby extends Component {
                 margin="normal"
                 className={classes.FormControl}
               />
-              <br />
+              <br /> */}
               {/* TimePicker for Time of Birth */}
-              <TextField
+              {/* <TextField
                 id="time"
                 label="Time of Birth"
                 type="time"
@@ -256,9 +293,9 @@ class AddBaby extends Component {
                   step: 60 // 1 min
                 }}
               />
-              <br />
+              <br /> */}
               {/* Number textfield for weight */}
-              <TextField
+              {/* <TextField
                 id="weight"
                 label="Weight"
                 value={weight}
@@ -270,7 +307,7 @@ class AddBaby extends Component {
                       Kg
                     </InputAdornment>
                   )
-                }}
+                }} */}
               />
             </form>
           </DialogContent>
@@ -279,7 +316,7 @@ class AddBaby extends Component {
               Cancel
             </Button>
             <Button
-              // onClick={this.handleSubmit}
+              onClick={this.handleSubmit}
               color="primary"
               variant="raised"
             >

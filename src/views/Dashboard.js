@@ -27,23 +27,16 @@ class Dashboard extends Component {
     this.babiesRef.push({ name: this.state.name });
   }
 
-  // componentDidMount() {
-  //   database.ref().on("value", snapshot => {
-  //     this.setState({
-  //       data: snapshot.val()
-  //     });
-  //   });
-  // }
   // fileSelectedHandler = event => {
   //   console.log(event);
   // };
-  //state = {  }
+
   render() {
     const { name, babyBirthDetails } = this.state;
     return (
       <div>
         <h1>Dashboard</h1>
-        <form className="newBaby">
+        {/* <form className="newBaby">
           <input
             type="text"
             value={name}
@@ -53,14 +46,13 @@ class Dashboard extends Component {
           <button onClick={this.handleSubmit} disabled={!name}>
             Submit
           </button>
-        </form>
+        </form> */}
         <AddBaby />
         <BabiesBirthDetails babyBirthDetails={babyBirthDetails} />
         {/* {map(babyBirthDetails, (babyBirthDetail, key) => (
           <p key={key}>{babyBirthDetail.name}</p>
+          <p key={key}>{babyBirthDetail.gender}</p>
         ))} */}
-        {/* <input type="file" onChange={this.fileSelectedHandler} /> */}
-        {/* <pre>{JSON.stringify(this.state.data, null, 2)}</pre> */}
       </div>
     );
   }

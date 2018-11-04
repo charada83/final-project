@@ -78,12 +78,17 @@ class BirthDetails extends Component {
     //   weight
     // } = this.props.babiesBirthDetails;
 
-    const { name } = this.props;
+    const { name, classes } = this.props;
 
     return (
-      <Card>
+      <Card className={classes.card}>
         <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
+          <Typography
+            className={classes.name}
+            gutterBottom
+            variant="headline"
+            component="h2"
+          >
             <h2>
               {name}
               <IconButton /*onClick={() => onSelectEdit()}*/>

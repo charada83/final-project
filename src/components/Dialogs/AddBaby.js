@@ -16,7 +16,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import axios from "axios";
 import { storage } from "../../firebase";
 import { database } from "../../firebase";
 
@@ -34,43 +33,26 @@ class AddBaby extends Component {
 
       babyBirthDetails: {
         name: "",
-        gender: ""
+        gender: "",
+        dateOfBirth: "",
+        placeOfBirth: "",
+        timeOfBirth: "",
+        weight: ""
+        // image: null,
+        // url: ""
       }
-
-      // babyBirthDetails: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.babiesRef = database.ref("/babyBirthDetails");
   }
 
-  componentDidMount() {
-    this.babiesRef.on("value", snapshot => {
-      this.setState({ babyDetails: snapshot.val() });
-    });
-  }
-
+  //Need to add validation
   handleSubmit(event) {
     event.preventDefault();
     this.babiesRef.push({ babyBirthDetails: this.state.babyBirthDetails });
-    // this.babiesRef.push({ gender: this.state.gender });
+    this.handleToggle;
   }
-  // state = {
-  //   data: null,
-  //   newData: "",
-  //   selectedFile: null,
-  //   open: false,
-  //   babyDetails: {
-  //     name: "",
-  //     gender: "",
-  //     dateOfBirth: "",
-  //     placeOfBirth: "",
-  //     timeOfBirth: "",
-  //     weight: "",
-  //     image: null,
-  //     url: ""
-  //   }
-  // };
 
   //To Select Image from Gallery
   // fileSelectedHandler = event => {
@@ -117,13 +99,6 @@ class AddBaby extends Component {
     });
   };
 
-  // handleChange(event) {
-  //   const newData = event.target.value;
-  //   this.setState({
-  //     newData
-  //   });
-  // }
-
   handleChange = name => ({ target: { value } }) => {
     this.setState({
       babyBirthDetails: {
@@ -132,21 +107,6 @@ class AddBaby extends Component {
       }
     });
   };
-
-  // handleSubmit(event) {
-  //   //Don't do what browser wants to do...do following code instead
-  //   event.preventDefault();
-  //   database
-  //     .ref("/babyBirthDetails")
-
-  //     .push(this.state.babyDetails);
-  // }
-
-  // handleSubmit = () => {
-  //   // Need to add validation
-
-  //   const { babyDetails } = this.state;
-  //   this.props.onSubmit(babyDetails);
 
   //   //  To Clear Form after submit
   //   this.setState((open: false), {
@@ -163,17 +123,15 @@ class AddBaby extends Component {
 
   render() {
     const {
-        babyBirthDetails: { name, gender },
-
-        open
-        // babyDetails: {
-        //   name,
-        //   gender,
-        // dateOfBirth,
-        // placeOfBirth,
-        // timeOfBirth,
-        // weight
-        // }
+        open,
+        babyBirthDetails: {
+          name,
+          gender,
+          dateOfBirth,
+          placeOfBirth,
+          timeOfBirth,
+          weight
+        }
       } = this.state,
       { classes } = this.props;
 
@@ -221,10 +179,8 @@ class AddBaby extends Component {
               <TextField
                 name="name"
                 label="Name"
-                // value={this.state.newData}
                 value={name}
                 onChange={this.handleChange("name")}
-                // onChange={event => this.setState({ name: event.target.value })}
                 margin="normal"
                 className={classes.FormControl}
               />
@@ -236,11 +192,6 @@ class AddBaby extends Component {
                   aria-label="Gender"
                   name="gender"
                   value={gender}
-                  // onChange={event =>
-                  //   this.setState({
-                  //     gender: event.target.gender
-                  //   })
-                  // }
                   onChange={this.handleChange("gender")}
                 >
                   <FormControlLabel
@@ -257,13 +208,14 @@ class AddBaby extends Component {
               </FormControl>
               <br />
               {/* DatePicker for Date of Birth */}
-              {/* <TextField
+              <TextField
                 id="date"
                 label="Date of Birth"
                 type="date"
                 value={dateOfBirth}
                 defaultValue="dd/mm/yyyy"
                 className={classes.FormControl}
+                onChange={this.handleChange("dateOfBirth")}
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -277,13 +229,14 @@ class AddBaby extends Component {
                 margin="normal"
                 className={classes.FormControl}
               />
-              <br /> */}
+              <br />
               {/* TimePicker for Time of Birth */}
-              {/* <TextField
+              <TextField
                 id="time"
                 label="Time of Birth"
                 type="time"
                 value={timeOfBirth}
+                onChange={this.handleChange("timeOfBirth")}
                 defaultValue="00:00"
                 className={classes.FormControl}
                 InputLabelProps={{
@@ -293,9 +246,9 @@ class AddBaby extends Component {
                   step: 60 // 1 min
                 }}
               />
-              <br /> */}
+              <br />
               {/* Number textfield for weight */}
-              {/* <TextField
+              <TextField
                 id="weight"
                 label="Weight"
                 value={weight}
@@ -307,7 +260,7 @@ class AddBaby extends Component {
                       Kg
                     </InputAdornment>
                   )
-                }} */}
+                }}
               />
             </form>
           </DialogContent>

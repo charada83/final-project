@@ -3,7 +3,7 @@ import BabiesBirthDetails from "../components/BabiesBirthDetails";
 import AddBaby from "../components/dialogs/AddBaby";
 import { database } from "../firebase";
 
-class Dashboard extends Component {
+class BabyDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,4 +35,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default BabyDetails;

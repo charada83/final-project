@@ -78,7 +78,15 @@ class BirthDetails extends Component {
     //   weight
     // } = this.props.babyBirthDetails;
 
-    const { name, gender, classes } = this.props;
+    const {
+      name,
+      gender,
+      dateOfBirth,
+      placeOfBirth,
+      timeOfBirth,
+      weight,
+      classes
+    } = this.props;
 
     return (
       <Card className={classes.card}>
@@ -100,13 +108,20 @@ class BirthDetails extends Component {
 
           <Typography className={classes.cardContent}>
             <List>
-              <ListItem className={classes.listItem}>{gender}</ListItem>
-              {/* <ListItem className={classes.listItem}>{dateOfBirth}</ListItem>
-              <ListItem className={classes.listItem}>{placeOfBirth}</ListItem>
-              <ListItem className={classes.listItem}>{timeOfBirth}</ListItem>
+              <ListItem className={classes.listItem}>Gender: {gender}</ListItem>
               <ListItem className={classes.listItem}>
+                Date Of Birth: {dateOfBirth}
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                Place Of Birth: {placeOfBirth}
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                Time Of Birth: {timeOfBirth}
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                Weight:
                 {parseFloat(weight).toFixed(2)} kg
-              </ListItem> */}
+              </ListItem>
             </List>
           </Typography>
         </CardContent>

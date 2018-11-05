@@ -50,7 +50,14 @@ class AddBaby extends Component {
   //Need to add validation
   handleSubmit(event) {
     event.preventDefault();
-    this.babiesRef.push({ babyBirthDetails: this.state.babyBirthDetails });
+    this.babiesRef.push({
+      name: this.state.babyBirthDetails.name,
+      gender: this.state.babyBirthDetails.gender,
+      dateOfBirth: this.state.babyBirthDetails.dateOfBirth,
+      placeOfBirth: this.state.babyBirthDetails.placeOfBirth,
+      timeOfBirth: this.state.babyBirthDetails.timeOfBirth,
+      weight: this.state.babyBirthDetails.weight
+    });
   }
 
   //To Select Image from Gallery

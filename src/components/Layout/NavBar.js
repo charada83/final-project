@@ -31,17 +31,17 @@ class NavBar extends Component {
           </Link>
         </ListItem>
         <ListItem>
-          <Link to="dashboard" style={style.link}>
+          <Link to="babydetails" style={style.link}>
             Baby Details
           </Link>
         </ListItem>
         <ListItem>
-          <Link to="/dashboard/milestones" style={style.link}>
+          <Link to="/babydetails/milestones" style={style.link}>
             Milestones
           </Link>
         </ListItem>
         <ListItem>
-          <Link to="/dashboard/memories" style={style.link}>
+          <Link to="/babydetails/memories" style={style.link}>
             Memories
           </Link>
         </ListItem>

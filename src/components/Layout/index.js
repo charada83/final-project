@@ -12,7 +12,6 @@ import Menu from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core/styles";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import SignIn from "../auth/SignIn";
 import CurrentUser from "../auth/CurrentUser";
 import TitleLogo from "./TitleLogo";
 import { auth } from "../../firebase";

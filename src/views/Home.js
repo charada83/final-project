@@ -21,7 +21,7 @@ class Home extends Component {
     const { currentUser } = this.state;
 
     if (currentUser) {
-      return <Redirect to="dashboard" noThrow />;
+      return <Redirect to="babydetails" noThrow />;
     }
 
     return (

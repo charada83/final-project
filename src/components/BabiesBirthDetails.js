@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import BirthDetails from "./BirthDetails";
 import { Consumer } from "../context";
 import map from "lodash/map";
+import { database } from "../firebase";
 
 class BabiesBirthDetails extends Component {
   constructor(props) {
@@ -11,9 +12,9 @@ class BabiesBirthDetails extends Component {
     const { babyBirthDetails } = this.props;
     return (
       <section>
-        {map(babyBirthDetails, (babyBirthDetail, key) => (
-          <BirthDetails key={key} {...babyBirthDetail} />
-        ))}
+        {map(babyBirthDetails, (babyBirthDetail, key) => {
+          return <BirthDetails key={key} {...babyBirthDetail} />;
+        })}
       </section>
       // <Consumer>
       //   {value => {

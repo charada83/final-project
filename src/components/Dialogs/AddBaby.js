@@ -201,12 +201,12 @@ class AddBaby extends Component {
                   onChange={this.handleChange("gender")}
                 >
                   <FormControlLabel
-                    value="female"
+                    value="Female"
                     control={<Radio />}
                     label="Female"
                   />
                   <FormControlLabel
-                    value="male"
+                    value="Male"
                     control={<Radio />}
                     label="Male"
                   />

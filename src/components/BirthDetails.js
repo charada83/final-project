@@ -79,6 +79,7 @@ class BirthDetails extends Component {
     // } = this.props.babyBirthDetails;
 
     const {
+      id,
       name,
       gender,
       dateOfBirth,
@@ -119,8 +120,7 @@ class BirthDetails extends Component {
                 Time Of Birth: {timeOfBirth}
               </ListItem>
               <ListItem className={classes.listItem}>
-                Weight:
-                {parseFloat(weight).toFixed(2)} kg
+                Weight: {parseFloat(weight).toFixed(2)} kg
               </ListItem>
             </List>
           </Typography>

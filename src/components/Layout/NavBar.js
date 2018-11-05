@@ -32,7 +32,7 @@ class NavBar extends Component {
         </ListItem>
         <ListItem>
           <Link to="dashboard" style={style.link}>
-            Dashboard
+            Baby Details
           </Link>
         </ListItem>
         <ListItem>

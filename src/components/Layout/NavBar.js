@@ -11,7 +11,7 @@ const style = {
   link: {
     textDecoration: "none",
     fontSize: 18,
-    color: "#d16682"
+    color: "#6670d1"
   }
 };
 class NavBar extends Component {
@@ -32,41 +32,32 @@ class NavBar extends Component {
             Home
           </Link>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={this.handleClick}>
           <Link to="babydetails" style={style.link}>
             Baby Details
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to="/babydetails/milestones" style={style.link}>
-            Milestones
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link to="/babydetails/memories" style={style.link}>
-            Memories
-          </Link>
-        </ListItem>
-        <ListItem onClick={this.handleClick}>
-          <Link to="family" style={style.link}>
-            Family
           </Link>
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItem>
-              <Link to="/family/invite" style={style.link}>
-                Invite
+              <Link to="/babydetails/milestones" style={style.link}>
+                Milestones
               </Link>
             </ListItem>
             <ListItem>
-              <Link to="/family/family-tree" style={style.link}>
-                Family Tree
+              <Link to="/babydetails/memories" style={style.link}>
+                Memories
               </Link>
             </ListItem>
           </List>
         </Collapse>
+        <ListItem onClick={this.handleClick}>
+          <Link to="family" style={style.link}>
+            Family
+          </Link>
+        </ListItem>
+
         <Divider />
         <ListItem>
           <Link to="/notifications" style={style.link}>

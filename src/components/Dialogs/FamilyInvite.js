@@ -32,7 +32,7 @@ class FamilyInvite extends Component {
 
   handleChange = name => ({ target: { value } }) => {
     this.setState({
-      babyDetails: {
+      inviteDetails: {
         ...this.state.inviteDetails,
         [name]: value
       }
@@ -46,7 +46,6 @@ class FamilyInvite extends Component {
       { classes } = this.props;
     return (
       <Fragment>
-        <h1>Family Invite Dialog</h1>
         <Button
           style={{ marginBottom: 20 }}
           variant="contained"

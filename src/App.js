@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Home from "./views/Home";
 import BabyDetails from "./views/BabyDetails";
-import FamilyTree from "./views/FamilyTree";
+import Family from "./views/Family";
 import FamilyInvite from "./components/dialogs/FamilyInvite";
 import Layout from "./components/layout/index";
 import Memories from "./views/Memories";
@@ -32,9 +32,7 @@ class App extends Component {
             <BabyDetails path="babydetails" component={BabyDetails} />
             <Memories path="/babydetails/memories" component={Memories} />
             <Milestones path="/babydetails/milestones" component={Milestones} />
-            {/* <Family path="family" /> */}
-            <FamilyTree path="/family/family-tree" component={FamilyTree} />
-            <FamilyInvite path="/family/invite" component={FamilyInvite} />
+            <Family path="/family" component={Family} />
             <Notifications path="/notifications" component={Notifications} />
             <Login path="/login" component={Login} />
             <NotFound default />

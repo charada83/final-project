@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import BirthDetails from "./BirthDetails";
+import BabyBirthDetails from "./BabyBirthDetails";
 import { Consumer } from "../context";
 import map from "lodash/map";
 import { database } from "../firebase";
@@ -13,7 +13,7 @@ class BabiesBirthDetails extends Component {
     return (
       <section>
         {map(babyBirthDetails, (babyBirthDetail, key) => {
-          return <BirthDetails key={key} {...babyBirthDetail} />;
+          return <BabyBirthDetails key={key} {...babyBirthDetail} />;
         })}
       </section>
       // <Consumer>

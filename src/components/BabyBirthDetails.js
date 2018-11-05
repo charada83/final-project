@@ -60,7 +60,7 @@ const styles = theme => ({
   }
 });
 
-class BirthDetails extends Component {
+class BabyBirthDetails extends Component {
   // onSelectEdit = id => {
   //   this.setState({
   //     editMode: true
@@ -144,8 +144,8 @@ class BirthDetails extends Component {
   }
 }
 
-BirthDetails.PropTypes = {
+BabyBirthDetails.PropTypes = {
   babiesBirthDetails: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(BirthDetails);
+export default withStyles(styles)(BabyBirthDetails);

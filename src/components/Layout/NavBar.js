@@ -9,7 +9,9 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 
 const style = {
   link: {
-    textDecoration: "none"
+    textDecoration: "none",
+    fontSize: 18,
+    color: "#d16682"
   }
 };
 class NavBar extends Component {

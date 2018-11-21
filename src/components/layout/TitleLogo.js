@@ -23,14 +23,14 @@ const styles = theme => ({
 class TitleLogo extends Component {
   render() {
     const { classes } = this.props;
+
     return (
       <Fragment>
         <img src={book} className={classes.icon} alt="Baby Book logo" />
 
         <Typography
           className={classes.title}
-          component="h1"
-          variant="h1"
+          variant="h3"
           color="secondary"
           noWrap
         >

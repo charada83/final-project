@@ -16,7 +16,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import { storage } from "../../firebase";
 import { database } from "../../firebase";
 
 const styles = theme => ({

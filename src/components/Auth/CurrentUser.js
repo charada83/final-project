@@ -1,4 +1,4 @@
-import React, { Fragment, PropTypes } from "react";
+import React from "react";
 import { auth } from "../../firebase";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";

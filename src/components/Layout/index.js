@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import {
   AppBar,
   Toolbar,
-  Button,
   IconButton,
   Hidden,
   Drawer,
@@ -81,10 +80,10 @@ class Layout extends Component {
   render() {
     const { classes, children } = this.props;
     const { mobileOpen, currentUser } = this.state;
-
     const drawer = <NavBar />;
+
     return (
-      <Fragment className={classes.container}>
+      <Fragment>
         <CssBaseline />
         <div className={classes.root}>
           <AppBar position="relative" className={classes.appBar}>

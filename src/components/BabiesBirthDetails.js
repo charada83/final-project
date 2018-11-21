@@ -1,13 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import BabyBirthDetails from "./BabyBirthDetails";
-import { Consumer } from "../context";
 import map from "lodash/map";
-import { database } from "../firebase";
 
 class BabiesBirthDetails extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { babyBirthDetails } = this.props;
     return (

@@ -16,8 +16,6 @@ import { Link } from "@reach/router";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 
-import firebase, { database } from "../firebase";
-
 // database.collection("babyBirthDetails")
 //   .get()
 //   .then(snapshot => {
@@ -79,7 +77,6 @@ class BabyBirthDetails extends Component {
     // } = this.props.babyBirthDetails;
 
     const {
-      id,
       name,
       gender,
       dateOfBirth,

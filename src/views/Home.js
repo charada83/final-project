@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { auth } from "../firebase";
 import Login from "../components/auth/Login";
 import { Redirect } from "@reach/router";
-import { database } from "../firebase";
-import pick from "lodash/pick";
 
 class Home extends Component {
   constructor(props) {

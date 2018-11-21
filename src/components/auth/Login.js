@@ -7,9 +7,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-import { auth, googleAuthProvider, emailAuthProvider } from "../../firebase";
+import { auth, googleAuthProvider } from "../../firebase";
 import { Typography } from "@material-ui/core";
-import Icon from "@material-ui/icons";
 
 class Login extends Component {
   constructor(props) {
@@ -39,7 +38,6 @@ class Login extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
       .catch(error => {
         console.log(error);
       });
@@ -50,16 +48,14 @@ class Login extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
-      .then(u => {
-        console.log(u);
-      })
       .catch(error => {
         console.log(error);
       });
   }
+
   render() {
     const { open } = this.state;
+
     return (
       <div>
         <Button
@@ -114,7 +110,7 @@ class Login extends Component {
                   color="primary"
                   mini
                 >
-                  <Typography color="secondary"> Login with Google</Typography>
+                  <Typography color="secondary">Login with Google</Typography>
                 </Button>
               </DialogActions>
             </form>
@@ -124,4 +120,5 @@ class Login extends Component {
     );
   }
 }
+
 export default Login;

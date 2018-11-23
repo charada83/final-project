@@ -60,11 +60,11 @@ class AddBaby extends Component {
   }
 
   //To Select Image from Gallery
-  // fileSelectedHandler = event => {
-  //   this.setState({
-  //     selectedFile: event.target.files[0]
-  //   });
-  // };
+  fileSelectedHandler = event => {
+    this.setState({
+      selectedFile: event.target.files[0]
+    });
+  };
 
   //Handle upload of images
   // handleUpload = () => {
@@ -136,9 +136,13 @@ class AddBaby extends Component {
           placeOfBirth,
           timeOfBirth,
           weight
-        }
+        },
+        selectedFile
       } = this.state,
       { classes } = this.props;
+    const imageURL = selectedFile
+      ? URL.createObjectURL(selectedFile)
+      : this.state.url || "https://via.placeholder.com/300x300";
 
     return (
       <Fragment>
@@ -164,23 +168,23 @@ class AddBaby extends Component {
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
-              {/* <input
+              <input
                 type="file"
                 style={{ display: "none" }}
                 onChange={this.fileSelectedHandler}
                 ref={fileInput => (this.fileInput = fileInput)}
-              /> */}
+              />
               {/* Images */}
-              {/* <Button onClick={() => this.fileInput.click()}>Add Image</Button>
+              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
               <Button onClick={this.handleUpload}>Upload</Button>
               <br />
               <img
-                src={this.state.url || "https://via.placeholder.com/300x300"}
+                src={imageURL}
                 alt="Uploaded images"
                 height="300"
                 width="300"
               />
-              <br /> */}
+              <br />
               <TextField
                 name="name"
                 label="Name"

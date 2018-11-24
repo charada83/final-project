@@ -2,7 +2,16 @@ import React, { Component } from "react";
 import BabiesBirthDetails from "../components/BabiesBirthDetails";
 import AddBaby from "../components/dialogs/AddBaby";
 import { database, auth } from "../firebase";
+import { withStyles, Typography } from "@material-ui/core";
 
+const styles = theme => ({
+  title: {
+    textAlign: "center",
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
+  }
+});
 class BabyDetails extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +31,13 @@ class BabyDetails extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { babyBirthDetails } = this.state;
     return (
       <div>
-        <h1>Baby Details</h1>
+        <Typography className={classes.title} variant="h3" gutterBottom>
+          Baby Details
+        </Typography>
 
         <AddBaby />
         <BabiesBirthDetails babyBirthDetails={babyBirthDetails} />
@@ -34,4 +46,4 @@ class BabyDetails extends Component {
   }
 }
 
-export default BabyDetails;
+export default withStyles(styles)(BabyDetails);

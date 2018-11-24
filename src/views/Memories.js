@@ -23,6 +23,12 @@ const styles = theme => ({
     flexGrow: 1,
     width: "100%",
     backgroundColor: theme.palette.background.paper
+  },
+  title: {
+    textAlign: "center",
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
   }
 });
 
@@ -36,12 +42,14 @@ class ScrollableTabsButtonForce extends React.Component {
   };
 
   render() {
-    // const { classes } = this.props;
+    const { classes } = this.props;
     const { value } = this.state;
 
     return (
       <div>
-        <h1>Memories</h1>
+        <Typography className={classes.title} variant="h3" gutterBottom>
+          Memories
+        </Typography>
         <AppBar position="static" color="default">
           <Tabs
             value={value}

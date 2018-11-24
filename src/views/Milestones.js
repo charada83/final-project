@@ -16,6 +16,12 @@ const styles = theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
+  title: {
+    textAlign: "center",
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
+  },
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120
@@ -43,7 +49,9 @@ class Milestones extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <h1>Milestones</h1>
+        <Typography className={classes.title} variant="h3" gutterBottom>
+          Milestones
+        </Typography>
         <p>TextFields with dropdown, image, multiline textfield goes here?</p>
         <form className={classes.root} autoComplete="off">
           <FormControl className={classes.formControl}>

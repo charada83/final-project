@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BabiesBirthDetails from "../components/BabiesBirthDetails";
 import AddBaby from "../components/dialogs/AddBaby";
-import { database } from "../firebase";
+import { database, auth } from "../firebase";
 
 class BabyDetails extends Component {
   constructor(props) {
@@ -10,7 +10,9 @@ class BabyDetails extends Component {
       babyBirthDetails: null
     };
 
-    this.babiesRef = database.ref("/babyBirthDetails");
+    this.babiesRef = database.ref(
+      `/users/${auth.currentUser.uid}/babyBirthDetails`
+    );
   }
 
   componentDidMount() {
@@ -26,10 +28,7 @@ class BabyDetails extends Component {
         <h1>Baby Details</h1>
 
         <AddBaby />
-        <BabiesBirthDetails
-          babyBirthDetails={babyBirthDetails}
-          // user={currentUser}
-        />
+        <BabiesBirthDetails babyBirthDetails={babyBirthDetails} />
       </div>
     );
   }

@@ -16,7 +16,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import { database } from "../../firebase";
+import { database, storage, auth } from "../../firebase";
 
 const styles = theme => ({
   FormControl: {
@@ -43,12 +43,15 @@ class AddBaby extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.babiesRef = database.ref("/babyBirthDetails");
+    this.babiesRef = database.ref(
+      `/users/${auth.currentUser.uid}/babyBirthDetails`
+    );
   }
 
   //Need to add validation
   handleSubmit(event) {
     event.preventDefault();
+
     this.babiesRef.push({
       name: this.state.babyBirthDetails.name,
       gender: this.state.babyBirthDetails.gender,

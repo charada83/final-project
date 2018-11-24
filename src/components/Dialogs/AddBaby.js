@@ -52,7 +52,7 @@ class AddBaby extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.babiesRef.push({
+    const ref = this.babiesRef.push({
       name: this.state.babyBirthDetails.name,
       gender: this.state.babyBirthDetails.gender,
       dateOfBirth: this.state.babyBirthDetails.dateOfBirth,
@@ -60,6 +60,12 @@ class AddBaby extends Component {
       timeOfBirth: this.state.babyBirthDetails.timeOfBirth,
       weight: this.state.babyBirthDetails.weight
     });
+
+    if (this.state.selectedFile) {
+      storage
+        .ref(`images/${auth.currentUser.uid}/${ref.key}`)
+        .put(this.state.selectedFile);
+    }
   }
 
   //To Select Image from Gallery
@@ -120,7 +126,7 @@ class AddBaby extends Component {
   //   this.setState((open: false), {
   //     babyDetails: {
   //       name: "",
-  //       gende: "",
+  //       gender: "",
   //       dateOfBirth: "",
   //       placeOfBirth: "",
   //       timeOfBirth: "",

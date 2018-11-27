@@ -21,6 +21,10 @@ import { database, storage, auth } from "../../firebase";
 const styles = theme => ({
   FormControl: {
     width: 300
+  },
+  dialogImage: {
+    marginRight: "auto",
+    marginLeft: "auto"
   }
 });
 
@@ -37,8 +41,6 @@ class AddBaby extends Component {
         placeOfBirth: "",
         timeOfBirth: "",
         weight: ""
-        // image: null,
-        // url: ""
       }
     };
 
@@ -46,6 +48,19 @@ class AddBaby extends Component {
     this.babiesRef = database.ref(
       `/users/${auth.currentUser.uid}/babyBirthDetails`
     );
+  }
+
+  createImage(ref) {
+    if (this.state.selectedFile) {
+      const imageType = this.state.selectedFile.type.split("/")[1];
+      const userID = auth.currentUser.uid;
+      const imagePath = `images/${userID}/${ref.key}.${imageType}`;
+
+      storage
+        .ref(imagePath)
+        .put(this.state.selectedFile)
+        .then(() => ref.update({ imagePath }));
+    }
   }
 
   //Need to add validation
@@ -61,11 +76,7 @@ class AddBaby extends Component {
       weight: this.state.babyBirthDetails.weight
     });
 
-    if (this.state.selectedFile) {
-      storage
-        .ref(`images/${auth.currentUser.uid}/${ref.key}`)
-        .put(this.state.selectedFile);
-    }
+    this.createImage(ref);
   }
 
   //To Select Image from Gallery
@@ -74,38 +85,6 @@ class AddBaby extends Component {
       selectedFile: event.target.files[0]
     });
   };
-
-  //Handle upload of images
-  // handleUpload = () => {
-  //   const { image } = this.state;
-  //   const uploadTask = storage.ref(`images/${image.name}`).put(image);
-  //   uploadTask.on(
-  //     "state_changed",
-  //     snapshot => {},
-  //     error => {
-  //       console.log(error);
-  //     },
-  //     () => {
-  //       storage
-  //         .ref("images")
-  //         .child(image.name)
-  //         .getDownloadURL()
-  //         .then(url => {
-  //           console.log(url);
-  //           this.setState({ url });
-  //         });
-  //     }
-  //   );
-  // };
-
-  // fileUploadHandler = () => {
-  //   const fd = new FormData();
-  //   fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
-  //   axios.post("add firebase url from cloud storage", fd).then(res => {
-  //     console.log(res);
-  //   });
-  //   //add catch block
-  // };
 
   handleToggle = () => {
     this.setState({
@@ -151,7 +130,7 @@ class AddBaby extends Component {
       { classes } = this.props;
     const imageURL = selectedFile
       ? URL.createObjectURL(selectedFile)
-      : this.state.url || "https://via.placeholder.com/300x300";
+      : this.state.url || "https://via.placeholder.com/200x200";
 
     return (
       <Fragment>
@@ -178,20 +157,25 @@ class AddBaby extends Component {
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
               <input
+                accept="image/png, image/jpeg"
                 type="file"
                 style={{ display: "none" }}
                 onChange={this.fileSelectedHandler}
                 ref={fileInput => (this.fileInput = fileInput)}
               />
               {/* Images */}
-              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
-              <Button onClick={this.handleUpload}>Upload</Button>
+              <Button
+                className={classes.dialogImage}
+                onClick={() => this.fileInput.click()}
+              >
+                Add Image
+              </Button>
               <br />
               <img
                 src={imageURL}
                 alt="Uploaded images"
-                height="300"
-                width="300"
+                height="200"
+                width="200"
               />
               <br />
               <TextField

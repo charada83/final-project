@@ -11,6 +11,8 @@ import IconButton from "@material-ui/core/Icon";
 import { Link } from "@reach/router";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import CardMedia from "@material-ui/core/CardMedia";
+import { auth, storage } from "../firebase";
 
 const styles = theme => ({
   card: {
@@ -26,7 +28,10 @@ const styles = theme => ({
     color: "#d16682"
   },
   media: {
-    height: 140
+    height: 200,
+    width: 200,
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   link: {
     textDecoration: "none",
@@ -47,11 +52,36 @@ const styles = theme => ({
 });
 
 class BabyBirthDetails extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   // onSelectEdit = id => {
   //   this.setState({
   //     editMode: true
   //   });
   // };
+
+  componentDidMount() {
+    this.getImage({});
+  }
+
+  componentDidUpdate(prevProps) {
+    this.getImage(prevProps);
+  }
+
+  getImage(prevProps) {
+    if (this.props.imagePath !== prevProps.imagePath) {
+      storage
+        .ref(this.props.imagePath)
+        .getDownloadURL()
+        .then(imageURL => {
+          this.setState({ imageURL });
+        });
+    }
+  }
 
   render() {
     const {
@@ -80,7 +110,7 @@ class BabyBirthDetails extends Component {
               </IconButton>
             </h2>
           </Typography>
-          {/* <CardMedia className={classes.media} "Input Image" /> */}
+          <CardMedia className={classes.media} image={this.state.imageURL} />
 
           <Typography className={classes.cardContent}>
             <List>

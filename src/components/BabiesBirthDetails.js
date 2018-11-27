@@ -11,21 +11,6 @@ class BabiesBirthDetails extends Component {
           return <BabyBirthDetails key={key} {...babyBirthDetail} />;
         })}
       </section>
-      // <Consumer>
-      //   {value => {
-      //     const { babiesBirthDetails } = value;
-      //     return (
-      //       <Fragment>
-      //         {babiesBirthDetails.map(babiesBirthDetails => (
-      //           <BirthDetails
-      //             key={babiesBirthDetails.id}
-      //             babiesBirthDetails={babiesBirthDetails}
-      //           />
-      //         ))}
-      //       </Fragment>
-      //     );
-      //   }}
-      // </Consumer>
     );
   }
 }

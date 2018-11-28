@@ -132,14 +132,14 @@ class BabyBirthDetails extends Component {
         </CardContent>
         <CardActions>
           <Button size="small">
-            <Link to="/dashboard/milestones" className={classes.link}>
+            <Link to="/babydetails/milestones" className={classes.link}>
               My Milestones
             </Link>
           </Button>
           <Button size="small">
             {/* Link to go to specific baby details */}
-            {/* <Link to={`dashboard/memories/${babiesBirthDetails.id}`}> */}
-            <Link to="/dashboard/memories" className={classes.link}>
+            {/* <Link to={`/babydetails/memories/${babiesBirthDetails.id}`}> */}
+            <Link to="/babydetails/memories" className={classes.link}>
               My Memories
             </Link>
           </Button>

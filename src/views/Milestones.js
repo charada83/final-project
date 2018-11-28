@@ -10,11 +10,15 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import { Paper } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
 
 const styles = theme => ({
   root: {
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    justifyContent: "space-between"
   },
   title: {
     textAlign: "center",
@@ -53,56 +57,67 @@ class Milestones extends Component {
           Milestones
         </Typography>
         <p>TextFields with dropdown, image, multiline textfield goes here?</p>
-        <form className={classes.root} autoComplete="off">
-          <FormControl className={classes.formControl}>
-            <InputLabel shrink htmlFor="milestone">
-              Milestone
-            </InputLabel>
-            <Select
-              value={this.state.milestone}
-              onChange={this.handleChange}
-              name="milestone"
-              displayEmpty
-              className={classes.selectEmpty}
+        <Paper>
+          <form className={classes.root} autoComplete="off">
+            <FormControl className={classes.formControl}>
+              <InputLabel shrink htmlFor="milestone">
+                Milestone
+              </InputLabel>
+              <Select
+                value={this.state.milestone}
+                onChange={this.handleChange}
+                name="milestone"
+                displayEmpty
+                className={classes.selectEmpty}
+              >
+                <MenuItem value="" disabled>
+                  Select Milestone
+                </MenuItem>
+                <MenuItem>First Smile</MenuItem>
+                <MenuItem>First Time Rolling Over</MenuItem>
+                <MenuItem>First Steps</MenuItem>
+                <MenuItem>First Word</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              id="date"
+              label="Date"
+              type="date"
+              value={this.state.date}
+              defaultValue="dd/mm/yyyy"
+              className={classes.FormControl}
+              InputLabelProps={{
+                shrink: true
+              }}
+              //variant="filled"
+            />
+            {/* <p>Insert Image </p> */}
+            <Button
+              style={{ marginBottom: 20 }}
+              variant="contained"
+              onClick={this.handleToggle}
+              color="primary"
+              mini
             >
-              <MenuItem value="" disabled>
-                Select Milestone
-              </MenuItem>
-              <MenuItem>First Smile</MenuItem>
-              <MenuItem>First Time Rolling Over</MenuItem>
-              <MenuItem>First Steps</MenuItem>
-              <MenuItem>First Word</MenuItem>
-            </Select>
-          </FormControl>
-          <TextField
-            id="date"
-            label="Date"
-            type="date"
-            value={this.state.date}
-            defaultValue="dd/mm/yyyy"
-            className={classes.FormControl}
-            InputLabelProps={{
-              shrink: true
-            }}
-            variant="filled"
-          />
-          {/* <p>Insert Image </p> */}
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="Contemplative Reptile"
-              />
-            </CardActionArea>
-            <CardContent>
-              <Typography variant="h5" component="h3">
-                Milestone Image
-              </Typography>
-              <Typography component="p">My first smile</Typography>
-            </CardContent>
-          </Card>
-          {/* <TextField
+              <AddIcon color="secondary" />{" "}
+              <Typography color="secondary">Add Image</Typography>
+            </Button>
+            {/* <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  title="Contemplative Reptile"
+                />
+              </CardActionArea>
+              <CardContent>
+                <Typography variant="h5" component="h3">
+                  Milestone Image
+                </Typography>
+                <Typography component="p">My first smile</Typography>
+              </CardContent>
+            </Card> */}
+            {/* <TextField
             id="standard-multiline-flexible"
             label="Comments"
             multiline
@@ -111,7 +126,8 @@ class Milestones extends Component {
             onChange={this.handleChange("multiline")}
             className={classes.textField}
           /> */}
-        </form>
+          </form>
+        </Paper>
       </div>
     );
   }

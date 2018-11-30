@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { Paper } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
+import AddMilestone from "../components/dialogs/AddMilestone";
 
 const styles = theme => ({
   root: {
@@ -57,6 +58,7 @@ class Milestones extends Component {
           Milestones
         </Typography>
         <p>TextFields with dropdown, image, multiline textfield goes here?</p>
+        <AddMilestone />
         <Paper>
           <form className={classes.root} autoComplete="off">
             <FormControl className={classes.formControl}>

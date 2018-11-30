@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import Button from "@material-ui/core/Button";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -16,6 +15,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import { database, storage, auth } from "../../firebase";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const styles = theme => ({
   FormControl: {
@@ -140,28 +142,6 @@ class AddMilestone extends Component {
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
-              <input
-                accept="image/png, image/jpeg"
-                type="file"
-                style={{ display: "none" }}
-                onChange={this.fileSelectedHandler}
-                ref={fileInput => (this.fileInput = fileInput)}
-              />
-              {/* Images */}
-              <Button
-                className={classes.dialogImage}
-                onClick={() => this.fileInput.click()}
-              >
-                Add Image
-              </Button>
-              <br />
-              <img
-                src={imageURL}
-                alt="Uploaded images"
-                height="200"
-                width="200"
-              />
-              <br />
               <FormControl className={classes.formControl}>
                 <InputLabel shrink htmlFor="milestone">
                   Milestone
@@ -182,6 +162,7 @@ class AddMilestone extends Component {
                   <MenuItem>First Word</MenuItem>
                 </Select>
               </FormControl>
+              <br />
               <TextField
                 id="date"
                 label="Date"
@@ -195,6 +176,29 @@ class AddMilestone extends Component {
                 }}
                 //variant="filled"
               />
+              <input
+                accept="image/png, image/jpeg"
+                type="file"
+                style={{ display: "none" }}
+                onChange={this.fileSelectedHandler}
+                ref={fileInput => (this.fileInput = fileInput)}
+              />
+              <br />
+              {/* Images */}
+              <Button
+                className={classes.dialogImage}
+                onClick={() => this.fileInput.click()}
+              >
+                Add Image
+              </Button>
+              <br />
+              <img
+                src={imageURL}
+                alt="Uploaded images"
+                height="100"
+                width="100"
+              />
+              <br />
             </form>
           </DialogContent>
           <DialogActions>

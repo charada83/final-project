@@ -12,7 +12,7 @@ import { Link } from "@reach/router";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import CardMedia from "@material-ui/core/CardMedia";
-import { auth, storage } from "../firebase";
+import { storage } from "../firebase";
 
 const styles = theme => ({
   card: {

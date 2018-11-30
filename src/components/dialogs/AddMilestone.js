@@ -70,6 +70,7 @@ class AddMilestone extends Component {
     });
 
     this.createImage(ref);
+    this.handleToggle();
   }
 
   //To Select Image from Gallery

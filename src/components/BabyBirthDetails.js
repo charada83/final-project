@@ -132,7 +132,10 @@ class BabyBirthDetails extends Component {
         </CardContent>
         <CardActions>
           <Button size="small">
-            <Link to="/babydetails/milestones" className={classes.link}>
+            <Link
+              to={`/babydetails/milestones/${this.props.babyID}`}
+              className={classes.link}
+            >
               My Milestones
             </Link>
           </Button>

@@ -7,10 +7,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
@@ -43,7 +40,7 @@ class AddMilestone extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.milestonesRef = database.ref(
-      `/users/${auth.currentUser.uid}/milestones`
+      `/users/${auth.currentUser.uid}/milestones/${this.props.babyID}`
     );
   }
 
@@ -65,8 +62,8 @@ class AddMilestone extends Component {
     event.preventDefault();
 
     const ref = this.milestonesRef.push({
-      category: this.state.milestones.name,
-      date: this.state.milestones.gender
+      category: this.state.milestones.category,
+      date: this.state.milestones.date
     });
 
     this.createImage(ref);
@@ -86,13 +83,8 @@ class AddMilestone extends Component {
     });
   };
 
-  handleChange = name => ({ target: { value } }) => {
-    this.setState({
-      milestones: {
-        ...this.state.milestones,
-        [name]: value
-      }
-    });
+  handleChange = name => event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   //   //  To Clear Form after submit
@@ -144,13 +136,13 @@ class AddMilestone extends Component {
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
               <FormControl className={classes.formControl}>
-                <InputLabel shrink htmlFor="milestone">
+                <InputLabel shrink htmlFor="category">
                   Milestone
                 </InputLabel>
                 <Select
-                  value={this.state.milestone}
+                  value={category}
                   onChange={this.handleChange}
-                  name="milestone"
+                  name="category"
                   displayEmpty
                   className={classes.selectEmpty}
                 >

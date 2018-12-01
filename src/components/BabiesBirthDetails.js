@@ -8,7 +8,9 @@ class BabiesBirthDetails extends Component {
     return (
       <section>
         {map(babyBirthDetails, (babyBirthDetail, key) => {
-          return <BabyBirthDetails key={key} {...babyBirthDetail} />;
+          return (
+            <BabyBirthDetails key={key} {...babyBirthDetail} babyID={key} />
+          );
         })}
       </section>
     );

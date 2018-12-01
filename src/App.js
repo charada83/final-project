@@ -31,7 +31,7 @@ class App extends Component {
             <PrivateRoute path="babydetails" component={BabyDetails} />
             <PrivateRoute path="/babydetails/memories" component={Memories} />
             <PrivateRoute
-              path="/babydetails/milestones"
+              path="/babydetails/milestones/:babyID"
               component={Milestones}
             />
             <PrivateRoute path="/family" component={Family} />

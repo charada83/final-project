@@ -9,41 +9,28 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import CardMedia from "@material-ui/core/CardMedia";
 import { storage } from "../../firebase";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
-  card: {
+  paper: {
     maxWidth: 800,
     marginBottom: 20,
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "#000"
+    backgroundColor: "#000",
+    paddingRight: 10
   },
-  cardContent: {
-    display: "flex",
-    justifyContent: "center",
+  paperContent: {
     color: "#d16682"
   },
   media: {
-    height: 200,
-    width: 200,
-    marginLeft: "auto",
-    marginRight: "auto"
+    height: 80,
+    width: 80
   },
-  link: {
-    textDecoration: "none",
-
-    "&:visited": { color: "#6670d1" },
-    "&:link": { color: "#d16682" },
-    "&:active": { color: "#d16682" }
-  },
-  name: {
-    color: "#d1c766"
-  },
-  details: {
-    textDecoration: "none"
-  },
-  listItem: {
-    padding: 5
+  list: {
+    display: "flex",
+    flexDirection: "horizontal",
+    justifyContent: "space-between"
   }
 });
 
@@ -83,21 +70,20 @@ class Milestone extends Component {
     const { category, date, classes } = this.props;
 
     return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography className={classes.cardContent}>
-            <List>
-              <ListItem className={classes.listItem}>
-                Category: {category}
-              </ListItem>
-              <ListItem className={classes.listItem}>Date: {date}</ListItem>
-            </List>
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <CardMedia className={classes.media} image={this.state.imageURL} />
-        </CardActions>
-      </Card>
+      <Paper className={classes.paper}>
+        <Typography className={classes.paperContent}>
+          <List className={classes.list}>
+            <ListItem>Milestone: {category}</ListItem>
+            <ListItem>{date}</ListItem>
+            <div>
+              <CardMedia
+                className={classes.media}
+                image={this.state.imageURL}
+              />
+            </div>
+          </List>
+        </Typography>
+      </Paper>
     );
   }
 }

@@ -36,9 +36,10 @@ class NavBar extends Component {
           <Link to="babydetails" style={style.link}>
             Baby Details
           </Link>
-          {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+        {/* {this.state.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem> */}
+        {/* <Collapse in={this.state.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItem>
               <Link to="/babydetails/milestones" style={style.link}>
@@ -51,8 +52,9 @@ class NavBar extends Component {
               </Link>
             </ListItem>
           </List>
-        </Collapse>
-        <ListItem onClick={this.handleClick}>
+        </Collapse> */}
+        {/* <ListItem onClick={this.handleClick}> */}
+        <ListItem>
           <Link to="family" style={style.link}>
             Family
           </Link>

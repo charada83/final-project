@@ -25,7 +25,8 @@ const styles = theme => ({
   cardContent: {
     display: "flex",
     justifyContent: "center",
-    color: "#d16682"
+    color: "#d16682",
+    fontSize: 16
   },
   media: {
     height: 200,
@@ -35,19 +36,30 @@ const styles = theme => ({
   },
   link: {
     textDecoration: "none",
-
     "&:visited": { color: "#6670d1" },
     "&:link": { color: "#d16682" },
-    "&:active": { color: "#d16682" }
+    "&:active": { color: "#d16682" },
+    fontWeight: "bold",
+    fontFamily: "Mali, cursive",
+    fontSize: 18,
+    marginRight: 20,
+    marginLeft: 20,
+    marginBottom: 20
   },
   name: {
+    textAlign: "center",
     color: "#d1c766"
-  },
-  details: {
-    textDecoration: "none"
   },
   listItem: {
     padding: 5
+  },
+  button: {
+    // backgroundColor: "#6670d1",
+    marginLeft: "auto",
+    marginRight: "auto"
+  },
+  edit: {
+    marginLeft: 20
   }
 });
 
@@ -105,7 +117,9 @@ class BabyBirthDetails extends Component {
           >
             <h2>
               {name}
-              <IconButton /*onClick={() => onSelectEdit()}*/>
+              <IconButton
+                className={classes.edit} /*onClick={() => onSelectEdit()}*/
+              >
                 <EditIcon />
               </IconButton>
             </h2>
@@ -131,21 +145,21 @@ class BabyBirthDetails extends Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">
-            <Link
-              to={`/babydetails/milestones/${this.props.babyID}`}
-              className={classes.link}
-            >
-              My Milestones
-            </Link>
-          </Button>
-          <Button size="small">
-            {/* Link to go to specific baby details */}
-            {/* <Link to={`/babydetails/memories/${babiesBirthDetails.id}`}> */}
-            <Link to="/babydetails/memories" className={classes.link}>
-              My Memories
-            </Link>
-          </Button>
+          <div className={classes.button}>
+            <Button size="small">
+              <Link
+                to={`/babydetails/milestones/${this.props.babyID}`}
+                className={classes.link}
+              >
+                My Milestones
+              </Link>
+            </Button>
+            <Button size="small">
+              <Link to="/babydetails/memories" className={classes.link}>
+                My Memories
+              </Link>
+            </Button>
+          </div>
         </CardActions>
       </Card>
     );

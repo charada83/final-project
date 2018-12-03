@@ -13,19 +13,21 @@ import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   paper: {
-    maxWidth: 800,
+    maxWidth: 900,
     marginBottom: 20,
     marginLeft: "auto",
     marginRight: "auto",
     backgroundColor: "#000",
-    paddingRight: 10
+    paddingRight: 25,
+    borderRadius: 50
   },
   paperContent: {
     color: "#d16682"
   },
   media: {
     height: 80,
-    width: 80
+    width: 80,
+    marginRight: 20
   },
   list: {
     display: "flex",
@@ -74,7 +76,7 @@ class Milestone extends Component {
         <Typography className={classes.paperContent}>
           <List className={classes.list}>
             <ListItem>Milestone: {category}</ListItem>
-            <ListItem>{date}</ListItem>
+            <ListItem>Date: {date}</ListItem>
             <div>
               <CardMedia
                 className={classes.media}

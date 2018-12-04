@@ -10,6 +10,7 @@ import List from "@material-ui/core/List";
 import CardMedia from "@material-ui/core/CardMedia";
 import { storage } from "../../firebase";
 import Paper from "@material-ui/core/Paper";
+import { MILESTONES } from "../dialogs/AddMilestone";
 
 const styles = theme => ({
   paper: {
@@ -75,7 +76,7 @@ class Milestone extends Component {
       <Paper className={classes.paper}>
         <Typography className={classes.paperContent}>
           <List className={classes.list}>
-            <ListItem>Milestone: {category}</ListItem>
+            <ListItem>Milestone: {MILESTONES[category]}</ListItem>
             <ListItem>Date: {date}</ListItem>
             <div>
               <CardMedia

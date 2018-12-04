@@ -26,12 +26,18 @@ const styles = theme => ({
   }
 });
 
+export const MILESTONES = {
+  0: "First Smile",
+  1: "First Time Rolling Over",
+  2: "First Steps",
+  3: "First Word"
+};
+
 class AddMilestone extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-
       milestones: {
         category: "",
         date: ""
@@ -67,7 +73,15 @@ class AddMilestone extends Component {
     });
 
     this.createImage(ref);
-    this.handleToggle();
+
+    this.setState({
+      open: false,
+      milestones: {
+        category: "",
+        date: ""
+      },
+      selectedFile: undefined
+    });
   }
 
   //To Select Image from Gallery
@@ -83,22 +97,14 @@ class AddMilestone extends Component {
     });
   };
 
-  handleChange = name => event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = name => ({ target: { value } }) => {
+    this.setState({
+      milestones: {
+        ...this.state.milestones,
+        [name]: value
+      }
+    });
   };
-
-  //   //  To Clear Form after submit
-  //   this.setState((open: false), {
-  //     babyDetails: {
-  //       name: "",
-  //       gender: "",
-  //       dateOfBirth: "",
-  //       placeOfBirth: "",
-  //       timeOfBirth: "",
-  //       weight: ""
-  //     }
-  //   });
-  // };
 
   render() {
     const {
@@ -141,18 +147,17 @@ class AddMilestone extends Component {
                 </InputLabel>
                 <Select
                   value={category}
-                  onChange={this.handleChange}
-                  name="category"
+                  onChange={this.handleChange("category")}
                   displayEmpty
                   className={classes.selectEmpty}
                 >
                   <MenuItem value="" disabled>
                     Select Milestone
                   </MenuItem>
-                  <MenuItem>First Smile</MenuItem>
-                  <MenuItem>First Time Rolling Over</MenuItem>
-                  <MenuItem>First Steps</MenuItem>
-                  <MenuItem>First Word</MenuItem>
+                  <MenuItem value={0}>{MILESTONES[0]}</MenuItem>
+                  <MenuItem value={1}>{MILESTONES[1]}</MenuItem>
+                  <MenuItem value={2}>{MILESTONES[2]}</MenuItem>
+                  <MenuItem value={3}>{MILESTONES[3]}</MenuItem>
                 </Select>
               </FormControl>
               <br />
@@ -160,7 +165,7 @@ class AddMilestone extends Component {
                 id="date"
                 label="Date"
                 type="date"
-                value={this.state.date}
+                value={date}
                 defaultValue="dd/mm/yyyy"
                 className={classes.FormControl}
                 onChange={this.handleChange("date")}

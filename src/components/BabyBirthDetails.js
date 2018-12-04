@@ -24,15 +24,14 @@ const styles = theme => ({
   },
   cardContent: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    flexDirection: "horizontal",
     color: "#d16682",
     fontSize: 16
   },
   media: {
     height: 200,
-    width: 200,
-    marginLeft: "auto",
-    marginRight: "auto"
+    width: 200
   },
   link: {
     textDecoration: "none",
@@ -124,25 +123,29 @@ class BabyBirthDetails extends Component {
               </IconButton>
             </h2>
           </Typography>
-          <CardMedia className={classes.media} image={this.state.imageURL} />
+          <div className={classes.cardContent}>
+            <CardMedia className={classes.media} image={this.state.imageURL} />
 
-          <Typography className={classes.cardContent}>
-            <List>
-              <ListItem className={classes.listItem}>Gender: {gender}</ListItem>
-              <ListItem className={classes.listItem}>
-                Date Of Birth: {dateOfBirth}
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                Place Of Birth: {placeOfBirth}
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                Time Of Birth: {timeOfBirth}
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                Weight: {parseFloat(weight).toFixed(2)} kg
-              </ListItem>
-            </List>
-          </Typography>
+            <Typography className={classes.cardContent}>
+              <List>
+                <ListItem className={classes.listItem}>
+                  Gender: {gender}
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  Date Of Birth: {dateOfBirth}
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  Place Of Birth: {placeOfBirth}
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  Time Of Birth: {timeOfBirth}
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  Weight: {parseFloat(weight).toFixed(2)} kg
+                </ListItem>
+              </List>
+            </Typography>
+          </div>
         </CardContent>
         <CardActions>
           <div className={classes.button}>

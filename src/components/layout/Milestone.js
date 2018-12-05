@@ -44,12 +44,6 @@ class Milestone extends Component {
     this.state = {};
   }
 
-  // onSelectEdit = id => {
-  //   this.setState({
-  //     editMode: true
-  //   });
-  // };
-
   componentDidMount() {
     this.getImage({});
   }
@@ -76,8 +70,8 @@ class Milestone extends Component {
       <Paper className={classes.paper}>
         <Typography className={classes.paperContent}>
           <List className={classes.list}>
-            <ListItem>Milestone: {MILESTONES[category]}</ListItem>
-            <ListItem>Date: {date}</ListItem>
+            <ListItem>{MILESTONES[category]}</ListItem>
+            <ListItem>{date}</ListItem>
             <div>
               <CardMedia
                 className={classes.media}

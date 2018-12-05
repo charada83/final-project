@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import AddMemory from "../components/dialogs/AddMemory";
 
 function TabContainer(props) {
   return (
@@ -50,6 +51,7 @@ class ScrollableTabsButtonForce extends React.Component {
         <Typography className={classes.title} variant="h3" gutterBottom>
           Memories
         </Typography>
+        <AddMemory />
         <AppBar position="static" color="default">
           <Tabs
             value={value}

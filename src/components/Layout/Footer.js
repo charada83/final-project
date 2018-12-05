@@ -1,15 +1,34 @@
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
+const styles = theme => ({
+  content: {
+    textAlign: "center",
+    fontFamily: "Mali, cursive",
+    padding: 10
+  },
+  span: {
+    color: "#d16682"
+  }
+});
 class Footer extends Component {
-  //state = {  }
   render() {
+    const { classes } = this.props;
     return (
       <AppBar position="static">
-        <h1>Footer</h1>
+        <Typography
+          className={classes.content}
+          variant="h6"
+          color="secondary"
+          noWrap
+        >
+          BABY<span className={classes.span}>Book</span> 2018
+        </Typography>
       </AppBar>
     );
   }
 }
 
-export default Footer;
+export default withStyles(styles)(Footer);

@@ -34,7 +34,7 @@ class TitleLogo extends Component {
           color="secondary"
           noWrap
         >
-          BABY <span className={classes.span}>Book</span>
+          BABY<span className={classes.span}>Book</span>
         </Typography>
       </Fragment>
     );

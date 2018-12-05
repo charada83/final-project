@@ -35,7 +35,8 @@ const styles = theme => ({
   appBar: {
     backgroundColor: "primary",
     zIndex: theme.zIndex.drawer + 1,
-    paddingTop: 10
+    paddingTop: 10,
+    height: "80px"
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
@@ -44,8 +45,8 @@ const styles = theme => ({
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
+    minHeight: "100vh",
     width: drawerWidth,
-
     [theme.breakpoints.up("md")]: {
       position: "relative"
     }
@@ -53,7 +54,8 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing.unit * 3,
+    minHeight: "100vh"
     // marginRight: drawerWidth,
     // [theme.breakpoints.up("md")]: {
     //   width: `calc(100% - ${drawerWidth}px)`

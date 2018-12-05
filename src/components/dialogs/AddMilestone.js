@@ -17,7 +17,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
 const styles = theme => ({
-  FormControl: {
+  formControl: {
     width: 300
   },
   dialogImage: {
@@ -149,7 +149,6 @@ class AddMilestone extends Component {
                   value={category}
                   onChange={this.handleChange("category")}
                   displayEmpty
-                  className={classes.selectEmpty}
                 >
                   <MenuItem value="" disabled>
                     Select Milestone
@@ -167,13 +166,14 @@ class AddMilestone extends Component {
                 type="date"
                 value={date}
                 defaultValue="dd/mm/yyyy"
-                className={classes.FormControl}
+                className={classes.formControl}
                 onChange={this.handleChange("date")}
                 InputLabelProps={{
                   shrink: true
                 }}
                 //variant="filled"
               />
+              {/* Images */}
               <input
                 accept="image/png, image/jpeg"
                 type="file"
@@ -182,13 +182,7 @@ class AddMilestone extends Component {
                 ref={fileInput => (this.fileInput = fileInput)}
               />
               <br />
-              {/* Images */}
-              <Button
-                className={classes.dialogImage}
-                onClick={() => this.fileInput.click()}
-              >
-                Add Image
-              </Button>
+              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
               <br />
               <img
                 src={imageURL}
@@ -196,7 +190,6 @@ class AddMilestone extends Component {
                 height="100"
                 width="100"
               />
-              <br />
             </form>
           </DialogContent>
           <DialogActions>

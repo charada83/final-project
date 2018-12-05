@@ -77,7 +77,19 @@ class AddBaby extends Component {
     });
 
     this.createImage(ref);
-    this.handleToggle();
+
+    this.setState({
+      open: false,
+      babyBirthDetails: {
+        name: "",
+        gender: "",
+        dateOfBirth: "",
+        placeOfBirth: "",
+        timeOfBirth: "",
+        weight: ""
+      },
+      selectedFile: undefined
+    });
   }
 
   //To Select Image from Gallery
@@ -101,19 +113,6 @@ class AddBaby extends Component {
       }
     });
   };
-
-  //   //  To Clear Form after submit
-  //   this.setState((open: false), {
-  //     babyDetails: {
-  //       name: "",
-  //       gender: "",
-  //       dateOfBirth: "",
-  //       placeOfBirth: "",
-  //       timeOfBirth: "",
-  //       weight: ""
-  //     }
-  //   });
-  // };
 
   render() {
     const {

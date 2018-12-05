@@ -7,7 +7,6 @@ import Layout from "./components/layout/index";
 import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
 import Notifications from "./components/dialogs/Notifications";
-import { Provider } from "./context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import firebase from "./firebase";
 
@@ -24,22 +23,20 @@ class App extends Component {
 
   render() {
     return (
-      <Provider>
-        <Layout>
-          <Router>
-            <Home path="/" component={Home} />
-            <PrivateRoute path="babydetails" component={BabyDetails} />
-            <PrivateRoute path="/babydetails/memories" component={Memories} />
-            <PrivateRoute
-              path="/babydetails/milestones/:babyID"
-              component={Milestones}
-            />
-            <PrivateRoute path="/family" component={Family} />
-            <PrivateRoute path="/notifications" component={Notifications} />
-            <NotFound default />
-          </Router>
-        </Layout>
-      </Provider>
+      <Layout>
+        <Router>
+          <Home path="/" component={Home} />
+          <PrivateRoute path="babydetails" component={BabyDetails} />
+          <PrivateRoute path="/babydetails/memories" component={Memories} />
+          <PrivateRoute
+            path="/babydetails/milestones/:babyID"
+            component={Milestones}
+          />
+          <PrivateRoute path="/family" component={Family} />
+          <PrivateRoute path="/notifications" component={Notifications} />
+          <NotFound default />
+        </Router>
+      </Layout>
     );
   }
 }

@@ -5,14 +5,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import EditIcon from "@material-ui/icons/Edit";
 import { withStyles } from "@material-ui/core";
-import IconButton from "@material-ui/core/Icon";
 import { Link } from "@reach/router";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import CardMedia from "@material-ui/core/CardMedia";
 import { storage } from "../firebase";
+import EditBaby from "../components/dialogs/EditBaby";
 
 const styles = theme => ({
   card: {
@@ -53,7 +52,6 @@ const styles = theme => ({
     padding: 5
   },
   button: {
-    // backgroundColor: "#6670d1",
     marginLeft: "auto",
     marginRight: "auto"
   },
@@ -69,11 +67,11 @@ class BabyBirthDetails extends Component {
     this.state = {};
   }
 
-  // onSelectEdit = id => {
-  //   this.setState({
-  //     editMode: true
-  //   });
-  // };
+  onSelectEdit = id => {
+    this.setState({
+      editMode: true
+    });
+  };
 
   componentDidMount() {
     this.getImage({});
@@ -83,15 +81,16 @@ class BabyBirthDetails extends Component {
     this.getImage(prevProps);
   }
 
-  getImage(prevProps) {
-    if (this.props.imagePath !== prevProps.imagePath) {
-      storage
-        .ref(this.props.imagePath)
-        .getDownloadURL()
-        .then(imageURL => {
-          this.setState({ imageURL });
-        });
+  getImage() {
+    if (this.props.imagePath === undefined) {
+      return;
     }
+    storage
+      .ref(this.props.imagePath)
+      .getDownloadURL()
+      .then(imageURL => {
+        this.setState({ imageURL });
+      });
   }
 
   render() {
@@ -108,20 +107,14 @@ class BabyBirthDetails extends Component {
     return (
       <Card className={classes.card}>
         <CardContent>
+          <EditBaby {...this.props} />
           <Typography
             className={classes.name}
             gutterBottom
             variant="headline"
             component="h2"
           >
-            <h2>
-              {name}
-              <IconButton
-                className={classes.edit} /*onClick={() => onSelectEdit()}*/
-              >
-                <EditIcon />
-              </IconButton>
-            </h2>
+            <h2>{name}</h2>
           </Typography>
           <div className={classes.cardContent}>
             <CardMedia className={classes.media} image={this.state.imageURL} />

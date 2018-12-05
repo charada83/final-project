@@ -35,8 +35,7 @@ const styles = theme => ({
   appBar: {
     backgroundColor: "primary",
     zIndex: theme.zIndex.drawer + 1,
-    paddingTop: 10,
-    height: "80px"
+    paddingTop: 10
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
@@ -56,10 +55,6 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     minHeight: "100vh"
-    // marginRight: drawerWidth,
-    // [theme.breakpoints.up("md")]: {
-    //   width: `calc(100% - ${drawerWidth}px)`
-    // }
   }
 });
 

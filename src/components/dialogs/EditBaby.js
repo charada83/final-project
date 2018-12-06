@@ -137,7 +137,6 @@ class EditBaby extends Component {
             variant="contained"
             onClick={this.handleToggle}
             color="primary"
-            mini
           >
             <EditIcon color="secondary" />{" "}
             <Typography color="secondary">Edit Baby</Typography>

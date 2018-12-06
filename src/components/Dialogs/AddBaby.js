@@ -16,6 +16,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
+import { DatePicker } from "material-ui-pickers";
 import { database, storage, auth } from "../../firebase";
 
 const styles = theme => ({
@@ -37,7 +38,7 @@ class AddBaby extends Component {
       babyBirthDetails: {
         name: "",
         gender: "",
-        dateOfBirth: "",
+        dateOfBirth: Date.now(),
         placeOfBirth: "",
         timeOfBirth: "",
         weight: ""
@@ -110,6 +111,15 @@ class AddBaby extends Component {
       babyBirthDetails: {
         ...this.state.babyBirthDetails,
         [name]: value
+      }
+    });
+  };
+
+  handleDateChange = dateOfBirth => {
+    this.setState({
+      babyBirthDetails: {
+        ...this.state.babyBirthDetails,
+        dateOfBirth: dateOfBirth.toISOString()
       }
     });
   };
@@ -210,17 +220,14 @@ class AddBaby extends Component {
               </FormControl>
               <br />
               {/* DatePicker for Date of Birth */}
-              <TextField
-                id="date"
+              <DatePicker
+                autoOk
                 label="Date of Birth"
-                type="date"
                 value={dateOfBirth}
-                defaultValue="dd/mm/yyyy"
-                className={classes.FormControl}
-                onChange={this.handleChange("dateOfBirth")}
-                InputLabelProps={{
-                  shrink: true
-                }}
+                onChange={this.handleDateChange}
+                disableFuture
+                maxDateMessage="Date must be less than today"
+                animateYearScrolling
               />
               <br />
               <TextField

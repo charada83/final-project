@@ -6,7 +6,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
-import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -15,6 +14,7 @@ import { database, storage, auth } from "../../firebase";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import { DatePicker } from "material-ui-pickers";
 
 const styles = theme => ({
   formControl: {
@@ -40,7 +40,7 @@ class AddMilestone extends Component {
       open: false,
       milestones: {
         category: "",
-        date: ""
+        date: Date.now()
       }
     };
 
@@ -106,6 +106,15 @@ class AddMilestone extends Component {
     });
   };
 
+  handleDateChange = date => {
+    this.setState({
+      milestones: {
+        ...this.state.milestones,
+        date
+      }
+    });
+  };
+
   render() {
     const {
         open,
@@ -160,18 +169,14 @@ class AddMilestone extends Component {
                 </Select>
               </FormControl>
               <br />
-              <TextField
-                id="date"
+              <DatePicker
+                autoOk
                 label="Date"
-                type="date"
                 value={date}
-                defaultValue="dd/mm/yyyy"
-                className={classes.formControl}
-                onChange={this.handleChange("date")}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                //variant="filled"
+                onChange={this.handleDateChange}
+                disableFuture
+                maxDateMessage="Date must be less than today"
+                animateYearScrolling
               />
               {/* Images */}
               <input

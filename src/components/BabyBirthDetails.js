@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,6 +12,13 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { storage } from "../firebase";
 import EditBaby from "../components/dialogs/EditBaby";
 
+const dateOpts = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+};
+const locale = navigator.languages[0];
 const styles = theme => ({
   card: {
     maxWidth: 800,
@@ -103,29 +109,36 @@ class BabyBirthDetails extends Component {
       weight,
       classes
     } = this.props;
+    const date = new Date(dateOfBirth).toLocaleDateString(locale, dateOpts);
 
     return (
       <Card className={classes.card}>
         <CardContent>
-          <EditBaby {...this.props} />
-          <Typography
-            className={classes.name}
-            gutterBottom
-            variant="headline"
-            component="h2"
-          >
-            <h2>{name}</h2>
+          <EditBaby
+            {...this.props}
+            classes={{
+              dialogImage: classes.dialogImage,
+              FormControl: classes.FormControl
+            }}
+          />
+          <Typography className={classes.name} gutterBottom variant="h3">
+            {name}
           </Typography>
           <div className={classes.cardContent}>
-            <CardMedia className={classes.media} image={this.state.imageURL} />
+            {this.state.imageURL && (
+              <CardMedia
+                className={classes.media}
+                image={this.state.imageURL}
+              />
+            )}
 
-            <Typography className={classes.cardContent}>
+            <div className={classes.cardContent}>
               <List>
                 <ListItem className={classes.listItem}>
                   Gender: {gender}
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                  Date Of Birth: {dateOfBirth}
+                  Date Of Birth: {date}
                 </ListItem>
                 <ListItem className={classes.listItem}>
                   Place Of Birth: {placeOfBirth}
@@ -137,7 +150,7 @@ class BabyBirthDetails extends Component {
                   Weight: {parseFloat(weight).toFixed(2)} kg
                 </ListItem>
               </List>
-            </Typography>
+            </div>
           </div>
         </CardContent>
         <CardActions>
@@ -161,9 +174,5 @@ class BabyBirthDetails extends Component {
     );
   }
 }
-
-BabyBirthDetails.PropTypes = {
-  babiesBirthDetails: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(BabyBirthDetails);

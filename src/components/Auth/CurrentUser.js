@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { auth } from "../../firebase";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
@@ -6,8 +7,14 @@ import { Typography } from "@material-ui/core";
 const CurrentUser = ({ user }) => {
   return (
     <div style={{ display: "flex" }}>
-      <h4>Welcome {user.displayName}</h4>
-      {/* <img src={user.photoURL} alt={user.displayName} /> */}
+      {user.displayName && <h4>Welcome {user.displayName}</h4>}
+      {user.photoURL && (
+        <img
+          style={{ height: "40px", margin: "10px" }}
+          src={user.photoURL}
+          alt={user.displayName}
+        />
+      )}
 
       <Button
         variant="contained"
@@ -21,13 +28,11 @@ const CurrentUser = ({ user }) => {
   );
 };
 
-// CurrentUser.propTypes = {
-//   user: PropTypes.string({
-//     displayName: PropTypes.string,
-//     email: PropTypes.string.isRequired,
-//     photoURL: PropTypes.string,
-//     uid: PropTypes.string.isRequired
-//   })
-// };
+CurrentUser.propTypes = {
+  user: PropTypes.shape({
+    displayName: PropTypes.string,
+    photoURL: PropTypes.string
+  })
+};
 
 export default CurrentUser;

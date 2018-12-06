@@ -147,7 +147,7 @@ class AddMemory extends Component {
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
-              <FormControl>
+              <FormControl className={classes.formControl}>
                 <InputLabel shrink htmlFor="month">
                   Month
                 </InputLabel>

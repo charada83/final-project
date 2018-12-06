@@ -47,18 +47,16 @@ class EditBaby extends Component {
   }
 
   componentDidMount() {
-    // if (this.props.imagePath) {
     if (this.props.imagePath === undefined) {
       return;
     }
-    {
-      storage
-        .ref(this.props.imagePath)
-        .getDownloadURL()
-        .then(imageURL => {
-          this.setState({ imageURL });
-        });
-    }
+
+    storage
+      .ref(this.props.imagePath)
+      .getDownloadURL()
+      .then(imageURL => {
+        this.setState({ imageURL });
+      });
   }
 
   createImage(ref) {

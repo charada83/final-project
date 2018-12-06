@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { auth } from "../firebase";
 import Login from "../components/auth/Login";
-import { Redirect } from "@reach/router";
-import { navigate } from "@reach/router";
-import HomeContent from "../components/layout/HomeContent";
 import Button from "@material-ui/core/Button";
 import { Link } from "@reach/router";
 import { Typography } from "@material-ui/core";
@@ -37,7 +34,7 @@ class Home extends Component {
             color="primary"
             mini
           >
-            <Link to="/babydetails" noThrow>
+            <Link to="/babydetails">
               <Typography color="secondary">My Babies</Typography>
             </Link>
           </Button>

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
@@ -65,25 +63,23 @@ class Milestone extends Component {
 
     return (
       <Paper className={classes.paper}>
-        <Typography className={classes.paperContent}>
+        <div className={classes.paperContent}>
           <List className={classes.list}>
             <ListItem>{MILESTONES[category]}</ListItem>
             <ListItem>{date}</ListItem>
             <div>
-              <CardMedia
-                className={classes.media}
-                image={this.state.imageURL}
-              />
+              {this.state.imageURL && (
+                <CardMedia
+                  className={classes.media}
+                  image={this.state.imageURL}
+                />
+              )}
             </div>
           </List>
-        </Typography>
+        </div>
       </Paper>
     );
   }
 }
-
-Milestone.PropTypes = {
-  milestones: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(Milestone);

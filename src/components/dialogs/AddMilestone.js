@@ -204,7 +204,7 @@ class AddMilestone extends Component {
             <Button
               onClick={this.handleSubmit}
               color="primary"
-              variant="raised"
+              variant="contained"
             >
               Add
             </Button>

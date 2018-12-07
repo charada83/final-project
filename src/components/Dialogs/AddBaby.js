@@ -20,16 +20,24 @@ import { DatePicker } from "material-ui-pickers";
 import { database, storage, auth } from "../../firebase";
 
 const styles = theme => ({
+  title: {
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
+  },
   dialog: {
     textAlign: "center"
   },
   FormControl: {
     width: 300
   },
+  addIcon: {
+    marginBottom: 20,
+    borderRadius: 100
+  },
   imageButton: {
     marginBottom: 20,
-    marginTop: 20,
-    color: "yellow"
+    marginTop: 20
   },
   radioButton: {
     display: "flex"
@@ -91,7 +99,7 @@ class AddBaby extends Component {
       babyBirthDetails: {
         name: "",
         gender: "",
-        dateOfBirth: "",
+        dateOfBirth: undefined,
         placeOfBirth: "",
         timeOfBirth: "",
         weight: ""
@@ -153,14 +161,13 @@ class AddBaby extends Component {
       <Fragment>
         <Grid container justify="center">
           <Button
-            style={{ marginBottom: 20 }}
+            className={classes.addIcon}
             variant="contained"
             onClick={this.handleToggle}
             color="primary"
             mini
           >
-            <AddIcon color="secondary" />{" "}
-            <Typography color="secondary">Add Baby</Typography>
+            <AddIcon color="secondary" />
           </Button>
         </Grid>
 
@@ -170,7 +177,11 @@ class AddBaby extends Component {
           aria-labelledby="form-dialog-title"
           className={classes.dialog}
         >
-          <DialogTitle id="form-dialog-title">Add Baby</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+            <Typography variant="h4" className={classes.title}>
+              Add Baby
+            </Typography>
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>

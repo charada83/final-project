@@ -17,12 +17,24 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 
 const styles = theme => ({
+  title: {
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
+  },
+  dialog: {
+    textAlign: "center"
+  },
   formControl: {
     width: 300
   },
-  dialogImage: {
-    marginRight: "auto",
-    marginLeft: "auto"
+  addIcon: {
+    marginBottom: 20,
+    borderRadius: 100
+  },
+  imageButton: {
+    marginBottom: 20,
+    marginTop: 20
   }
 });
 
@@ -121,33 +133,37 @@ class AddMemory extends Component {
       { classes } = this.props;
     const imageURL = selectedFile
       ? URL.createObjectURL(selectedFile)
-      : this.state.url || "https://via.placeholder.com/200x200";
+      : this.state.url || "https://via.placeholder.com/150x150";
 
     return (
       <Fragment>
         <Grid container justify="center">
           <Button
-            style={{ marginBottom: 20 }}
+            className={classes.addIcon}
             variant="contained"
             onClick={this.handleToggle}
             color="primary"
             mini
           >
-            <AddIcon color="secondary" />{" "}
-            <Typography color="secondary">Add Memory</Typography>
+            <AddIcon color="secondary" />
           </Button>
         </Grid>
 
         <Dialog
+          className={classes.dialog}
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Add Memory</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+            <Typography variant="h4" className={classes.title}>
+              Add Memory
+            </Typography>
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
-              <FormControl className={classes.formControl}>
+              <FormControl fullWidth>
                 <InputLabel shrink htmlFor="month">
                   Month
                 </InputLabel>
@@ -171,7 +187,7 @@ class AddMemory extends Component {
                 value={category}
                 onChange={this.handleChange("category")}
                 margin="normal"
-                className={classes.formControl}
+                fullWidth
               />
               <br />
               <TextField
@@ -182,7 +198,7 @@ class AddMemory extends Component {
                 value={comment}
                 onChange={this.handleChange("comment")}
                 margin="normal"
-                className={classes.formControl}
+                fullWidth
               />
               <br />
               <TextField
@@ -191,12 +207,11 @@ class AddMemory extends Component {
                 type="date"
                 value={date}
                 defaultValue="dd/mm/yyyy"
-                className={classes.formControl}
                 onChange={this.handleChange("date")}
                 InputLabelProps={{
                   shrink: true
                 }}
-                //variant="filled"
+                fullWidth
               />
               {/* Images */}
               <input
@@ -207,13 +222,20 @@ class AddMemory extends Component {
                 ref={fileInput => (this.fileInput = fileInput)}
               />
               <br />
-              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
+              <Button
+                onClick={() => this.fileInput.click()}
+                className={classes.imageButton}
+                color="primary"
+                variant="contained"
+              >
+                <Typography color="secondary">Add Image</Typography>
+              </Button>
               <br />
               <img
                 src={imageURL}
                 alt="Uploaded images"
-                height="100"
-                width="100"
+                height="150"
+                width="150"
               />
             </form>
           </DialogContent>
@@ -224,9 +246,9 @@ class AddMemory extends Component {
             <Button
               onClick={this.handleSubmit}
               color="primary"
-              variant="raised"
+              variant="contained"
             >
-              Add
+              <Typography color="secondary">Add</Typography>
             </Button>
           </DialogActions>
         </Dialog>

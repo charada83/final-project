@@ -20,9 +20,21 @@ const styles = theme => ({
   formControl: {
     width: 300
   },
-  dialogImage: {
-    marginRight: "auto",
-    marginLeft: "auto"
+  title: {
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
+  },
+  dialog: {
+    textAlign: "center"
+  },
+  addIcon: {
+    marginBottom: 20,
+    borderRadius: 100
+  },
+  imageButton: {
+    marginBottom: 20,
+    marginTop: 20
   }
 });
 
@@ -124,29 +136,33 @@ class AddMilestone extends Component {
       { classes } = this.props;
     const imageURL = selectedFile
       ? URL.createObjectURL(selectedFile)
-      : this.state.url || "https://via.placeholder.com/200x200";
+      : this.state.url || "https://via.placeholder.com/150x150";
 
     return (
       <Fragment>
         <Grid container justify="center">
           <Button
-            style={{ marginBottom: 20 }}
+            className={classes.addIcon}
             variant="contained"
             onClick={this.handleToggle}
             color="primary"
             mini
           >
-            <AddIcon color="secondary" />{" "}
-            <Typography color="secondary">Add Milestone</Typography>
+            <AddIcon color="secondary" />
           </Button>
         </Grid>
 
         <Dialog
+          className={classes.dialog}
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Add Milestone</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+            <Typography variant="h4" className={classes.title}>
+              Add Milestone
+            </Typography>
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
@@ -177,6 +193,7 @@ class AddMilestone extends Component {
                 disableFuture
                 maxDateMessage="Date must be less than today"
                 animateYearScrolling
+                fullWidth
               />
               {/* Images */}
               <input
@@ -187,13 +204,20 @@ class AddMilestone extends Component {
                 ref={fileInput => (this.fileInput = fileInput)}
               />
               <br />
-              <Button onClick={() => this.fileInput.click()}>Add Image</Button>
+              <Button
+                onClick={() => this.fileInput.click()}
+                className={classes.imageButton}
+                color="primary"
+                variant="contained"
+              >
+                <Typography color="secondary">Add Image</Typography>
+              </Button>
               <br />
               <img
                 src={imageURL}
                 alt="Uploaded images"
-                height="100"
-                width="100"
+                height="150"
+                width="150"
               />
             </form>
           </DialogContent>
@@ -206,7 +230,7 @@ class AddMilestone extends Component {
               color="primary"
               variant="contained"
             >
-              Add
+              <Typography color="secondary">Add</Typography>
             </Button>
           </DialogActions>
         </Dialog>

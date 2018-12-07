@@ -110,7 +110,7 @@ class AddMilestone extends Component {
     this.setState({
       milestones: {
         ...this.state.milestones,
-        date
+        date: date.toISOString()
       }
     });
   };

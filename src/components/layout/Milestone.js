@@ -7,6 +7,13 @@ import { storage } from "../../firebase";
 import Paper from "@material-ui/core/Paper";
 import { MILESTONES } from "../dialogs/AddMilestone";
 
+const dateOpts = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+};
+const locale = navigator.languages[0];
 const styles = theme => ({
   paper: {
     maxWidth: 900,
@@ -60,13 +67,14 @@ class Milestone extends Component {
 
   render() {
     const { category, date, classes } = this.props;
+    const localeDate = new Date(date).toLocaleDateString(locale, dateOpts);
 
     return (
       <Paper className={classes.paper}>
         <div className={classes.paperContent}>
           <List className={classes.list}>
             <ListItem>{MILESTONES[category]}</ListItem>
-            <ListItem>{date}</ListItem>
+            <ListItem>{localeDate}</ListItem>
             <div>
               {this.state.imageURL && (
                 <CardMedia

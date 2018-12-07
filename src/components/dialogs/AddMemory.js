@@ -15,6 +15,7 @@ import { database, storage, auth } from "../../firebase";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import { DatePicker } from "material-ui-pickers";
 
 const styles = theme => ({
   title: {
@@ -54,7 +55,7 @@ class AddMemory extends Component {
         month: "",
         category: "",
         comment: "",
-        date: ""
+        date: Date.now()
       }
     };
 
@@ -93,10 +94,10 @@ class AddMemory extends Component {
     this.setState({
       open: false,
       memory: {
-        mpnth: "",
+        month: "",
         category: "",
         comment: "",
-        date: ""
+        date: undefined
       },
       selectedFile: undefined
     });
@@ -120,6 +121,15 @@ class AddMemory extends Component {
       memory: {
         ...this.state.memory,
         [name]: value
+      }
+    });
+  };
+
+  handleDateChange = date => {
+    this.setState({
+      memory: {
+        ...this.state.memory,
+        date: date.toISOString()
       }
     });
   };
@@ -201,16 +211,14 @@ class AddMemory extends Component {
                 fullWidth
               />
               <br />
-              <TextField
-                id="date"
+              <DatePicker
+                autoOk
                 label="Date"
-                type="date"
                 value={date}
-                defaultValue="dd/mm/yyyy"
-                onChange={this.handleChange("date")}
-                InputLabelProps={{
-                  shrink: true
-                }}
+                onChange={this.handleDateChange}
+                disableFuture
+                maxDateMessage="Date must be less than today"
+                animateYearScrolling
                 fullWidth
               />
               {/* Images */}

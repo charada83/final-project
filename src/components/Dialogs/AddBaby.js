@@ -227,18 +227,16 @@ class AddBaby extends Component {
                   value={gender}
                   onChange={this.handleChange("gender")}
                 >
-                  <div className={classes.radioButton}>
-                    <FormControlLabel
-                      value="Female"
-                      control={<Radio />}
-                      label="Female"
-                    />
-                    <FormControlLabel
-                      value="Male"
-                      control={<Radio />}
-                      label="Male"
-                    />
-                  </div>
+                  <FormControlLabel
+                    value="Female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="Male"
+                    control={<Radio />}
+                    label="Male"
+                  />
                 </RadioGroup>
               </FormControl>
               <br />

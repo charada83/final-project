@@ -6,6 +6,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import AddMemory from "../components/dialogs/AddMemory";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import IconButton from "@material-ui/core/IconButton";
 
 function TabContainer(props) {
   return (
@@ -30,6 +32,10 @@ const styles = theme => ({
     fontFamily: "Mali, cursive",
     color: "#6670d1",
     fontWeight: "bold"
+  },
+  arrow: {
+    display: "flex",
+    alignItems: "flex-start"
   }
 });
 
@@ -42,12 +48,19 @@ class ScrollableTabsButtonForce extends React.Component {
     this.setState({ value });
   };
 
+  handleClick() {
+    window.history.back();
+  }
+
   render() {
     const { classes } = this.props;
     const { value } = this.state;
 
     return (
       <div>
+        <IconButton onClick={this.handleClick} className={classes.arrow}>
+          <KeyboardArrowLeft fontSize="large" />
+        </IconButton>
         <Typography className={classes.title} variant="h3" gutterBottom>
           Memories
         </Typography>

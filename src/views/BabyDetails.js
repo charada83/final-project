@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import BabiesBirthDetails from "../components/BabiesBirthDetails";
 import AddBaby from "../components/dialogs/AddBaby";
 import { database, auth } from "../firebase";
-import { withStyles, Typography } from "@material-ui/core";
+import { withStyles, Typography, IconButton } from "@material-ui/core";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 
 const styles = theme => ({
   title: {
@@ -10,6 +11,10 @@ const styles = theme => ({
     fontFamily: "Mali, cursive",
     color: "#6670d1",
     fontWeight: "bold"
+  },
+  arrow: {
+    display: "flex",
+    alignItems: "flex-start"
   }
 });
 class BabyDetails extends Component {
@@ -30,15 +35,21 @@ class BabyDetails extends Component {
     });
   }
 
+  handleClick() {
+    window.history.back();
+  }
+
   render() {
     const { classes } = this.props;
     const { babyBirthDetails } = this.state;
     return (
       <div>
+        <IconButton onClick={this.handleClick} className={classes.arrow}>
+          <KeyboardArrowLeft fontSize="large" />
+        </IconButton>
         <Typography className={classes.title} variant="h3" gutterBottom>
           Baby Details
         </Typography>
-
         <AddBaby />
         <BabiesBirthDetails babyBirthDetails={babyBirthDetails} />
       </div>

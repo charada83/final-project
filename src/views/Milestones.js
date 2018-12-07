@@ -3,6 +3,8 @@ import AllMilestones from "../components/layout/AllMilestones";
 import AddMilestone from "../components/dialogs/AddMilestone";
 import { database, auth } from "../firebase";
 import { withStyles, Typography } from "@material-ui/core";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import IconButton from "@material-ui/core/IconButton";
 
 const styles = theme => ({
   title: {
@@ -10,6 +12,10 @@ const styles = theme => ({
     fontFamily: "Mali, cursive",
     color: "#6670d1",
     fontWeight: "bold"
+  },
+  arrow: {
+    display: "flex",
+    alignItems: "flex-start"
   }
 });
 class Milestones extends Component {
@@ -30,11 +36,18 @@ class Milestones extends Component {
     });
   }
 
+  handleClick() {
+    window.history.back();
+  }
+
   render() {
     const { classes } = this.props;
     const { milestone } = this.state;
     return (
       <div>
+        <IconButton onClick={this.handleClick} className={classes.arrow}>
+          <KeyboardArrowLeft fontSize="large" />
+        </IconButton>
         <Typography className={classes.title} variant="h3" gutterBottom>
           Milestones
         </Typography>

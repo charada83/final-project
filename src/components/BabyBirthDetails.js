@@ -52,7 +52,9 @@ const styles = theme => ({
   },
   name: {
     textAlign: "center",
-    color: "#d1c766"
+    color: "#d1c766",
+    fontWeight: "bold",
+    fontFamily: "Mali, cursive"
   },
   listItem: {
     padding: 5

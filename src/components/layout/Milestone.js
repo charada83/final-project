@@ -21,16 +21,18 @@ const styles = theme => ({
     marginLeft: "auto",
     marginRight: "auto",
     backgroundColor: "#000",
-    paddingRight: 25,
+    paddingLeft: 10,
+    paddingRight: 20,
     borderRadius: 50
   },
   paperContent: {
-    color: "#d16682"
+    color: "#d16682",
+    fontSize: 18
   },
   media: {
     height: 80,
     width: 80,
-    marginRight: 20
+    borderRadius: 100
   },
   list: {
     display: "flex",

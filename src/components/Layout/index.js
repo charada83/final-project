@@ -35,7 +35,8 @@ const styles = theme => ({
   appBar: {
     backgroundColor: "primary",
     zIndex: theme.zIndex.drawer + 1,
-    paddingTop: 10
+    paddingTop: 10,
+    paddingRight: 20
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
@@ -54,7 +55,8 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-    minHeight: "100vh"
+    minHeight: "100vh",
+    textAlign: "center"
   }
 });
 

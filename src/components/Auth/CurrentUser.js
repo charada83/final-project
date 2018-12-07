@@ -19,7 +19,7 @@ const CurrentUser = ({ user }) => {
       <Button
         variant="contained"
         color="primary"
-        mini
+        size="small"
         onClick={() => auth.signOut()}
       >
         <Typography color="secondary"> Sign Out </Typography>

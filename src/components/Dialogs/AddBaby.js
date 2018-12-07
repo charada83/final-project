@@ -20,12 +20,19 @@ import { DatePicker } from "material-ui-pickers";
 import { database, storage, auth } from "../../firebase";
 
 const styles = theme => ({
+  dialog: {
+    textAlign: "center"
+  },
   FormControl: {
     width: 300
   },
-  dialogImage: {
-    marginRight: "auto",
-    marginLeft: "auto"
+  imageButton: {
+    marginBottom: 20,
+    marginTop: 20,
+    color: "yellow"
+  },
+  radioButton: {
+    display: "flex"
   }
 });
 
@@ -140,7 +147,7 @@ class AddBaby extends Component {
       { classes } = this.props;
     const imageURL = selectedFile
       ? URL.createObjectURL(selectedFile)
-      : this.state.url || "https://via.placeholder.com/200x200";
+      : this.state.url || "https://via.placeholder.com/150x150";
 
     return (
       <Fragment>
@@ -161,6 +168,7 @@ class AddBaby extends Component {
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
+          className={classes.dialog}
         >
           <DialogTitle id="form-dialog-title">Add Baby</DialogTitle>
           <DialogContent>
@@ -175,17 +183,19 @@ class AddBaby extends Component {
               />
               {/* Images */}
               <Button
-                className={classes.dialogImage}
                 onClick={() => this.fileInput.click()}
+                className={classes.imageButton}
+                color="primary"
+                variant="contained"
               >
-                Add Image
+                <Typography color="secondary">Add Image</Typography>
               </Button>
               <br />
               <img
                 src={imageURL}
                 alt="Uploaded images"
-                height="200"
-                width="200"
+                height="150"
+                width="150"
               />
               <br />
               <TextField
@@ -206,16 +216,18 @@ class AddBaby extends Component {
                   value={gender}
                   onChange={this.handleChange("gender")}
                 >
-                  <FormControlLabel
-                    value="Female"
-                    control={<Radio />}
-                    label="Female"
-                  />
-                  <FormControlLabel
-                    value="Male"
-                    control={<Radio />}
-                    label="Male"
-                  />
+                  <div className={classes.radioButton}>
+                    <FormControlLabel
+                      value="Female"
+                      control={<Radio />}
+                      label="Female"
+                    />
+                    <FormControlLabel
+                      value="Male"
+                      control={<Radio />}
+                      label="Male"
+                    />
+                  </div>
                 </RadioGroup>
               </FormControl>
               <br />
@@ -228,6 +240,7 @@ class AddBaby extends Component {
                 disableFuture
                 maxDateMessage="Date must be less than today"
                 animateYearScrolling
+                fullWidth
               />
               <br />
               <TextField
@@ -282,7 +295,7 @@ class AddBaby extends Component {
               color="primary"
               variant="contained"
             >
-              Add
+              <Typography color="secondary">Add</Typography>
             </Button>
           </DialogActions>
         </Dialog>

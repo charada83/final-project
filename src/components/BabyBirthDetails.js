@@ -116,7 +116,7 @@ class BabyBirthDetails extends Component {
     return (
       <Card className={classes.card}>
         <CardContent>
-          <EditBaby {...this.props} style={{ justifyContent: "flex-end" }} />
+          <EditBaby {...this.props} />
           <Typography className={classes.name} gutterBottom variant="h3">
             {name}
           </Typography>
@@ -161,7 +161,10 @@ class BabyBirthDetails extends Component {
               </Link>
             </Button>
             <Button size="small">
-              <Link to="/babydetails/memories" className={classes.link}>
+              <Link
+                to={`/babydetails/memories/${this.props.babyID}`}
+                className={classes.link}
+              >
                 My Memories
               </Link>
             </Button>

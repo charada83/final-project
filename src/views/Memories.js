@@ -5,6 +5,11 @@ import { database, auth } from "../firebase";
 import { withStyles, Typography } from "@material-ui/core";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import IconButton from "@material-ui/core/IconButton";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import filter from "lodash/filter";
 
 const styles = theme => ({
   title: {
@@ -22,7 +27,7 @@ class Memories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      memory: null
+      memories: {}
     };
 
     this.memoryRef = database.ref(
@@ -32,9 +37,13 @@ class Memories extends Component {
 
   componentDidMount() {
     this.memoryRef.on("value", snapshot => {
-      this.setState({ memory: snapshot.val() });
+      this.setState({ memories: snapshot.val() });
     });
   }
+
+  handleChange = event => {
+    this.setState({ monthToFilter: event.target.value });
+  };
 
   handleClick() {
     window.history.back();
@@ -42,7 +51,20 @@ class Memories extends Component {
 
   render() {
     const { classes } = this.props;
-    const { memory } = this.state;
+    const { memories, monthToFilter } = this.state;
+    const filteredMemories = filter(memories, memory => {
+      // No filter selected.
+      if (monthToFilter === undefined) {
+        return true;
+      }
+
+      if (memory.month === monthToFilter) {
+        return true;
+      }
+
+      return false;
+    });
+
     return (
       <div>
         <IconButton onClick={this.handleClick} className={classes.arrow}>
@@ -53,7 +75,26 @@ class Memories extends Component {
         </Typography>
 
         <AddMemory babyID={this.props.babyID} />
-        <AllMemories memory={memory} />
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="month-simple">Month</InputLabel>
+          <Select
+            value={this.state.monthToFilter}
+            onChange={this.handleChange}
+            inputProps={{
+              name: "month",
+              id: "month-simple"
+            }}
+          >
+            <MenuItem value={undefined}>
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={1}>1 Month</MenuItem>
+            <MenuItem value={2}>2 Months</MenuItem>
+            <MenuItem value={3}>3 Months</MenuItem>
+            <MenuItem value={4}>4 Months</MenuItem>
+          </Select>
+        </FormControl>
+        <AllMemories memory={filteredMemories} />
       </div>
     );
   }

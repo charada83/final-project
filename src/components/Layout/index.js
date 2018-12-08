@@ -36,7 +36,8 @@ const styles = theme => ({
     backgroundColor: "primary",
     zIndex: theme.zIndex.drawer + 1,
     paddingTop: 10,
-    paddingRight: 20
+    paddingRight: 20,
+    paddingBottom: 10
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {

@@ -18,14 +18,27 @@ import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import { database, storage, auth } from "../../firebase";
 import IconButton from "@material-ui/core/Icon";
+import { DatePicker } from "material-ui-pickers";
 
 const styles = theme => ({
+  title: {
+    fontFamily: "Mali, cursive",
+    color: "#6670d1",
+    fontWeight: "bold"
+  },
+  dialog: {
+    textAlign: "center"
+  },
   FormControl: {
     width: 300
   },
-  dialogImage: {
-    marginRight: "auto",
-    marginLeft: "auto"
+  addIcon: {
+    marginBottom: 20,
+    borderRadius: 100
+  },
+  imageButton: {
+    marginBottom: 20,
+    marginTop: 20
   }
 });
 
@@ -111,6 +124,15 @@ class EditBaby extends Component {
     });
   };
 
+  handleDateChange = dateOfBirth => {
+    this.setState({
+      babyBirthDetails: {
+        ...this.state.babyBirthDetails,
+        dateOfBirth: dateOfBirth.toISOString()
+      }
+    });
+  };
+
   render() {
     const {
         open,
@@ -147,8 +169,13 @@ class EditBaby extends Component {
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
+          className={classes.dialog}
         >
-          <DialogTitle id="form-dialog-title">Edit Baby</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+            <Typography variant="h4" className={classes.title}>
+              Edit Baby
+            </Typography>
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
@@ -161,17 +188,19 @@ class EditBaby extends Component {
               />
               {/* Images */}
               <Button
-                className={classes.dialogImage}
+                className={classes.imageButton}
                 onClick={() => this.fileInput.click()}
+                color="primary"
+                variant="contained"
               >
-                Edit Image
+                <Typography color="secondary">Add Image</Typography>
               </Button>
               <br />
               <img
                 src={imageURL}
                 alt="Uploaded images"
-                height="200"
-                width="200"
+                height="150"
+                width="150"
               />
               <br />
               <TextField
@@ -206,17 +235,15 @@ class EditBaby extends Component {
               </FormControl>
               <br />
               {/* DatePicker for Date of Birth */}
-              <TextField
-                id="date"
+              <DatePicker
+                autoOk
                 label="Date of Birth"
-                type="date"
                 value={dateOfBirth}
-                defaultValue="dd/mm/yyyy"
-                className={classes.FormControl}
-                onChange={this.handleChange("dateOfBirth")}
-                InputLabelProps={{
-                  shrink: true
-                }}
+                onChange={this.handleDateChange}
+                disableFuture
+                maxDateMessage="Date must be less than today"
+                animateYearScrolling
+                fullWidth
               />
               <br />
               <TextField
@@ -271,7 +298,7 @@ class EditBaby extends Component {
               color="primary"
               variant="contained"
             >
-              Add
+              <Typography color="secondary">Edit</Typography>
             </Button>
           </DialogActions>
         </Dialog>

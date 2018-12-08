@@ -32,9 +32,8 @@ const styles = theme => ({
   FormControl: {
     width: 300
   },
-  addIcon: {
-    marginBottom: 20,
-    borderRadius: 100
+  editIcon: {
+    marginBottom: 20
   },
   imageButton: {
     marginBottom: 20,
@@ -153,14 +152,14 @@ class EditBaby extends Component {
 
     return (
       <Fragment>
-        <Grid container justify="center">
+        <Grid container justify="center" style={{ justifyContent: "flex-end" }}>
           <IconButton
-            style={{ marginBottom: 20 }}
+            className={classes.editIcon}
             variant="contained"
             onClick={this.handleToggle}
             color="primary"
           >
-            <EditIcon color="secondary" />{" "}
+            <EditIcon color="secondary" />
             <Typography color="secondary">Edit Baby</Typography>
           </IconButton>
         </Grid>

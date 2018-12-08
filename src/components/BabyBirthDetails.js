@@ -116,16 +116,11 @@ class BabyBirthDetails extends Component {
     return (
       <Card className={classes.card}>
         <CardContent>
-          <EditBaby
-            {...this.props}
-            classes={{
-              dialogImage: classes.dialogImage,
-              FormControl: classes.FormControl
-            }}
-          />
+          <EditBaby {...this.props} style={{ justifyContent: "flex-end" }} />
           <Typography className={classes.name} gutterBottom variant="h3">
             {name}
           </Typography>
+
           <div className={classes.cardContent}>
             {this.state.imageURL && (
               <CardMedia

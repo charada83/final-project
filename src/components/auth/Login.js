@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import firebase from "../../firebase";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,7 +10,7 @@ import TextField from "@material-ui/core/TextField";
 import { auth, googleAuthProvider } from "../../firebase";
 import { Typography } from "@material-ui/core";
 
-class Login extends Component {
+class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);

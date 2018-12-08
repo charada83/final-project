@@ -17,6 +17,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import { DatePicker } from "material-ui-pickers";
+import { TimePicker } from "material-ui-pickers";
 import { database, storage, auth } from "../../firebase";
 
 const styles = theme => ({
@@ -55,7 +56,7 @@ class AddBaby extends Component {
         gender: "",
         dateOfBirth: Date.now(),
         placeOfBirth: "",
-        timeOfBirth: "",
+        timeOfBirth: Date.now(),
         weight: ""
       }
     };
@@ -101,7 +102,7 @@ class AddBaby extends Component {
         gender: "",
         dateOfBirth: undefined,
         placeOfBirth: "",
-        timeOfBirth: "",
+        timeOfBirth: undefined,
         weight: ""
       },
       selectedFile: undefined
@@ -135,6 +136,15 @@ class AddBaby extends Component {
       babyBirthDetails: {
         ...this.state.babyBirthDetails,
         dateOfBirth: dateOfBirth.toISOString()
+      }
+    });
+  };
+
+  handleTimeChange = timeOfBirth => {
+    this.setState({
+      babyBirthDetails: {
+        ...this.state.babyBirthDetails,
+        timeOfBirth: timeOfBirth.toISOString()
       }
     });
   };
@@ -262,20 +272,13 @@ class AddBaby extends Component {
               />
               <br />
               {/* TimePicker for Time of Birth */}
-              <TextField
-                id="time"
+              <TimePicker
+                clearable
+                ampm={false}
                 label="Time of Birth"
-                type="time"
                 value={timeOfBirth}
-                onChange={this.handleChange("timeOfBirth")}
-                defaultValue="00:00"
-                className={classes.FormControl}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                inputProps={{
-                  step: 60 // 1 min
-                }}
+                onChange={this.handleTimeChange}
+                fullWidth
               />
               <br />
               {/* Number textfield for weight */}

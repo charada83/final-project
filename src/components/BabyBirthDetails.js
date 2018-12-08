@@ -112,6 +112,7 @@ class BabyBirthDetails extends Component {
       classes
     } = this.props;
     const date = new Date(dateOfBirth).toLocaleDateString(locale, dateOpts);
+    const time = new Date(timeOfBirth);
 
     return (
       <Card className={classes.card}>
@@ -141,7 +142,7 @@ class BabyBirthDetails extends Component {
                   Place Of Birth: {placeOfBirth}
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                  Time Of Birth: {timeOfBirth}
+                  Time Of Birth: {`${time.getHours()}:${time.getMinutes()}`}
                 </ListItem>
                 <ListItem className={classes.listItem}>
                   Weight: {parseFloat(weight).toFixed(2)} kg

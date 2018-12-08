@@ -10,7 +10,7 @@ const CurrentUser = ({ user }) => {
       {user.displayName && <h4>Welcome {user.displayName}</h4>}
       {user.photoURL && (
         <img
-          style={{ height: "40px", margin: "10px" }}
+          style={{ height: "40px", margin: "10px", borderRadius: 100 }}
           src={user.photoURL}
           alt={user.displayName}
         />

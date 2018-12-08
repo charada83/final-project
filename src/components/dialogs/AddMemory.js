@@ -40,10 +40,10 @@ const styles = theme => ({
 });
 
 export const MEMORIES = {
-  0: "1 Month",
-  1: "2 Months",
-  2: "3 Months",
-  3: "4 Months"
+  1: "1 Month",
+  2: "2 Months",
+  3: "3 Months",
+  4: "4 Months"
 };
 
 class AddMemory extends Component {
@@ -185,10 +185,10 @@ class AddMemory extends Component {
                   <MenuItem value="" disabled>
                     Select Month
                   </MenuItem>
-                  <MenuItem value={0}>{MEMORIES[0]}</MenuItem>
                   <MenuItem value={1}>{MEMORIES[1]}</MenuItem>
                   <MenuItem value={2}>{MEMORIES[2]}</MenuItem>
                   <MenuItem value={3}>{MEMORIES[3]}</MenuItem>
+                  <MenuItem value={4}>{MEMORIES[4]}</MenuItem>
                 </Select>
               </FormControl>
               <TextField

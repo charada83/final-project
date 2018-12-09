@@ -142,7 +142,11 @@ class BabyBirthDetails extends Component {
                   Place Of Birth: {placeOfBirth}
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                  Time Of Birth: {`${time.getHours()}:${time.getMinutes()}`}
+                  Time Of Birth:{" "}
+                  {`${time.getHours()}:${time
+                    .getMinutes()
+                    .toString()
+                    .replace(/^(\d)$/, "0$1")}`}
                 </ListItem>
                 <ListItem className={classes.listItem}>
                   Weight: {parseFloat(weight).toFixed(2)} kg

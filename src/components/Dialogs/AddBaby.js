@@ -268,7 +268,6 @@ class AddBaby extends Component {
                 value={placeOfBirth}
                 onChange={this.handleChange("placeOfBirth")}
                 margin="normal"
-                className={classes.FormControl}
               />
               <br />
               {/* TimePicker for Time of Birth */}

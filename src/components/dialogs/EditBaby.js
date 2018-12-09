@@ -19,6 +19,7 @@ import { Typography } from "@material-ui/core";
 import { database, storage, auth } from "../../firebase";
 import IconButton from "@material-ui/core/Icon";
 import { DatePicker } from "material-ui-pickers";
+import { TimePicker } from "material-ui-pickers";
 
 const styles = theme => ({
   title: {
@@ -128,6 +129,15 @@ class EditBaby extends Component {
       babyBirthDetails: {
         ...this.state.babyBirthDetails,
         dateOfBirth: dateOfBirth.toISOString()
+      }
+    });
+  };
+
+  handleTimeChange = timeOfBirth => {
+    this.setState({
+      babyBirthDetails: {
+        ...this.state.babyBirthDetails,
+        timeOfBirth: timeOfBirth.toISOString()
       }
     });
   };
@@ -255,20 +265,13 @@ class EditBaby extends Component {
               />
               <br />
               {/* TimePicker for Time of Birth */}
-              <TextField
-                id="time"
+              <TimePicker
+                clearable
+                ampm={false}
                 label="Time of Birth"
-                type="time"
                 value={timeOfBirth}
-                onChange={this.handleChange("timeOfBirth")}
-                defaultValue="00:00"
-                className={classes.FormControl}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                inputProps={{
-                  step: 60 // 1 min
-                }}
+                onChange={this.handleTimeChange}
+                fullWidth
               />
               <br />
               {/* Number textfield for weight */}

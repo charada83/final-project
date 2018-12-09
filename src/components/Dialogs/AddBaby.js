@@ -168,7 +168,11 @@ class AddBaby extends Component {
       : this.state.url || "https://via.placeholder.com/150x150";
 
     const isInvalid =
-      name === "" || gender === "" || placeOfBirth === "" || weight === "";
+      name === "" ||
+      gender === "" ||
+      placeOfBirth === "" ||
+      weight === "" ||
+      weight < 0;
 
     return (
       <Fragment>
@@ -288,6 +292,7 @@ class AddBaby extends Component {
               <TextField
                 id="weight"
                 label="Weight"
+                type="number"
                 value={weight}
                 className={classes.FormControl}
                 onChange={this.handleChange("weight")}

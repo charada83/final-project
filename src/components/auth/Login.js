@@ -20,7 +20,8 @@ class Login extends PureComponent {
     this.state = {
       open: false,
       email: "",
-      password: ""
+      password: "",
+      error: null
     };
   }
 
@@ -55,7 +56,7 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { open } = this.state;
+    const { open, error } = this.state;
     return (
       <div>
         <Button
@@ -102,6 +103,7 @@ class Login extends PureComponent {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                style={{ paddingBotton: 5 }}
                 fullWidth
               />
               <br />
@@ -116,23 +118,37 @@ class Login extends PureComponent {
                 fullWidth
               />
               <DialogActions>
-                <Button type="submit" onClick={this.login}>
-                  Login
-                </Button>
-                <Button onClick={this.signup} style={{ marginLeft: "25px" }}>
-                  Signup
-                </Button>
+                <div style={{ marginRight: "auto", marginLeft: "auto" }}>
+                  <Button
+                    type="submit"
+                    onClick={this.login}
+                    style={{
+                      backgroundColor: "#6670d1",
+                      marginRight: 5
+                    }}
+                  >
+                    <Typography style={{ color: "#FFF" }}>Login</Typography>
+                  </Button>
+                  <Button
+                    onClick={this.signup}
+                    style={{
+                      marginLeft: 5,
+                      backgroundColor: "#6670d1"
+                    }}
+                  >
+                    <Typography style={{ color: "#FFF" }}>Signup</Typography>
+                  </Button>
+                </div>
               </DialogActions>
               <DialogActions>
                 <GoogleButton
                   onClick={() => auth.signInWithPopup(googleAuthProvider)}
-                  variant="contained"
-                  color="primary"
-                  mini
+                  fullWidth
                 >
                   <Typography color="secondary">Login with Google</Typography>
                 </GoogleButton>
               </DialogActions>
+              {error && <p>{error.message}</p>}
             </form>
           </DialogContent>
         </Dialog>

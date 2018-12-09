@@ -144,6 +144,7 @@ class AddMemory extends Component {
     const imageURL = selectedFile
       ? URL.createObjectURL(selectedFile)
       : this.state.url || "https://via.placeholder.com/150x150";
+    const isInvalid = month === "" || category === "" || comment === "";
 
     return (
       <Fragment>
@@ -253,6 +254,7 @@ class AddMemory extends Component {
             </Button>
             <Button
               onClick={this.handleSubmit}
+              disabled={isInvalid}
               color="primary"
               variant="contained"
             >

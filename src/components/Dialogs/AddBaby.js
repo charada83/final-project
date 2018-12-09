@@ -167,6 +167,9 @@ class AddBaby extends Component {
       ? URL.createObjectURL(selectedFile)
       : this.state.url || "https://via.placeholder.com/150x150";
 
+    const isInvalid =
+      name === "" || gender === "" || placeOfBirth === "" || weight === "";
+
     return (
       <Fragment>
         <Grid container justify="center">
@@ -268,6 +271,7 @@ class AddBaby extends Component {
                 value={placeOfBirth}
                 onChange={this.handleChange("placeOfBirth")}
                 margin="normal"
+                fullWidth
               />
               <br />
               {/* TimePicker for Time of Birth */}
@@ -303,6 +307,7 @@ class AddBaby extends Component {
             </Button>
             <Button
               onClick={this.handleSubmit}
+              disabled={isInvalid}
               color="primary"
               variant="contained"
             >

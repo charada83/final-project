@@ -137,6 +137,7 @@ class AddMilestone extends Component {
     const imageURL = selectedFile
       ? URL.createObjectURL(selectedFile)
       : this.state.url || "https://via.placeholder.com/150x150";
+    const isInvalid = category === "";
 
     return (
       <Fragment>
@@ -227,6 +228,7 @@ class AddMilestone extends Component {
             </Button>
             <Button
               onClick={this.handleSubmit}
+              disabled={isInvalid}
               color="primary"
               variant="contained"
             >

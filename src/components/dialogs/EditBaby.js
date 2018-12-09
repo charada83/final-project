@@ -202,7 +202,7 @@ class EditBaby extends Component {
                 color="primary"
                 variant="contained"
               >
-                <Typography color="secondary">Add Image</Typography>
+                <Typography color="secondary">Edit Image</Typography>
               </Button>
               <br />
               <img

@@ -2,9 +2,20 @@ import React, { Component } from "react";
 import { auth } from "../firebase";
 import Login from "../components/auth/Login";
 import Button from "@material-ui/core/Button";
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import { Typography } from "@material-ui/core";
+import TitleLogo from "../components/layout/TitleLogo";
+import { withStyles } from "@material-ui/core";
 
+const style = theme => ({
+  content: {
+    fontFamily: "Mali, cursive",
+    marginBottom: 40
+  },
+  text: {
+    fontFamily: "Mali, cursive"
+  }
+});
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -20,23 +31,30 @@ class Home extends Component {
     });
   }
 
+  handleClick() {
+    navigate("/babydetails");
+  }
+
   render() {
     const { currentUser } = this.state;
-
+    const { classes } = this.props;
     if (currentUser) {
       return (
         <div>
-          <h4>Welcome {currentUser.displayName}</h4>
+          <section className={classes.content}>
+            <Typography variant="h4" className={classes.text}>
+              Welcome!
+            </Typography>
+            <h4> Start creating precious Memories of your Children</h4>
+          </section>
           <Button
-            //style={{ padding: 50 }}
+            style={{ padding: 50 }}
             variant="contained"
-            onClick={this.handleToggle}
+            onClick={this.handleClick}
             color="primary"
             mini
           >
-            <Link to="/babydetails">
-              <Typography color="secondary">My Babies</Typography>
-            </Link>
+            <Typography color="secondary">My Babies</Typography>
           </Button>
         </div>
       );
@@ -44,12 +62,29 @@ class Home extends Component {
 
     return (
       <div>
-        <h1>Home</h1>
-        <p>Welcome to Baby book.........</p>
+        <section className={classes.content}>
+          <Typography variant="h4" gutterBottom className={classes.text}>
+            Welcome to
+          </Typography>
+          <TitleLogo />
+          <p>
+            A place to store all of your children's fond memories and milestones
+            in their first year.
+          </p>
+          <p>
+            Baby Book allows you to record birth details such as Date of Birth,
+            Weight and Time of Birth.
+          </p>
+          <p>
+            You can also record those big Milestones and precious Memories thast
+            can be accessed and updated anywhere.
+          </p>
+          <p>Get started by logging into your secure account below</p>
+        </section>
         <Login />
       </div>
     );
   }
 }
 
-export default Home;
+export default withStyles(style)(Home);

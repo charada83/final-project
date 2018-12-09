@@ -38,6 +38,10 @@ const styles = theme => ({
     paddingRight: 20,
     paddingBottom: 10
   },
+  logo: {
+    flexGrow: 1,
+    paddingLeft: 10
+  },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
       display: "none"
@@ -95,7 +99,7 @@ class Layout extends Component {
               >
                 <Menu />
               </IconButton>
-              <TitleLogo />
+              <TitleLogo className={classes.logo} />
               {/* <Button color="secondary">Login</Button> */}
               {currentUser && (
                 <div>

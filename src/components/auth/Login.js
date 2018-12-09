@@ -55,7 +55,7 @@ class Login extends PureComponent {
 
   render() {
     const { open } = this.state;
-
+    const { classes } = this.props;
     return (
       <div>
         <Button
@@ -65,7 +65,12 @@ class Login extends PureComponent {
           color="primary"
           mini
         >
-          <Typography color="secondary">Get Started</Typography>
+          <Typography
+            style={{ fontFamily: "Mali, cursive", fontSize: 18 }}
+            color="secondary"
+          >
+            Get Started
+          </Typography>
         </Button>
         <Dialog
           open={open}

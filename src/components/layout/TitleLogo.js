@@ -11,7 +11,6 @@ const styles = theme => ({
 
   title: {
     flexGrow: 1,
-    paddingLeft: 10,
     fontFamily: "Mali, cursive"
   },
 

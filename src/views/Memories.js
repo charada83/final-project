@@ -108,7 +108,7 @@ class Memories extends Component {
             }}
           >
             <MenuItem value={undefined}>
-              <em>None</em>
+              <em>All</em>
             </MenuItem>
             <MenuItem value={1}>1 Month</MenuItem>
             <MenuItem value={2}>2 Months</MenuItem>

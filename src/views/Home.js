@@ -13,7 +13,8 @@ const style = theme => ({
     marginBottom: 40
   },
   text: {
-    fontFamily: "Mali, cursive"
+    fontFamily: "Mali, cursive",
+    marginTop: 20
   }
 });
 class Home extends Component {
@@ -45,7 +46,7 @@ class Home extends Component {
             <Typography variant="h4" className={classes.text}>
               Welcome!
             </Typography>
-            <h4> Start creating precious Memories of your Children</h4>
+            <p> Start creating precious Memories of your Children</p>
           </section>
           <Button
             style={{ padding: 50 }}
@@ -54,7 +55,7 @@ class Home extends Component {
             color="primary"
             mini
           >
-            <Typography color="secondary">My Babies</Typography>
+            <Typography color="secondary">My Children</Typography>
           </Button>
         </div>
       );

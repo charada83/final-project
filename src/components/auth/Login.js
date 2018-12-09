@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import { auth, googleAuthProvider } from "../../firebase";
 import { Typography } from "@material-ui/core";
+import GoogleButton from "react-google-button";
 
 class Login extends PureComponent {
   constructor(props) {
@@ -55,7 +56,6 @@ class Login extends PureComponent {
 
   render() {
     const { open } = this.state;
-    const { classes } = this.props;
     return (
       <div>
         <Button
@@ -76,8 +76,20 @@ class Login extends PureComponent {
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
+          style={{ textAlign: "center" }}
         >
-          <DialogTitle id="form-dialog-title">Login</DialogTitle>
+          <DialogTitle id="form-dialog-title">
+            <Typography
+              variant="h4"
+              style={{
+                fontFamily: "Mali, cursive",
+                color: "#6670d1",
+                fontWeight: "bold"
+              }}
+            >
+              Login
+            </Typography>
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form>
@@ -90,6 +102,7 @@ class Login extends PureComponent {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                fullWidth
               />
               <br />
               <TextField
@@ -100,6 +113,7 @@ class Login extends PureComponent {
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                fullWidth
               />
               <DialogActions>
                 <Button type="submit" onClick={this.login}>
@@ -108,15 +122,16 @@ class Login extends PureComponent {
                 <Button onClick={this.signup} style={{ marginLeft: "25px" }}>
                   Signup
                 </Button>
-
-                <Button
+              </DialogActions>
+              <DialogActions>
+                <GoogleButton
                   onClick={() => auth.signInWithPopup(googleAuthProvider)}
                   variant="contained"
                   color="primary"
                   mini
                 >
                   <Typography color="secondary">Login with Google</Typography>
-                </Button>
+                </GoogleButton>
               </DialogActions>
             </form>
           </DialogContent>

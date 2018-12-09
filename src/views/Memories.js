@@ -10,6 +10,7 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import filter from "lodash/filter";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 const styles = theme => ({
   title: {
@@ -21,6 +22,18 @@ const styles = theme => ({
   arrow: {
     display: "flex",
     alignItems: "flex-start"
+  },
+  filterDropdown: {
+    display: "flex",
+    alignItems: "flex-start",
+    marginLeft: 80,
+    marginBottom: 20
+  },
+  outline: {
+    minWidth: 200
+  },
+  label: {
+    paddingLeft: 20
   }
 });
 class Memories extends Component {
@@ -75,14 +88,23 @@ class Memories extends Component {
         </Typography>
 
         <AddMemory babyID={this.props.babyID} />
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="month-simple">Month</InputLabel>
+        <FormControl className={classes.filterDropdown}>
+          <InputLabel className={classes.label} htmlFor="month" shrink="false">
+            Select Month
+          </InputLabel>
           <Select
             value={this.state.monthToFilter}
             onChange={this.handleChange}
+            input={
+              <OutlinedInput
+                className={classes.outline}
+                name="month"
+                id="month"
+              />
+            }
             inputProps={{
               name: "month",
-              id: "month-simple"
+              id: "month"
             }}
           >
             <MenuItem value={undefined}>

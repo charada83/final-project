@@ -41,7 +41,7 @@ class Login extends PureComponent {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .catch(error => {
-        console.log(error);
+        this.setState({ error });
       });
   }
 
@@ -51,12 +51,13 @@ class Login extends PureComponent {
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .catch(error => {
-        console.log(error);
+        this.setState({ error });
       });
   }
 
   render() {
-    const { open, error } = this.state;
+    const { open, email, password, error } = this.state;
+    const isInvalid = email === "" || password === "";
     return (
       <div>
         <Button
@@ -122,6 +123,7 @@ class Login extends PureComponent {
                   <Button
                     type="submit"
                     onClick={this.login}
+                    disabled={isInvalid}
                     style={{
                       backgroundColor: "#6670d1",
                       marginRight: 5

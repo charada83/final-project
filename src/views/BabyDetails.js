@@ -4,6 +4,7 @@ import AddBaby from "../components/dialogs/AddBaby";
 import { database, auth } from "../firebase";
 import { withStyles, Typography, IconButton } from "@material-ui/core";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import "../print.css";
 
 const styles = theme => ({
   title: {
@@ -44,7 +45,11 @@ class BabyDetails extends Component {
     const { babyBirthDetails } = this.state;
     return (
       <div>
-        <IconButton onClick={this.handleClick} className={classes.arrow}>
+        <IconButton
+          onClick={this.handleClick}
+          className={classes.arrow}
+          id="dontPrint"
+        >
           <KeyboardArrowLeft fontSize="large" />
         </IconButton>
         <Typography className={classes.title} variant="h3" gutterBottom>

@@ -60,10 +60,6 @@ class EditBaby extends Component {
   }
 
   componentDidMount() {
-    if (this.props.imagePath === undefined) {
-      return;
-    }
-
     storage
       .ref(this.props.imagePath)
       .getDownloadURL()

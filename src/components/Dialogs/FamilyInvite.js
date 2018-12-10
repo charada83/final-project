@@ -8,6 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
+import { database, auth } from "../../firebase";
 
 const styles = theme => ({
   FormControl: {
@@ -16,13 +17,20 @@ const styles = theme => ({
 });
 
 class FamilyInvite extends Component {
-  state = {
-    open: false,
-    inviteDetails: {
-      name: "",
-      email: ""
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      inviteDetails: {
+        name: "",
+        email: "",
+        message: ""
+      }
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.contactRef = database.ref(`/users/${auth.currentUser.uid}/contact`);
+  }
 
   handleToggle = () => {
     this.setState({
@@ -40,13 +48,12 @@ class FamilyInvite extends Component {
   };
   render() {
     const {
-        open,
-        inviteDetails: { name, email }
+        inviteDetails: { name, email, message }
       } = this.state,
       { classes } = this.props;
     return (
       <Fragment>
-        <Button
+        {/* <Button
           style={{ marginBottom: 20 }}
           variant="contained"
           onClick={this.handleToggle}
@@ -54,8 +61,8 @@ class FamilyInvite extends Component {
           mini
         >
           <AddIcon /> Send Invite
-        </Button>
-        <Dialog
+        </Button> */}
+        {/* <Dialog
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
@@ -64,40 +71,49 @@ class FamilyInvite extends Component {
             Invite Family/Friends
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>Please fill out form below</DialogContentText>
-            <form>
-              <TextField
-                name="name"
-                label="Name"
-                value={name}
-                onChange={this.handleChange("name")}
-                margin="normal"
-                className={classes.FormControl}
-              />
-              <br />
-              <TextField
-                name="email"
-                label="Email"
-                value={email}
-                onChange={this.handleChange("email")}
-                margin="normal"
-                className={classes.FormControl}
-              />
-            </form>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleToggle} color="primary">
-              Cancel
-            </Button>
-            <Button
-              /*onClick={this.handleSubmit}*/
-              color="primary"
-              variant="raised"
-            >
-              Send Invite
-            </Button>
-          </DialogActions>
-        </Dialog>
+            <DialogContentText>Please fill out form below</DialogContentText> */}
+        <form>
+          <TextField
+            name="name"
+            label="Name"
+            value={name}
+            onChange={this.handleChange("name")}
+            margin="normal"
+            className={classes.FormControl}
+          />
+          <br />
+          <TextField
+            name="email"
+            label="Email"
+            value={email}
+            onChange={this.handleChange("email")}
+            margin="normal"
+            className={classes.FormControl}
+          />
+          <br />
+          <TextField
+            name="message"
+            label="Message"
+            value={message}
+            onChange={this.handleChange("message")}
+            margin="normal"
+            className={classes.FormControl}
+          />
+        </form>
+        {/* </DialogContent>
+          <DialogActions> */}
+        <Button onClick={this.handleToggle} color="primary">
+          Cancel
+        </Button>
+        <Button
+          /*onClick={this.handleSubmit}*/
+          color="primary"
+          variant="raised"
+        >
+          Send Invite
+        </Button>
+        {/* </DialogActions>
+        </Dialog> */}
       </Fragment>
     );
   }

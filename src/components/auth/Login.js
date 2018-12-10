@@ -58,6 +58,7 @@ class Login extends PureComponent {
       .catch(error => {
         this.setState({ error });
       });
+
     this.setState({
       email: "",
       password: ""

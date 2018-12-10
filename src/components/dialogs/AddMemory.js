@@ -78,7 +78,6 @@ class AddMemory extends Component {
     }
   }
 
-  //Need to add validation
   handleSubmit(event) {
     event.preventDefault();
 
@@ -148,7 +147,8 @@ class AddMemory extends Component {
 
     return (
       <Fragment>
-        <Grid container justify="center">
+        <div>
+          {/* {this.props.children} */}
           <Button
             className={classes.addIcon}
             variant="contained"
@@ -158,7 +158,7 @@ class AddMemory extends Component {
           >
             <AddIcon color="secondary" />
           </Button>
-        </Grid>
+        </div>
 
         <Dialog
           className={classes.dialog}

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Home from "./views/Home";
 import BabyDetails from "./views/BabyDetails";
-import Family from "./views/Family";
 import Layout from "./components/layout/index";
 import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
 import Notifications from "./components/dialogs/Notifications";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import firebase from "./firebase";
+import Contact from "./views/Contact";
 
 class App extends Component {
   componentDidMount() {
@@ -35,8 +35,7 @@ class App extends Component {
             path="/babydetails/milestones/:babyID"
             component={Milestones}
           />
-          <PrivateRoute path="/family" component={Family} />
-          <PrivateRoute path="/notifications" component={Notifications} />
+          <PrivateRoute path="/contact" component={Contact} />
           <NotFound default />
         </Router>
       </Layout>

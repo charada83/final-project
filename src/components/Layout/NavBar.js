@@ -51,16 +51,10 @@ class NavBar extends Component {
           </List>
         </Collapse> */}
         {/* <ListItem onClick={this.handleClick}> */}
-        <ListItem>
-          <Link to="family" style={style.link}>
-            Family
-          </Link>
-        </ListItem>
-
         <Divider />
         <ListItem>
-          <Link to="/notifications" style={style.link}>
-            Notifications
+          <Link to="/contact" style={style.link}>
+            Contact Us
           </Link>
         </ListItem>
       </List>

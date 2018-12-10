@@ -303,9 +303,6 @@ class AddBaby extends Component {
                 value={weight}
                 className={classes.FormControl}
                 onChange={this.handleChange("weight")}
-                inputProps={{
-                  maxLength: 6
-                }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment variant="filled" position="end">

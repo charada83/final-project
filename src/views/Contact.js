@@ -1,11 +1,5 @@
 import React, { Component, Fragment } from "react";
 import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import { database, auth } from "../../firebase";
@@ -21,7 +15,7 @@ class FamilyInvite extends Component {
     super(props);
     this.state = {
       open: false,
-      inviteDetails: {
+      contact: {
         name: "",
         email: "",
         message: ""
@@ -41,37 +35,38 @@ class FamilyInvite extends Component {
   handleChange = name => ({ target: { value } }) => {
     this.setState({
       inviteDetails: {
-        ...this.state.inviteDetails,
+        ...this.state.contact,
         [name]: value
       }
     });
   };
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const ref = this.contactRef.push({
+      name: this.state.contact.name,
+      email: this.state.contact.email,
+      message: this.state.contact.message
+    });
+
+    this.setState({
+      open: false,
+      contact: {
+        name: "",
+        email: "",
+        message: ""
+      }
+    });
+  }
   render() {
     const {
-        inviteDetails: { name, email, message }
+        contact: { name, email, message }
       } = this.state,
       { classes } = this.props;
     return (
       <Fragment>
-        {/* <Button
-          style={{ marginBottom: 20 }}
-          variant="contained"
-          onClick={this.handleToggle}
-          color="primary"
-          mini
-        >
-          <AddIcon /> Send Invite
-        </Button> */}
-        {/* <Dialog
-          open={open}
-          onClose={this.handleToggle}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            Invite Family/Friends
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText>Please fill out form below</DialogContentText> */}
+        <h1>Contact Us</h1>
         <form>
           <TextField
             name="name"
@@ -100,20 +95,13 @@ class FamilyInvite extends Component {
             className={classes.FormControl}
           />
         </form>
-        {/* </DialogContent>
-          <DialogActions> */}
+
         <Button onClick={this.handleToggle} color="primary">
           Cancel
         </Button>
-        <Button
-          /*onClick={this.handleSubmit}*/
-          color="primary"
-          variant="raised"
-        >
-          Send Invite
+        <Button onClick={this.handleSubmit} color="primary" variant="raised">
+          Send Message
         </Button>
-        {/* </DialogActions>
-        </Dialog> */}
       </Fragment>
     );
   }

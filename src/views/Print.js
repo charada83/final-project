@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
+import Print from "@material-ui/icons/Print";
 
-export default class Print extends Component {
+export default class PrintDetails extends Component {
   render() {
     return (
       <div>
-        <Button onClick={() => window.print()}>PRINT</Button>
+        <Print
+          onClick={() => window.print()}
+          color="secondary"
+          style={{ marginLeft: 10 }}
+          id="dontPrint"
+        />
       </div>
     );
   }

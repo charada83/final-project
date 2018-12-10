@@ -164,6 +164,7 @@ class EditBaby extends Component {
       <Fragment>
         <Grid container justify="center" style={{ justifyContent: "flex-end" }}>
           <IconButton
+            id="dontPrint"
             className={classes.editIcon}
             variant="contained"
             onClick={this.handleToggle}

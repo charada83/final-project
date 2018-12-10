@@ -179,6 +179,7 @@ class AddBaby extends Component {
         <Grid container justify="center">
           <Button
             className={classes.addIcon}
+            id="dontPrint"
             variant="contained"
             onClick={this.handleToggle}
             color="primary"

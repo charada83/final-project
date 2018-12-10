@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import CurrentUser from "../auth/CurrentUser";
 import TitleLogo from "./TitleLogo";
 import { auth } from "../../firebase";
+import "../../print.css";
 
 const drawerWidth = 240;
 
@@ -89,7 +90,7 @@ class Layout extends Component {
       <Fragment>
         <CssBaseline />
         <div className={classes.root}>
-          <AppBar position="relative" className={classes.appBar}>
+          <AppBar position="relative" className={classes.appBar} id="dontPrint">
             <Toolbar>
               <IconButton
                 color="inherit"

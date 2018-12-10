@@ -11,6 +11,8 @@ import List from "@material-ui/core/List";
 import CardMedia from "@material-ui/core/CardMedia";
 import { storage } from "../firebase";
 import EditBaby from "../components/dialogs/EditBaby";
+import PrintDetails from "../views/Print";
+import "../print.css";
 
 const dateOpts = {
   weekday: "long",
@@ -19,6 +21,7 @@ const dateOpts = {
   day: "numeric"
 };
 const locale = navigator.languages[0];
+
 const styles = theme => ({
   card: {
     maxWidth: 800,
@@ -117,7 +120,10 @@ class BabyBirthDetails extends Component {
     return (
       <Card className={classes.card}>
         <CardContent>
-          <EditBaby {...this.props} />
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <EditBaby {...this.props} />
+            <PrintDetails />
+          </div>
           <Typography className={classes.name} gutterBottom variant="h3">
             {name}
           </Typography>
@@ -161,6 +167,7 @@ class BabyBirthDetails extends Component {
               <Link
                 to={`/babydetails/milestones/${this.props.babyID}`}
                 className={classes.link}
+                id="dontPrint"
               >
                 My Milestones
               </Link>
@@ -169,6 +176,7 @@ class BabyBirthDetails extends Component {
               <Link
                 to={`/babydetails/memories/${this.props.babyID}`}
                 className={classes.link}
+                id="dontPrint"
               >
                 My Memories
               </Link>

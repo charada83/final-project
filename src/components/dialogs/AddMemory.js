@@ -9,7 +9,6 @@ import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import { database, storage, auth } from "../../firebase";
 import Select from "@material-ui/core/Select";

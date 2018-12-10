@@ -5,7 +5,6 @@ import BabyDetails from "./views/BabyDetails";
 import Layout from "./components/layout/index";
 import Memories from "./views/Memories";
 import Milestones from "./views/Milestones";
-import Notifications from "./components/dialogs/Notifications";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import firebase from "./firebase";
 import Contact from "./views/Contact";

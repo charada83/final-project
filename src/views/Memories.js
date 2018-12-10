@@ -24,8 +24,6 @@ const styles = theme => ({
     alignItems: "flex-start"
   },
   filterDropdown: {
-    // display: "flex",
-    // alignItems: "flex-start",
     marginRight: 165,
     marginLeft: 80,
     marginBottom: 20

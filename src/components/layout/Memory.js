@@ -16,7 +16,8 @@ const dateOpts = {
 const locale = navigator.languages[0];
 const styles = theme => ({
   paper: {
-    maxWidth: 900,
+    maxWidth: "90%",
+    minHeight: 250,
     marginBottom: 20,
     marginLeft: "auto",
     marginRight: "auto",
@@ -30,8 +31,8 @@ const styles = theme => ({
     fontSize: 18
   },
   media: {
-    height: 80,
-    width: 80,
+    height: 100,
+    width: 100,
     borderRadius: 100
   },
   list: {

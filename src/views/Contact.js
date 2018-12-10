@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
-import { database, auth } from "../../firebase";
+import { database, auth } from "../firebase";
 
 const styles = theme => ({
   FormControl: {

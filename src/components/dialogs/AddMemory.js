@@ -96,7 +96,7 @@ class AddMemory extends Component {
         month: "",
         category: "",
         comment: "",
-        date: undefined
+        date: Date.now()
       },
       selectedFile: undefined
     });
@@ -201,7 +201,7 @@ class AddMemory extends Component {
               <TextField
                 name="comment"
                 multiline
-                rowsMax="4"
+                rowsMax="3"
                 label="Comment"
                 value={comment}
                 onChange={this.handleChange("comment")}

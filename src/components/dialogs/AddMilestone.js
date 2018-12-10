@@ -90,7 +90,7 @@ class AddMilestone extends Component {
       open: false,
       milestones: {
         category: "",
-        date: undefined
+        date: Date.now()
       },
       selectedFile: undefined
     });

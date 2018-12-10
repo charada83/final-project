@@ -100,9 +100,9 @@ class AddBaby extends Component {
       babyBirthDetails: {
         name: "",
         gender: "",
-        dateOfBirth: undefined,
+        dateOfBirth: Date.now(),
         placeOfBirth: "",
-        timeOfBirth: undefined,
+        timeOfBirth: Date.now(),
         weight: ""
       },
       selectedFile: undefined

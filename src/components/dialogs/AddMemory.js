@@ -196,6 +196,9 @@ class AddMemory extends Component {
                 onChange={this.handleChange("category")}
                 margin="normal"
                 fullWidth
+                inputProps={{
+                  maxLength: 40
+                }}
               />
               <br />
               <TextField
@@ -207,6 +210,9 @@ class AddMemory extends Component {
                 onChange={this.handleChange("comment")}
                 margin="normal"
                 fullWidth
+                inputProps={{
+                  maxLength: 120
+                }}
               />
               <br />
               <DatePicker

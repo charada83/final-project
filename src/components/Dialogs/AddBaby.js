@@ -234,6 +234,9 @@ class AddBaby extends Component {
                 onChange={this.handleChange("name")}
                 margin="normal"
                 className={classes.FormControl}
+                inputProps={{
+                  maxLength: 20
+                }}
               />
               <br />
               {/* Radio Buttons for Gender */}
@@ -276,6 +279,9 @@ class AddBaby extends Component {
                 value={placeOfBirth}
                 onChange={this.handleChange("placeOfBirth")}
                 margin="normal"
+                inputProps={{
+                  maxLength: 20
+                }}
                 fullWidth
               />
               <br />
@@ -297,6 +303,9 @@ class AddBaby extends Component {
                 value={weight}
                 className={classes.FormControl}
                 onChange={this.handleChange("weight")}
+                inputProps={{
+                  maxLength: 6
+                }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment variant="filled" position="end">

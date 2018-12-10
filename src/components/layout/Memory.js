@@ -36,8 +36,18 @@ const styles = theme => ({
   },
   list: {
     display: "flex",
-    flexDirection: "horizontal",
     justifyContent: "space-between"
+  },
+  heading: {
+    color: "#d16682",
+    textAlign: "center",
+    paddingTop: 20,
+    paddingBottom: 0
+  },
+  content: {
+    display: "block",
+    wordBreak: "break-all",
+    maxWidth: 400
   }
 });
 
@@ -73,12 +83,18 @@ class Memory extends Component {
 
     return (
       <Paper className={classes.paper}>
+        <h2 className={classes.heading}>{localeDate}</h2>
         <div className={classes.paperContent}>
           <List className={classes.list}>
-            <ListItem>{MEMORIES[month]}</ListItem>
-            <ListItem>{category}</ListItem>
-            <ListItem>{localeDate}</ListItem>
-            <ListItem>{comment}</ListItem>
+            <div>
+              <ListItem>
+                <h3>{MEMORIES[month]}</h3>
+              </ListItem>
+            </div>
+            <div className={classes.content}>
+              <ListItem>{category}</ListItem>
+              <ListItem>{comment}</ListItem>
+            </div>
             <div>
               {this.state.imageURL && (
                 <CardMedia

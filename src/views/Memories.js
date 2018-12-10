@@ -120,7 +120,7 @@ class Memories extends Component {
               <MenuItem value={4}>4 Months</MenuItem>
             </Select>
           </FormControl>
-          <AddMemory />
+          <AddMemory babyID={this.props.babyID} />
         </div>
         <AllMemories memory={filteredMemories} />
       </div>

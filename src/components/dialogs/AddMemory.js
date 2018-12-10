@@ -147,18 +147,15 @@ class AddMemory extends Component {
 
     return (
       <Fragment>
-        <div>
-          {/* {this.props.children} */}
-          <Button
-            className={classes.addIcon}
-            variant="contained"
-            onClick={this.handleToggle}
-            color="primary"
-            mini
-          >
-            <AddIcon color="secondary" />
-          </Button>
-        </div>
+        <Button
+          className={classes.addIcon}
+          variant="contained"
+          onClick={this.handleToggle}
+          color="primary"
+          mini
+        >
+          <AddIcon color="secondary" />
+        </Button>
 
         <Dialog
           className={classes.dialog}

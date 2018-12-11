@@ -34,7 +34,7 @@ const styles = theme => ({
     width: 300
   },
   editIcon: {
-    marginBottom: 20
+    justifyContent: "flex-end"
   },
   imageButton: {
     marginBottom: 20,
@@ -158,16 +158,16 @@ class EditBaby extends Component {
 
     return (
       <Fragment>
-        <Grid container justify="center" style={{ justifyContent: "flex-end" }}>
+        <Grid containerclassName={classes.editIcon}>
           <IconButton
             id="dontPrint"
             className={classes.editIcon}
             variant="contained"
             onClick={this.handleToggle}
             color="primary"
+            aria-labelledby="edit-baby"
           >
             <EditIcon color="secondary" />
-            <Typography color="secondary">Edit Baby</Typography>
           </IconButton>
         </Grid>
 

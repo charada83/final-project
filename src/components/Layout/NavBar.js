@@ -20,7 +20,6 @@ class NavBar extends Component {
     this.setState(state => ({ open: !state.open }));
   };
 
-  //state = {  }
   render() {
     return (
       <List component="nav">
@@ -34,23 +33,6 @@ class NavBar extends Component {
             Baby Details
           </Link>
         </ListItem>
-        {/* {this.state.open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem> */}
-        {/* <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem>
-              <Link to="/babydetails/milestones" style={style.link}>
-                Milestones
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link to="/babydetails/memories" style={style.link}>
-                Memories
-              </Link>
-            </ListItem>
-          </List>
-        </Collapse> */}
-        {/* <ListItem onClick={this.handleClick}> */}
         <Divider />
         <ListItem>
           <Link to="/contact" style={style.link}>

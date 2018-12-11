@@ -15,6 +15,11 @@ const style = theme => ({
   text: {
     fontFamily: "Mali, cursive",
     marginTop: 20
+  },
+  button: { padding: 50, fontFamily: "Mali, cursive" },
+  buttonText: {
+    fontFamily: "Mali, cursive",
+    fontSize: 18
   }
 });
 class Home extends Component {
@@ -49,13 +54,15 @@ class Home extends Component {
             <p> Start creating precious Memories of your Children</p>
           </section>
           <Button
-            style={{ padding: 50 }}
+            className={classes.button}
             variant="contained"
             onClick={this.handleClick}
             color="primary"
             mini
           >
-            <Typography color="secondary">My Children</Typography>
+            <Typography className={classes.buttonText} color="secondary">
+              My Children
+            </Typography>
           </Button>
         </div>
       );

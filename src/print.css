@@ -3,3 +3,10 @@
     display: none;
   }
 }
+
+.alert {
+  text-align: "center";
+  background: "#00ff00";
+  padding: 10;
+  display: "none";
+}

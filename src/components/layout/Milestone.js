@@ -18,8 +18,7 @@ const styles = theme => ({
   paper: {
     maxWidth: "80%",
     marginBottom: 20,
-    marginLeft: "auto",
-    marginRight: "auto",
+    margin: "auto",
     backgroundColor: "#000",
     paddingLeft: 10,
     paddingRight: 20,

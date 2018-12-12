@@ -3,9 +3,11 @@ import { withStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import CardMedia from "@material-ui/core/CardMedia";
-import { storage } from "../../firebase";
 import Paper from "@material-ui/core/Paper";
 import { MEMORIES } from "../dialogs/AddMemory";
+import IconButton from "@material-ui/core/Icon";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { database, storage, auth } from "../../firebase";
 
 const dateOpts = {
   weekday: "long",
@@ -22,6 +24,7 @@ const styles = theme => ({
     marginLeft: "auto",
     marginRight: "auto",
     backgroundColor: "#000",
+    paddingTop: 5,
     paddingLeft: 10,
     paddingRight: 20,
     borderRadius: 50
@@ -42,13 +45,18 @@ const styles = theme => ({
   heading: {
     color: "#d16682",
     textAlign: "center",
-    paddingTop: 20,
     paddingBottom: 0
   },
   content: {
     display: "block",
     wordBreak: "break-all",
     maxWidth: 400
+  },
+  deleteIcon: {
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingRight: 20,
+    paddingTop: 20
   }
 });
 
@@ -57,6 +65,12 @@ class Memory extends Component {
     super(props);
 
     this.state = {};
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.memoryRef = database.ref(
+      `/users/${auth.currentUser.uid}/memories/${this.props.babyID}`
+    );
   }
 
   componentDidMount() {
@@ -78,12 +92,25 @@ class Memory extends Component {
     }
   }
 
+  handleSubmit() {
+    database.ref(this.memoryRef).remove();
+  }
+
   render() {
     const { month, category, date, comment, classes } = this.props;
     const localeDate = new Date(date).toLocaleDateString(locale, dateOpts);
 
     return (
       <Paper className={classes.paper}>
+        <div className={classes.deleteIcon}>
+          <IconButton
+            variant="contained"
+            onClick={this.handleSubmit}
+            color="primary"
+          >
+            <DeleteIcon color="secondary" />
+          </IconButton>
+        </div>
         <h2 className={classes.heading}>{localeDate}</h2>
         <div className={classes.paperContent}>
           <List className={classes.list}>

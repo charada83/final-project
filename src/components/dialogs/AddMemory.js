@@ -25,7 +25,10 @@ const styles = theme => ({
   dialog: {
     textAlign: "center"
   },
-  formControl: {
+  FormControl: {
+    width: 300
+  },
+  multiline: {
     width: 300
   },
   addIcon: {
@@ -35,6 +38,11 @@ const styles = theme => ({
   imageButton: {
     marginBottom: 20,
     marginTop: 20
+  },
+  buttons: {
+    margin: "auto",
+    marginTop: 10,
+    marginBottom: 10
   }
 });
 
@@ -170,7 +178,7 @@ class AddMemory extends Component {
           <DialogContent>
             <DialogContentText>Please fill out form below</DialogContentText>
             <form onSubmit={this.handleSubmit}>
-              <FormControl fullWidth>
+              <FormControl className={classes.FormControl}>
                 <InputLabel shrink htmlFor="month">
                   Month
                 </InputLabel>
@@ -188,16 +196,18 @@ class AddMemory extends Component {
                   <MenuItem value={4}>{MEMORIES[4]}</MenuItem>
                 </Select>
               </FormControl>
+              <br />
               <TextField
                 name="category"
                 label="Memory"
+                className={classes.FormControl}
                 value={category}
                 onChange={this.handleChange("category")}
                 margin="normal"
-                fullWidth
                 inputProps={{
                   maxLength: 40
                 }}
+                className={classes.FormControl}
               />
               <br />
               <TextField
@@ -207,11 +217,11 @@ class AddMemory extends Component {
                 label="Comment"
                 value={comment}
                 onChange={this.handleChange("comment")}
-                margin="normal"
-                fullWidth
+                className={classes.multiline}
                 inputProps={{
                   maxLength: 120
                 }}
+                required
               />
               <br />
               <DatePicker
@@ -222,7 +232,8 @@ class AddMemory extends Component {
                 disableFuture
                 maxDateMessage="Date must be less than today"
                 animateYearScrolling
-                fullWidth
+                className={classes.FormControl}
+                required
               />
               {/* Images */}
               <input
@@ -250,7 +261,7 @@ class AddMemory extends Component {
               />
             </form>
           </DialogContent>
-          <DialogActions>
+          <DialogActions className={classes.buttons}>
             <Button onClick={this.handleToggle} color="primary">
               Cancel
             </Button>

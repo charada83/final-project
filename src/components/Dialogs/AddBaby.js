@@ -42,6 +42,11 @@ const styles = theme => ({
   },
   radioButton: {
     display: "flex"
+  },
+  buttons: {
+    margin: "auto",
+    marginTop: 10,
+    marginBottom: 10
   }
 });
 
@@ -237,6 +242,7 @@ class AddBaby extends Component {
                 inputProps={{
                   maxLength: 20
                 }}
+                required
               />
               <br />
               {/* Radio Buttons for Gender */}
@@ -247,6 +253,7 @@ class AddBaby extends Component {
                   name="gender"
                   value={gender}
                   onChange={this.handleChange("gender")}
+                  required
                 >
                   <FormControlLabel
                     value="Female"
@@ -271,6 +278,7 @@ class AddBaby extends Component {
                 maxDateMessage="Date must be less than today"
                 animateYearScrolling
                 fullWidth
+                required
               />
               <br />
               <TextField
@@ -283,6 +291,7 @@ class AddBaby extends Component {
                   maxLength: 20
                 }}
                 fullWidth
+                required
               />
               <br />
               {/* TimePicker for Time of Birth */}
@@ -293,6 +302,7 @@ class AddBaby extends Component {
                 value={timeOfBirth}
                 onChange={this.handleTimeChange}
                 fullWidth
+                required
               />
               <br />
               {/* Number textfield for weight */}
@@ -310,10 +320,11 @@ class AddBaby extends Component {
                     </InputAdornment>
                   )
                 }}
+                required
               />
             </form>
           </DialogContent>
-          <DialogActions>
+          <DialogActions className={classes.buttons}>
             <Button onClick={this.handleToggle} color="primary">
               Cancel
             </Button>

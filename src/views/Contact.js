@@ -24,6 +24,9 @@ const styles = theme => ({
   },
   buttonContainer: {
     marginTop: 20
+  },
+  button: {
+    marginLeft: 10
   }
 });
 
@@ -64,11 +67,25 @@ class Contact extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const { name, email, message } = this.state.contact;
+
     this.contactRef.push({
-      name: this.state.contact.name,
-      email: this.state.contact.email,
-      message: this.state.contact.message
+      name,
+      email,
+      message
     });
+
+    const encodedName = `?name=${encodeURIComponent(name)}`;
+    const encodedEmail = `&email=${encodeURIComponent(email)}`;
+    const encodedMessage = `&message=${encodeURIComponent(message)}`;
+    const params = `${encodedName}${encodedEmail}${encodedMessage}`;
+    const url =
+      "https://us-central1-baby-book-app.cloudfunctions.net/handleContactForm";
+    const urlWithParams = `${url}${params}`;
+
+    console.log(urlWithParams);
+
+    fetch(urlWithParams);
 
     this.clearState();
   }
@@ -135,12 +152,13 @@ class Contact extends Component {
               Cancel
             </Button>
             <Button
+              className={classes.button}
               onClick={this.handleSubmit}
               color="primary"
               variant="raised"
               disabled={isInvalid}
             >
-              Send Message
+              <Typography color="secondary">Send Message</Typography>
             </Button>
           </div>
         </Paper>

@@ -66,11 +66,11 @@ class Memory extends Component {
 
     this.state = {};
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.memoryRef = database.ref(
-      `/users/${auth.currentUser.uid}/memories/${this.props.babyID}`
-    );
+    // this.memoryRef = database.ref(
+    //   `/users/${auth.currentUser.uid}/memories/${this.props.babyID}`
+    // );
   }
 
   componentDidMount() {
@@ -102,7 +102,7 @@ class Memory extends Component {
 
     return (
       <Paper className={classes.paper}>
-        <div className={classes.deleteIcon}>
+        {/* <div className={classes.deleteIcon}>
           <IconButton
             variant="contained"
             onClick={this.handleSubmit}
@@ -110,7 +110,7 @@ class Memory extends Component {
           >
             <DeleteIcon color="secondary" />
           </IconButton>
-        </div>
+        </div> */}
         <h2 className={classes.heading}>{localeDate}</h2>
         <div className={classes.paperContent}>
           <List className={classes.list}>

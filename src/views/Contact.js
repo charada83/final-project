@@ -10,7 +10,7 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 
 const styles = theme => ({
   paper: {
-    maxWidth: "60%",
+    maxWidth: "70%",
     margin: "auto",
     paddingTop: 20,
     paddingBottom: 20,
@@ -75,6 +75,7 @@ class Contact extends Component {
       message
     });
 
+    // Send confirmation email to user
     const encodedName = `?name=${encodeURIComponent(name)}`;
     const encodedEmail = `&email=${encodeURIComponent(email)}`;
     const encodedMessage = `&message=${encodeURIComponent(message)}`;
